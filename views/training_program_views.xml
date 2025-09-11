@@ -27,7 +27,8 @@
                         <group string="Program Information">
                             <field name="description" placeholder="Enter program description..."/>
                             <field name="duration_weeks"/>
-                            <field name="certificate_template_id"/>
+                            <!-- TODO: Uncomment when gr.certificate.template model is created -->
+                            <!-- <field name="certificate_template_id"/> -->
                         </group>
                         <group string="Statistics">
                             <field name="total_courses" readonly="1"/>

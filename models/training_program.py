@@ -44,11 +44,12 @@ class TrainingProgram(models.Model):
     )
     
     # Certification
-    certificate_template_id = fields.Many2one(
-        'gr.certificate.template',
-        string='Certificate Template',
-        help='Template to use for program completion certificates'
-    )
+    # TODO: Create gr.certificate.template model in future phase
+    # certificate_template_id = fields.Many2one(
+    #     'gr.certificate.template',
+    #     string='Certificate Template',
+    #     help='Template to use for program completion certificates'
+    # )
     
     # Status
     status = fields.Selection([
@@ -166,8 +167,9 @@ class TrainingProgram(models.Model):
     def action_generate_certificates(self):
         """Generate certificates for completed students."""
         for record in self:
-            if not record.certificate_template_id:
-                raise ValidationError(_('No certificate template configured for this program.'))
+            # TODO: Add certificate template validation when gr.certificate.template model is created
+            # if not record.certificate_template_id:
+            #     raise ValidationError(_('No certificate template configured for this program.'))
             
             # Get students who completed all courses
             completed_students = self._get_completed_students()
