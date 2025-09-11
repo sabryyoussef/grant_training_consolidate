@@ -136,29 +136,29 @@ class Student(models.Model):
         help='Date when agent first contacted the student'
     )
     
-    # Course Information (will be added when gr.course.session model is created)
-    # course_session_ids = fields.One2many(
-    #     'gr.course.session',
-    #     'student_id',
-    #     string='Course Sessions',
-    #     help='Course sessions this student is enrolled in'
-    # )
+    # Course Information
+    course_session_ids = fields.One2many(
+        'gr.course.session',
+        'student_id',
+        string='Course Sessions',
+        help='Course sessions this student is enrolled in'
+    )
     
-    # Assessment Information (will be added when gr.homework.attempt model is created)
-    # homework_attempt_ids = fields.One2many(
-    #     'gr.homework.attempt',
-    #     'student_id',
-    #     string='Homework Attempts',
-    #     help='Homework attempts by this student'
-    # )
+    # Assessment Information
+    homework_attempt_ids = fields.One2many(
+        'gr.homework.attempt',
+        'student_id',
+        string='Homework Attempts',
+        help='Homework attempts by this student'
+    )
     
-    # Certificate Information (will be added when gr.certificate model is created)
-    # certificate_ids = fields.One2many(
-    #     'gr.certificate',
-    #     'student_id',
-    #     string='Certificates',
-    #     help='Certificates earned by this student'
-    # )
+    # Certificate Information
+    certificate_ids = fields.One2many(
+        'gr.certificate',
+        'student_id',
+        string='Certificates',
+        help='Certificates earned by this student'
+    )
     
     # Computed Fields
     total_sessions = fields.Integer(
@@ -211,17 +211,17 @@ class Student(models.Model):
             else:
                 record.age = 0
     
+    @api.depends('course_session_ids')
     def _compute_total_sessions(self):
         """Compute total number of course sessions."""
         for record in self:
-            # TODO: Implement when course_session_ids field is uncommented
-            record.total_sessions = 0
+            record.total_sessions = len(record.course_session_ids)
     
+    @api.depends('course_session_ids', 'course_session_ids.state')
     def _compute_completed_sessions(self):
         """Compute number of completed sessions."""
         for record in self:
-            # TODO: Implement when course_session_ids field is uncommented
-            record.completed_sessions = 0
+            record.completed_sessions = len(record.course_session_ids.filtered(lambda s: s.state == 'completed'))
     
     @api.depends('total_sessions', 'completed_sessions')
     def _compute_progress_percentage(self):
