@@ -10,13 +10,11 @@ _logger = logging.getLogger(__name__)
 class TrainingProgram(models.Model):
     _name = 'gr.training.program'
     _description = 'Training Program Definition'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'name'
 
     name = fields.Char(
         string='Program Name',
         required=True,
-        tracking=True,
         help='Name of the training program'
     )
     
@@ -56,7 +54,7 @@ class TrainingProgram(models.Model):
         ('draft', 'Draft'),
         ('active', 'Active'),
         ('archived', 'Archived')
-    ], string='Status', default='draft', tracking=True)
+    ], string='Status', default='draft')
     
     # Statistics
     total_courses = fields.Integer(
