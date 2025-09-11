@@ -10,13 +10,11 @@ _logger = logging.getLogger(__name__)
 class CourseIntegration(models.Model):
     _name = 'gr.course.integration'
     _description = 'Course Integration between eLearning and Training Suite'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'name'
 
     name = fields.Char(
         string='Integration Name',
         required=True,
-        tracking=True,
         help='Name of the course integration'
     )
     
@@ -25,7 +23,6 @@ class CourseIntegration(models.Model):
         'slide.channel',
         string='eLearning Course',
         required=True,
-        tracking=True,
         help='The eLearning course to integrate with'
     )
     
@@ -40,14 +37,12 @@ class CourseIntegration(models.Model):
     auto_enroll_eligible = fields.Boolean(
         string='Auto-enroll Eligible Students',
         default=True,
-        tracking=True,
         help='Automatically enroll eligible students in this course'
     )
     
     completion_threshold = fields.Float(
         string='Completion Threshold (%)',
         default=100.0,
-        tracking=True,
         help='Percentage required to consider course completed'
     )
     
@@ -56,7 +51,7 @@ class CourseIntegration(models.Model):
         ('draft', 'Draft'),
         ('active', 'Active'),
         ('archived', 'Archived')
-    ], string='Status', default='draft', tracking=True)
+    ], string='Status', default='draft')
     
     # Statistics
     enrolled_students = fields.Integer(

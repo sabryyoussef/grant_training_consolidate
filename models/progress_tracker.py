@@ -10,14 +10,12 @@ _logger = logging.getLogger(__name__)
 class ProgressTracker(models.Model):
     _name = 'gr.progress.tracker'
     _description = 'Unified Progress Tracking'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'student_id, course_integration_id'
 
     student_id = fields.Many2one(
         'gr.student',
         string='Student',
         required=True,
-        tracking=True,
         help='The student being tracked'
     )
     
@@ -25,7 +23,6 @@ class ProgressTracker(models.Model):
         'gr.course.integration',
         string='Course Integration',
         required=True,
-        tracking=True,
         help='The course integration being tracked'
     )
     
@@ -33,7 +30,6 @@ class ProgressTracker(models.Model):
     elearning_progress = fields.Float(
         string='eLearning Progress (%)',
         default=0.0,
-        tracking=True,
         help='Progress percentage in the eLearning course'
     )
     
@@ -47,14 +43,12 @@ class ProgressTracker(models.Model):
     custom_sessions_completed = fields.Integer(
         string='Custom Sessions Completed',
         default=0,
-        tracking=True,
         help='Number of custom training sessions completed'
     )
     
     homework_submissions = fields.Integer(
         string='Homework Submissions',
         default=0,
-        tracking=True,
         help='Number of homework submissions'
     )
     
@@ -83,13 +77,11 @@ class ProgressTracker(models.Model):
     
     start_date = fields.Datetime(
         string='Start Date',
-        tracking=True,
         help='When the student started the course'
     )
     
     completion_date = fields.Datetime(
         string='Completion Date',
-        tracking=True,
         help='When the student completed the course'
     )
     
