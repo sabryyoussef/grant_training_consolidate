@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- Main Menu -->
+        <menuitem id="menu_grants_training_main"
+                  name="Grants Training"
+                  sequence="10"
+                  web_icon="grants_training_suite_v2,static/description/icon.png"/>
+        
+        <!-- Intake Management Menu -->
+        <menuitem id="menu_grants_training_intake"
+                  name="Intake Management"
+                  parent="menu_grants_training_main"
+                  sequence="10"/>
+        
+        <menuitem id="menu_grants_training_intake_batch"
+                  name="Intake Batches"
+                  parent="menu_grants_training_intake"
+                  action="action_gr_intake_batch"
+                  sequence="10"/>
+        
+        <!-- Student Management Menu -->
+        <menuitem id="menu_grants_training_students"
+                  name="Student Management"
+                  parent="menu_grants_training_main"
+                  sequence="20"/>
+        
+        <menuitem id="menu_grants_training_students_list"
+                  name="Students"
+                  parent="menu_grants_training_students"
+                  action="action_gr_student"
+                  sequence="10"/>
+        
+        <menuitem id="menu_grants_training_assignments"
+                  name="Assignments"
+                  parent="menu_grants_training_students"
+                  action="action_gr_assignment"
+                  sequence="20"/>
+        
+        <!-- Document Management Menu -->
+        <menuitem id="menu_grants_training_documents"
+                  name="Document Management"
+                  parent="menu_grants_training_main"
+                  sequence="30"/>
+        
+        <menuitem id="menu_grants_training_document_requests"
+                  name="Document Requests"
+                  parent="menu_grants_training_documents"
+                  action="action_gr_document_request"
+                  sequence="10"/>
+        
+        <!-- Training Management Menu -->
+        <menuitem id="menu_grants_training_training"
+                  name="Training Management"
+                  parent="menu_grants_training_main"
+                  sequence="40"/>
+        
+        <menuitem id="menu_grants_training_course_sessions"
+                  name="Course Sessions"
+                  parent="menu_grants_training_training"
+                  action="action_gr_course_session"
+                  sequence="10"/>
+        
+        <menuitem id="menu_grants_training_homework_attempts"
+                  name="Homework Attempts"
+                  parent="menu_grants_training_training"
+                  action="action_gr_homework_attempt"
+                  sequence="20"/>
+        
+        <!-- Certification Menu -->
+        <menuitem id="menu_grants_training_certification"
+                  name="Certification"
+                  parent="menu_grants_training_main"
+                  sequence="50"/>
+        
+        <menuitem id="menu_grants_training_certificates"
+                  name="Certificates"
+                  parent="menu_grants_training_certification"
+                  action="action_gr_certificate"
+                  sequence="10"/>
+        
+        <!-- Configuration Menu -->
+        <menuitem id="menu_grants_training_config"
+                  name="Configuration"
+                  parent="menu_grants_training_main"
+                  sequence="100"/>
+        
+        <!-- Security Groups Menu (for managers) -->
+        <menuitem id="menu_grants_training_security"
+                  name="Security"
+                  parent="menu_grants_training_config"
+                  groups="grants_training_suite_v2.group_manager"
+                  sequence="10"/>
+        
+        <!-- Reports Menu -->
+        <menuitem id="menu_grants_training_reports"
+                  name="Reports"
+                  parent="menu_grants_training_main"
+                  sequence="200"/>
+        
+        <!-- Dashboard Menu (future implementation) -->
+        <menuitem id="menu_grants_training_dashboard"
+                  name="Dashboard"
+                  parent="menu_grants_training_main"
+                  sequence="5"
+                  groups="grants_training_suite_v2.group_manager,grants_training_suite_v2.group_agent"/>
+        
+    </data>
+</odoo>

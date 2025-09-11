@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Grants Training Suite V2',
+    'version': '18.0.1.0.0',
+    'category': 'Education',
+    'summary': 'Training center management from grant intake to certification',
+    'description': """
+        Grants Training Suite V2
+        =======================
+        
+        A comprehensive training center management system that handles:
+        - Daily grant intakes and eligibility assessment
+        - Agent assignment and workflow management
+        - E-learning and session management
+        - Assessments and certification
+        - Post-grant monetization and CRM integration
+        
+        Phase 1: Basic module structure with minimal dependencies
+    """,
+    'author': 'Your Company',
+    'website': 'https://www.yourcompany.com',
+    'license': 'OEEL-1',
+    'depends': [
+        'base',
+        'mail',
+        'portal',
+        'contacts',
+        'sale',
+        'crm',
+        'website',
+        'survey',
+        'website_slides',
+        'documents',
+        'certificate',
+    ],
+    'data': [
+        # Security
+        'security/grants_training_groups.xml',
+        'security/ir.model.access.csv',
+        
+        # Data
+        'data/sequence.xml',
+        
+        # Views
+        'views/intake_batch_views.xml',
+        'views/student_views.xml',
+        'views/assignment_views.xml',
+        'views/document_request_views.xml',
+        'views/course_session_views.xml',
+        'views/homework_attempt_views.xml',
+        'views/certificate_views.xml',
+        'views/menu_views.xml',
+    ],
+    'demo': [
+        'demo/intake_batch_demo.xml',
+        'demo/student_demo.xml',
+        'demo/assignment_demo.xml',
+        'demo/document_request_demo.xml',
+        'demo/course_session_demo.xml',
+        'demo/homework_attempt_demo.xml',
+        'demo/certificate_demo.xml',
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}
