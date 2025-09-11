@@ -57,8 +57,8 @@
                                 <field name="submission_date" readonly="1"/>
                                 <field name="is_late" readonly="1"/>
                                 <field name="days_late" readonly="1"/>
-                                <field name="grade" invisible="state not in ['graded', 'returned']"/>
-                                <field name="max_grade" invisible="state not in ['graded', 'returned']"/>
+                                <field name="grade" invisible="state not in ['under_review', 'graded', 'returned']"/>
+                                <field name="max_grade" invisible="state not in ['under_review', 'graded', 'returned']"/>
                                 <field name="grade_percentage" readonly="1" invisible="state not in ['graded', 'returned']"/>
                                 <field name="grade_letter" readonly="1" invisible="state not in ['graded', 'returned']"/>
                             </group>
@@ -69,8 +69,8 @@
                         </group>
                         
                         <group>
-                            <group string="Submission Content" invisible="state == 'draft'">
-                                <field name="submission_content"/>
+                            <group string="Submission Content">
+                                <field name="submission_content" placeholder="Enter your homework content here..."/>
                                 <field name="submission_file" filename="submission_filename"/>
                                 <field name="submission_filename" readonly="1"/>
                             </group>

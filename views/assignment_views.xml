@@ -47,7 +47,7 @@
                         
                         <group>
                             <group string="Assignment Details">
-                                <field name="student_id" required="1"/>
+                                <field name="student_id" required="1" domain="[('state', 'in', ['eligible', 'assigned_to_agent'])]"/>
                                 <field name="agent_id" required="1"/>
                                 <field name="assignment_date" readonly="1"/>
                                 <field name="assigned_by_id" readonly="1"/>
@@ -218,6 +218,7 @@
             <field name="name">Assignments</field>
             <field name="res_model">gr.assignment</field>
             <field name="view_mode">kanban,list,form</field>
+            <field name="domain">[('student_id.state', 'in', ['eligible', 'assigned_to_agent'])]</field>
             <field name="context">{'search_default_this_week': 1}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">

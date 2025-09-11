@@ -414,12 +414,23 @@ class DocumentRequest(models.Model):
             if record.deadline_date and record.deadline_date < record.request_date:
                 raise ValidationError(_('Deadline cannot be before the request date.'))
     
+    @api.onchange('document_file')
+    def _onchange_document_file(self):
+        """Auto-populate filename when document is uploaded."""
+        if self.document_file:
+            # Extract filename from the uploaded file
+            # In Odoo, the filename is usually stored in the context or can be extracted
+            # For now, we'll set a default filename if none is provided
+            if not self.document_filename:
+                self.document_filename = f"document_{self.document_type}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    
     @api.constrains('document_file')
     def _check_document_file(self):
         """Validate document file."""
         for record in self:
             if record.document_file and not record.document_filename:
-                raise ValidationError(_('Please provide a filename for the document.'))
+                # Auto-generate filename if missing
+                record.document_filename = f"document_{record.document_type}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     
     def name_get(self):
         """Custom name display for document request records."""

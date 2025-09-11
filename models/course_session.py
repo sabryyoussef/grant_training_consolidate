@@ -17,6 +17,7 @@ class CourseSession(models.Model):
     name = fields.Char(
         string='Session Name',
         required=True,
+        default='New Session',
         help='Name of the course session'
     )
     
@@ -206,9 +207,36 @@ class CourseSession(models.Model):
             else:
                 record.actual_duration = 0.0
     
+    @api.onchange('student_id', 'session_date')
+    def _onchange_suggest_name(self):
+        """Suggest session name when student or date changes."""
+        if self.student_id and self.session_date:
+            try:
+                date_str = self.session_date.strftime('%Y-%m-%d %H:%M')
+                suggested_name = f"Session - {self.student_id.name} - {date_str}"
+                if not self.name or self.name == 'New Session':
+                    self.name = suggested_name
+            except:
+                if not self.name or self.name == 'New Session':
+                    self.name = f"Session - {self.student_id.name}"
+    
     @api.model
     def create(self, vals):
         """Override create to set default values."""
+        # Generate session name if not provided
+        if not vals.get('name') or vals.get('name') == 'New':
+            student_name = vals.get('student_id') and self.env['gr.student'].browse(vals['student_id']).name or 'Student'
+            session_date = vals.get('session_date')
+            if session_date:
+                try:
+                    date_obj = fields.Datetime.from_string(session_date)
+                    date_str = date_obj.strftime('%Y-%m-%d %H:%M')
+                    vals['name'] = f"Session - {student_name} - {date_str}"
+                except:
+                    vals['name'] = f"Session - {student_name}"
+            else:
+                vals['name'] = f"Session - {student_name}"
+        
         course_session = super(CourseSession, self).create(vals)
         
         # Log creation

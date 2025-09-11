@@ -102,7 +102,7 @@ class IntakeBatch(models.Model):
         help='Percentage of successfully processed records'
     )
     
-    @api.depends('filename')
+    @api.depends('filename', 'file_data')
     def _compute_file_type(self):
         """Compute file type based on filename extension."""
         for record in self:
@@ -125,6 +125,7 @@ class IntakeBatch(models.Model):
             else:
                 record.success_rate = 0.0
     
+    
     @api.model
     def create(self, vals):
         """Override create to generate sequence number."""
@@ -142,22 +143,33 @@ class IntakeBatch(models.Model):
         if not self.filename:
             raise UserError(_('File name is required.'))
         
-        # Update state
-        self.state = 'uploaded'
-        self.upload_date = fields.Datetime.now()
-        
-        # Log the action
-        _logger.info('File uploaded for batch %s: %s', self.name, self.filename)
-        
-        return {
-            'type': 'ir.actions.client',
-            'tag': 'display_notification',
-            'params': {
-                'title': _('File Uploaded'),
-                'message': _('File has been uploaded successfully. You can now validate it.'),
-                'type': 'success',
+        try:
+            # Parse file and count records
+            records = self._parse_file()
+            self.total_records = len(records)
+            
+            # Update state
+            self.state = 'uploaded'
+            self.upload_date = fields.Datetime.now()
+            
+            # Log the action
+            _logger.info('File uploaded for batch %s: %s - %d records found', self.name, self.filename, self.total_records)
+            
+            return {
+                'type': 'ir.actions.client',
+                'tag': 'display_notification',
+                'params': {
+                    'title': _('File Uploaded'),
+                    'message': _('File has been uploaded successfully. %d records found. You can now validate it.') % self.total_records,
+                    'type': 'success',
+                }
             }
-        }
+            
+        except Exception as e:
+            _logger.error('Error uploading file for batch %s: %s', self.name, str(e))
+            self.state = 'error'
+            self.validation_errors = str(e)
+            raise UserError(_('Error uploading file: %s') % str(e))
     
     def action_validate_file(self):
         """Action to validate the uploaded file."""
@@ -210,14 +222,19 @@ class IntakeBatch(models.Model):
         """Action to process the validated file and create students."""
         self.ensure_one()
         
+        _logger.info('Starting file processing for batch %s (state: %s)', self.name, self.state)
+        
         if self.state != 'validated':
             raise UserError(_('Please validate the file first.'))
         
         try:
             # Parse file again
+            _logger.info('Parsing file for batch %s', self.name)
             records = self._parse_file()
+            _logger.info('File parsed successfully: %d records found', len(records))
             
             # Create students
+            _logger.info('Creating students for batch %s', self.name)
             created_students = self._create_students(records)
             
             # Update counters
@@ -255,12 +272,15 @@ class IntakeBatch(models.Model):
             # Decode file data
             file_data = base64.b64decode(self.file_data)
             
+            _logger.info('Parsing file: filename=%s, file_type=%s', self.filename, self.file_type)
+            
             if self.file_type == 'csv':
                 return self._parse_csv(file_data)
             elif self.file_type == 'xlsx':
                 return self._parse_excel(file_data)
             else:
-                raise UserError(_('Unsupported file type.'))
+                _logger.error('Unsupported file type: %s (filename: %s)', self.file_type, self.filename)
+                raise UserError(_('Unsupported file type: %s') % self.file_type)
                 
         except Exception as e:
             _logger.error('Error parsing file: %s', str(e))
@@ -271,10 +291,17 @@ class IntakeBatch(models.Model):
         try:
             # Convert bytes to string
             file_content = file_data.decode('utf-8')
+            _logger.info('CSV content length: %d characters', len(file_content))
             
             # Parse CSV
             csv_reader = csv.DictReader(io.StringIO(file_content))
             records = list(csv_reader)
+            
+            _logger.info('CSV parsed successfully: %d records found', len(records))
+            if records:
+                _logger.info('CSV headers: %s', list(records[0].keys()))
+                # Debug: Log the first record to see what data is being parsed
+                _logger.info('First record data: %s', records[0])
             
             return records
             
@@ -317,24 +344,64 @@ class IntakeBatch(models.Model):
         """Create student records from validated data."""
         created_students = []
         
-        for record in records:
+        _logger.info('Starting to create students from %d records', len(records))
+        
+        for i, record in enumerate(records, 1):
             try:
-                # Create student record
+                # Parse birth_date if provided
+                birth_date = None
+                if record.get('birth_date'):
+                    try:
+                        birth_date = datetime.strptime(record.get('birth_date'), '%Y-%m-%d').date()
+                    except ValueError:
+                        _logger.warning('Invalid birth_date format for student %d: %s', i, record.get('birth_date'))
+                
+                # Parse certificate_date if provided
+                certificate_date = None
+                if record.get('certificate_date'):
+                    try:
+                        certificate_date = datetime.strptime(record.get('certificate_date'), '%Y-%m-%d').date()
+                    except ValueError:
+                        _logger.warning('Invalid certificate_date format for student %d: %s', i, record.get('certificate_date'))
+                
+                # Parse has_certificate boolean
+                has_certificate = False
+                if record.get('has_certificate'):
+                    has_cert_str = record.get('has_certificate').lower().strip()
+                    has_certificate = has_cert_str in ['true', '1', 'yes', 'y']
+                
+                # Create student record with all fields
                 student_vals = {
                     'name': record.get('name'),
                     'email': record.get('email'),
                     'phone': record.get('phone'),
+                    'birth_date': birth_date,
+                    'gender': record.get('gender'),
+                    'nationality': record.get('nationality'),
+                    'native_language': record.get('native_language'),
+                    'english_level': record.get('english_level'),
+                    'has_certificate': has_certificate,
+                    'certificate_type': record.get('certificate_type'),
+                    'certificate_date': certificate_date,
                     'intake_batch_id': self.id,
                     'state': 'draft',
                 }
                 
+                _logger.info('Creating student %d: %s with birth_date=%s, has_certificate=%s, english_level=%s', 
+                           i, student_vals['name'], birth_date, has_certificate, record.get('english_level'))
+                _logger.info('Full student_vals for student %d: %s', i, student_vals)
                 student = self.env['gr.student'].create(student_vals)
                 created_students.append(student)
+                _logger.info('Student %d created successfully with ID: %s', i, student.id)
+                _logger.info('Student %d actual values after creation: birth_date=%s, has_certificate=%s, english_level=%s, age=%s', 
+                           i, student.birth_date, student.has_certificate, student.english_level, student.age)
                 
             except Exception as e:
-                _logger.error('Error creating student from record %s: %s', record, str(e))
+                _logger.error('Error creating student %d from record %s: %s', i, record, str(e))
                 continue
         
+        _logger.info('Student creation completed: %d students created out of %d records', 
+                    len(created_students), len(records))
         return created_students
     
     def action_reset(self):
