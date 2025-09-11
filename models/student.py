@@ -160,6 +160,46 @@ class Student(models.Model):
         help='Certificates earned by this student'
     )
     
+    # eLearning Integration
+    elearning_enrollments = fields.One2many(
+        'slide.channel.partner',
+        'partner_id',
+        string='eLearning Enrollments',
+        domain=[('partner_id', '=', 'id')],
+        help='eLearning course enrollments'
+    )
+    
+    elearning_progress = fields.Float(
+        string='eLearning Progress (%)',
+        compute='_compute_elearning_progress',
+        store=True,
+        help='Overall eLearning progress percentage'
+    )
+    
+    completed_courses = fields.Integer(
+        string='Completed Courses',
+        compute='_compute_completed_courses',
+        store=True,
+        help='Number of completed eLearning courses'
+    )
+    
+    # Integration status
+    integration_status = fields.Selection([
+        ('not_integrated', 'Not Integrated'),
+        ('enrolled', 'Enrolled in eLearning'),
+        ('in_progress', 'In Progress'),
+        ('completed', 'Completed'),
+        ('certified', 'Certified')
+    ], string='Integration Status', default='not_integrated', tracking=True)
+    
+    # Progress tracking
+    progress_trackers = fields.One2many(
+        'gr.progress.tracker',
+        'student_id',
+        string='Progress Trackers',
+        help='Progress tracking records for integrated courses'
+    )
+    
     # Computed Fields
     total_sessions = fields.Integer(
         string='Total Sessions',
@@ -222,6 +262,22 @@ class Student(models.Model):
         """Compute number of completed sessions."""
         for record in self:
             record.completed_sessions = len(record.course_session_ids.filtered(lambda s: s.state == 'completed'))
+    
+    @api.depends('elearning_enrollments', 'elearning_enrollments.completion')
+    def _compute_elearning_progress(self):
+        """Compute overall eLearning progress."""
+        for record in self:
+            if record.elearning_enrollments:
+                total_progress = sum(enrollment.completion for enrollment in record.elearning_enrollments)
+                record.elearning_progress = total_progress / len(record.elearning_enrollments)
+            else:
+                record.elearning_progress = 0.0
+    
+    @api.depends('elearning_enrollments', 'elearning_enrollments.completion')
+    def _compute_completed_courses(self):
+        """Compute number of completed eLearning courses."""
+        for record in self:
+            record.completed_courses = len(record.elearning_enrollments.filtered(lambda e: e.completion >= 100.0))
     
     @api.depends('total_sessions', 'completed_sessions')
     def _compute_progress_percentage(self):

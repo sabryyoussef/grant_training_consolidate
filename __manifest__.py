@@ -49,6 +49,9 @@
         'views/course_session_views.xml',
         'views/homework_attempt_views.xml',
         'views/certificate_views.xml',
+        'views/course_integration_views.xml',
+        'views/training_program_views.xml',
+        'views/progress_tracker_views.xml',
         'views/menu_views.xml',
     ],
     'demo': [

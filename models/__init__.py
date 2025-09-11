@@ -23,3 +23,13 @@ from . import homework_attempt
 
 # Model 7: Certificate
 from . import certificate
+
+# Phase 1: eLearning Integration Models
+# Model 8: Course Integration
+from . import course_integration
+
+# Model 9: Training Program
+from . import training_program
+
+# Model 10: Progress Tracker
+from . import progress_tracker
