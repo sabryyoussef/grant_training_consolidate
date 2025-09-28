@@ -1,6 +1,6 @@
 # Grants Training Suite V2 - Complete eLearning System
 
-This branch contains the complete implementation of the Grants Training Suite V2 eLearning system with all 5 phases fully developed and tested.
+**This is the `elearning-system-completed` branch** containing the complete implementation of the Grants Training Suite V2 eLearning system with all 5 phases fully developed and tested.
 
 ## 🎉 **Project Completed Successfully!**
 
