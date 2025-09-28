@@ -1,0 +1,76 @@
+name: Deploy to Production Server
+
+on:
+  push:
+    branches: [ master, elearning-system-completed ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to server
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 216.70.76.85
+        username: edafa
+        password: Asd123@@
+        port: 22
+        script: |
+          # Navigate to the custom-addons directory
+          cd ~/odoo-dev/custom-addons
+          
+          # Create backup of current deployment
+          if [ -d "grants_training_suite_backup" ]; then
+            rm -rf grants_training_suite_backup
+          fi
+          
+          if [ -d "grants_training_suite_v1" ] || [ -d "grants_training_suite_v2" ]; then
+            mkdir -p grants_training_suite_backup
+            if [ -d "grants_training_suite_v1" ]; then
+              cp -r grants_training_suite_v1 grants_training_suite_backup/
+            fi
+            if [ -d "grants_training_suite_v2" ]; then
+              cp -r grants_training_suite_v2 grants_training_suite_backup/
+            fi
+          fi
+          
+          # Remove old modules if they exist
+          rm -rf grants_training_suite_v1 grants_training_suite_v2
+          
+          # Clone the repository to a temporary location
+          rm -rf temp_grants_training
+          git clone https://github.com/sabryyoussef/grants-training-suite-main.git temp_grants_training
+          
+          # Copy modules based on branch
+          if [ "${{ github.ref }}" = "refs/heads/elearning-system-completed" ]; then
+            # For elearning-system-completed branch, copy only V2
+            cp -r temp_grants_training/custom_addons/grants_training_suite_v2 ./
+            echo "Deployed grants_training_suite_v2 (Complete eLearning System)"
+          else
+            # For master branch, copy both modules
+            cp -r temp_grants_training/custom_addons/grants_training_suite_v1 ./
+            cp -r temp_grants_training/custom_addons/grants_training_suite_v2 ./
+            echo "Deployed both grants_training_suite_v1 and grants_training_suite_v2"
+          fi
+          
+          # Clean up temporary directory
+          rm -rf temp_grants_training
+          
+          # Set proper permissions
+          chmod -R 755 grants_training_suite_v1 grants_training_suite_v2 2>/dev/null || true
+          
+          # Show deployment status
+          echo "=== Deployment Complete ==="
+          echo "Current modules in ~/odoo-dev/custom-addons/:"
+          ls -la | grep grants_training
+          
+          # Restart Odoo services (uncomment if needed)
+          # sudo systemctl restart odoo
+          
+          echo "Deployment completed successfully!"
