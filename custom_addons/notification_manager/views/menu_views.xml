@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_notification_manager_root"
+              name="Notifications"
+              sequence="100"/>
+    
+    <menuitem id="menu_notification_dashboard"
+              name="Notification Dashboard"
+              parent="menu_notification_manager_root"
+              action="action_notification_kanban"
+              sequence="10"/>
+    
+    <menuitem id="menu_notification_all"
+              name="All Notifications"
+              parent="menu_notification_manager_root"
+              action="action_notification"
+              sequence="20"/>
+</odoo>
+

@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_registration_manager,student.registration.manager,model_student_registration,openeducat_core.group_op_back_office_admin,1,1,1,1
+access_student_registration_faculty,student.registration.faculty,model_student_registration,openeducat_core.group_op_faculty,1,1,1,1
+access_student_registration_portal,student.registration.portal,model_student_registration,base.group_portal,1,1,1,0
+access_course_enrollment_request_public,course.enrollment.request.public,model_course_enrollment_request,base.group_public,1,0,0,0
+access_course_enrollment_request_portal,course.enrollment.request.portal,model_course_enrollment_request,base.group_portal,1,1,1,0
+access_course_enrollment_request_user,course.enrollment.request.user,model_course_enrollment_request,base.group_user,1,0,0,0
+access_course_enrollment_request_faculty,course.enrollment.request.faculty,model_course_enrollment_request,openeducat_core.group_op_faculty,1,1,1,1
+access_course_enrollment_request_manager,course.enrollment.request.manager,model_course_enrollment_request,openeducat_core.group_op_back_office_admin,1,1,1,1
+

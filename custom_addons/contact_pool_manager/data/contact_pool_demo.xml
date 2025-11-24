@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Demo Contact Pools -->
+        <record id="pool_demo_sales" model="contact.pool">
+            <field name="name">Demo Sales Pool</field>
+            <field name="is_system_pool">False</field>
+            <field name="creation_date" eval="(DateTime.now())"/>
+            <field name="created_by" ref="base.user_admin"/>
+        </record>
+        
+        <record id="pool_demo_marketing" model="contact.pool">
+            <field name="name">Demo Marketing Pool</field>
+            <field name="is_system_pool">False</field>
+            <field name="creation_date" eval="(DateTime.now())"/>
+            <field name="created_by" ref="base.user_admin"/>
+        </record>
+    </data>
+</odoo>
+

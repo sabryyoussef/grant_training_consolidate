@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_training_dashboard_root"
+              name="Training Dashboard"
+              sequence="50"/>
+    
+    <menuitem id="menu_training_dashboard_kanban"
+              name="Dashboard"
+              parent="menu_training_dashboard_root"
+              action="action_training_dashboard_kanban"
+              sequence="10"/>
+    
+    <menuitem id="menu_training_dashboard_all"
+              name="All Dashboards"
+              parent="menu_training_dashboard_root"
+              action="action_training_dashboard"
+              sequence="20"/>
+</odoo>
+

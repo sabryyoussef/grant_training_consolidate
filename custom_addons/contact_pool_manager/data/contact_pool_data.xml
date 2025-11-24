@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- System Pool: Won Leads -->
+        <record id="pool_won_leads" model="contact.pool">
+            <field name="name">Pool Won Leads</field>
+            <field name="is_system_pool">True</field>
+            <field name="creation_date" eval="(DateTime.now())"/>
+            <field name="created_by" ref="base.user_admin"/>
+        </record>
+    </data>
+</odoo>
+

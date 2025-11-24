@@ -1,0 +1,446 @@
+# -*- coding: utf-8 -*-
+
+from odoo import http, fields, _
+from odoo.http import request
+from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
+from odoo.exceptions import AccessError, MissingError
+import base64
+import logging
+
+_logger = logging.getLogger(__name__)
+
+
+class StudentEnrollmentPortal(CustomerPortal):
+    """Portal controller for student enrollment/registration"""
+    
+    @http.route(['/student/register'], type='http', auth='public', website=True, sitemap=False)
+    def student_registration_form(self, course_id=None, **kw):
+        """Display the student registration form"""
+        
+        # Get available courses
+        courses = request.env['op.course'].sudo().search([])
+        
+        # Get pre-selected course if course_id is provided
+        selected_course = None
+        if course_id:
+            try:
+                selected_course = request.env['op.course'].sudo().browse(int(course_id))
+                if not selected_course.exists():
+                    selected_course = None
+            except (ValueError, TypeError):
+                selected_course = None
+        
+        values = {
+            'courses': courses,
+            'selected_course': selected_course,
+            'post': kw,  # Pass form data for repopulation
+            'error': {},
+            'error_message': []
+        }
+        
+        return request.render('student_enrollment_portal.portal_student_registration_form', values)
+    
+    @http.route(['/student/register/submit'], type='http', auth='public', website=True, methods=['POST'], csrf=False)
+    def student_registration_submit(self, **post):
+        """Handle student registration form submission"""
+        
+        # Log the post data for debugging
+        _logger.info(f'Registration form submitted with data: {post}')
+        
+        error = {}
+        error_message = []
+        
+        # Validate required fields
+        required_fields = [
+            'student_name_english', 'student_name_arabic', 'email', 'phone',
+            'birth_date', 'gender', 'nationality', 'english_level'
+        ]
+        
+        for field in required_fields:
+            field_value = post.get(field)
+            # Handle list values (in case of multiple selections)
+            if isinstance(field_value, list):
+                field_value = field_value[0] if field_value else None
+            if not field_value:
+                error[field] = 'missing'
+        
+        if error:
+            error_message.append(_('Please fill in all required fields.'))
+        
+        # Validate email format
+        if post.get('email') and '@' not in post.get('email'):
+            error['email'] = 'invalid'
+            error_message.append(_('Please enter a valid email address.'))
+        
+        # If there are errors, re-render the form
+        if error_message:
+            courses = request.env['op.course'].sudo().search([])
+            values = {
+                'courses': courses,
+                'error': error,
+                'error_message': error_message,
+                'post': post
+            }
+            return request.render('student_enrollment_portal.portal_student_registration_form', values)
+        
+        # Helper function to get value from post (handles lists)
+        def get_post_value(key, default=''):
+            value = post.get(key, default)
+            # If value is a list, get the first element
+            if isinstance(value, list):
+                return value[0] if value else default
+            return value
+        
+        # Prepare registration data
+        registration_vals = {
+            'student_name_english': get_post_value('student_name_english'),
+            'student_name_arabic': get_post_value('student_name_arabic'),
+            'email': get_post_value('email'),
+            'phone': get_post_value('phone'),
+            'birth_date': get_post_value('birth_date'),
+            'gender': get_post_value('gender'),
+            'nationality': get_post_value('nationality'),
+            'english_level': get_post_value('english_level'),
+            'native_language': get_post_value('native_language', 'Arabic'),
+            'has_previous_certificate': bool(get_post_value('has_previous_certificate')),
+            'certificate_type': get_post_value('certificate_type') if get_post_value('has_previous_certificate') else False,
+            'requested_courses': get_post_value('requested_courses', ''),
+            'state': 'draft'
+        }
+        
+        # Create registration record
+        try:
+            registration = request.env['student.registration'].sudo().create(registration_vals)
+            
+            # Handle file uploads
+            if 'documents' in request.httprequest.files:
+                attachments = request.httprequest.files.getlist('documents')
+                for attachment in attachments:
+                    if attachment and attachment.filename:
+                        attached_file = attachment.read()
+                        request.env['ir.attachment'].sudo().create({
+                            'name': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                            'res_model': 'student.registration',
+                            'res_id': registration.id,
+                        })
+            
+            # Submit the registration
+            registration.action_submit()
+            
+            _logger.info(f'New student registration created: {registration.name}')
+            
+            # Redirect to success page
+            return request.redirect('/student/register/success?reg=%s' % registration.name)
+            
+        except Exception as e:
+            import traceback
+            error_details = traceback.format_exc()
+            _logger.error(f'Error creating student registration: {str(e)}\n{error_details}')
+            
+            # Show detailed error in development/debug mode
+            error_message.append(_('An error occurred while submitting your registration. Please try again.'))
+            error_message.append(_('Error details: %s') % str(e))
+            
+            courses = request.env['op.course'].sudo().search([])
+            values = {
+                'courses': courses,
+                'error': error,
+                'error_message': error_message,
+                'post': post
+            }
+            return request.render('student_enrollment_portal.portal_student_registration_form', values)
+    
+    @http.route(['/student/register/success'], type='http', auth='public', website=True, sitemap=False)
+    def student_registration_success(self, **kw):
+        """Display registration success page"""
+        
+        reg_number = kw.get('reg')
+        
+        values = {
+            'registration_number': reg_number
+        }
+        
+        return request.render('student_enrollment_portal.portal_registration_success', values)
+    
+    @http.route(['/my/registration', '/my/registration/<int:reg_id>'], type='http', auth='user', website=True)
+    def portal_my_registration(self, reg_id=None, **kw):
+        """Display student's registration status"""
+        
+        user = request.env.user
+        
+        # Find registration by user email
+        if not reg_id:
+            registration = request.env['student.registration'].search([
+                ('email', '=', user.email)
+            ], limit=1, order='create_date desc')
+        else:
+            try:
+                registration = request.env['student.registration'].browse(reg_id)
+                # Check access
+                if registration.email != user.email:
+                    raise AccessError(_('You do not have access to this registration.'))
+            except (AccessError, MissingError):
+                return request.redirect('/my')
+        
+        if not registration:
+            return request.redirect('/student/register')
+        
+        values = {
+            'registration': registration,
+            'page_name': 'registration',
+        }
+        
+        return request.render('student_enrollment_portal.portal_my_registration', values)
+    
+    @http.route(['/my/registration/<int:reg_id>/upload'], type='http', auth='user', website=True, methods=['POST'], csrf=False)
+    def portal_registration_upload(self, reg_id, **post):
+        """Upload additional documents to registration"""
+        
+        user = request.env.user
+        
+        try:
+            registration = request.env['student.registration'].browse(reg_id)
+            
+            # Check access
+            if registration.email != user.email:
+                raise AccessError(_('You do not have access to this registration.'))
+            
+            # Handle file uploads
+            if post.get('documents'):
+                attachments = request.httprequest.files.getlist('documents')
+                for attachment in attachments:
+                    if attachment:
+                        attached_file = attachment.read()
+                        request.env['ir.attachment'].sudo().create({
+                            'name': attachment.filename,
+                            'datas': base64.b64encode(attached_file),
+                            'res_model': 'student.registration',
+                            'res_id': registration.id,
+                        })
+                
+                # Add message to chatter
+                registration.sudo().message_post(
+                    body=_('Student uploaded %s new document(s).') % len(attachments),
+                    message_type='notification'
+                )
+                
+                _logger.info(f'Student uploaded documents to registration {registration.name}')
+            
+        except (AccessError, MissingError) as e:
+            _logger.error(f'Error uploading documents: {str(e)}')
+        
+        return request.redirect('/my/registration/%s' % reg_id)
+    
+    @http.route(['/my/available-courses'], type='http', auth='user', website=True)
+    def portal_available_courses(self, **kw):
+        """Display available courses for authenticated users"""
+        user = request.env.user
+        
+        # Find student record for current user
+        student = request.env['op.student'].search([
+            ('partner_id.user_ids', 'in', [user.id])
+        ], limit=1)
+        
+        # Get all available courses
+        courses = request.env['op.course'].sudo().search([
+            ('active', '=', True)
+        ])
+        
+        # Get student's existing enrollments
+        enrolled_course_ids = []
+        if student:
+            enrolled_course_ids = student.course_detail_ids.mapped('course_id').ids
+        
+        values = {
+            'courses': courses,
+            'student': student,
+            'enrolled_course_ids': enrolled_course_ids,
+            'page_name': 'available_courses',
+        }
+        
+        return request.render('student_enrollment_portal.portal_available_courses', values)
+    
+    @http.route(['/my/courses/request/<int:course_id>'], type='http', auth='user', website=True)
+    def portal_enrollment_request_form(self, course_id, **kw):
+        """Display enrollment request form for a specific course"""
+        user = request.env.user
+        
+        # Find student record for current user
+        student = request.env['op.student'].search([
+            ('partner_id.user_ids', 'in', [user.id])
+        ], limit=1)
+        
+        if not student:
+            return request.redirect('/my')
+        
+        # Get course
+        course = request.env['op.course'].sudo().browse(course_id)
+        if not course.exists():
+            return request.redirect('/my/available-courses')
+        
+        # Get available batches for this course
+        batches = request.env['op.batch'].sudo().search([
+            ('course_id', '=', course_id),
+            ('active', '=', True)
+        ])
+        
+        # Check if already enrolled
+        existing_enrollment = request.env['op.student.course'].search([
+            ('student_id', '=', student.id),
+            ('course_id', '=', course_id)
+        ], limit=1)
+        
+        # Check if pending request exists
+        pending_request = request.env['course.enrollment.request'].search([
+            ('student_id', '=', student.id),
+            ('course_id', '=', course_id),
+            ('state', 'in', ['draft', 'submitted', 'pending'])
+        ], limit=1)
+        
+        values = {
+            'course': course,
+            'student': student,
+            'batches': batches,
+            'existing_enrollment': existing_enrollment,
+            'pending_request': pending_request,
+            'error': {},
+            'error_message': [],
+            'post': kw,
+        }
+        
+        return request.render('student_enrollment_portal.portal_enrollment_request_form', values)
+    
+    @http.route(['/my/courses/request/submit'], type='http', auth='user', website=True, methods=['POST'], csrf=False)
+    def portal_enrollment_request_submit(self, **post):
+        """Handle enrollment request form submission"""
+        user = request.env.user
+        
+        # Find student record for current user
+        student = request.env['op.student'].search([
+            ('partner_id.user_ids', 'in', [user.id])
+        ], limit=1)
+        
+        if not student:
+            return request.redirect('/my')
+        
+        error = {}
+        error_message = []
+        
+        # Validate required fields
+        course_id = post.get('course_id')
+        if not course_id:
+            error['course_id'] = 'missing'
+            error_message.append(_('Please select a course.'))
+        
+        # Helper function to get value from post
+        def get_post_value(key, default=''):
+            value = post.get(key, default)
+            if isinstance(value, list):
+                return value[0] if value else default
+            return value
+        
+        # If there are errors, re-render the form
+        if error_message:
+            course = request.env['op.course'].sudo().browse(int(course_id)) if course_id else False
+            batches = request.env['op.batch'].sudo().search([
+                ('course_id', '=', int(course_id)),
+                ('active', '=', True)
+            ]) if course_id else []
+            
+            values = {
+                'course': course,
+                'student': student,
+                'batches': batches,
+                'error': error,
+                'error_message': error_message,
+                'post': post
+            }
+            return request.render('student_enrollment_portal.portal_enrollment_request_form', values)
+        
+        # Create enrollment request
+        try:
+            request_vals = {
+                'student_id': student.id,
+                'course_id': int(course_id),
+                'state': 'draft',
+            }
+            
+            batch_id = get_post_value('batch_id')
+            if batch_id:
+                request_vals['batch_id'] = int(batch_id)
+            
+            enrollment_request = request.env['course.enrollment.request'].sudo().create(request_vals)
+            
+            # Submit the request
+            enrollment_request.action_submit()
+            
+            _logger.info(f'New enrollment request created: {enrollment_request.name}')
+            
+            # Redirect to success page
+            return request.redirect('/my/courses/request/success?request=%s' % enrollment_request.name)
+            
+        except Exception as e:
+            import traceback
+            error_details = traceback.format_exc()
+            _logger.error(f'Error creating enrollment request: {str(e)}\n{error_details}')
+            
+            error_message.append(_('An error occurred while submitting your request. Please try again.'))
+            
+            course = request.env['op.course'].sudo().browse(int(course_id)) if course_id else False
+            batches = request.env['op.batch'].sudo().search([
+                ('course_id', '=', int(course_id)),
+                ('active', '=', True)
+            ]) if course_id else []
+            
+            values = {
+                'course': course,
+                'student': student,
+                'batches': batches,
+                'error': error,
+                'error_message': error_message,
+                'post': post
+            }
+            return request.render('student_enrollment_portal.portal_enrollment_request_form', values)
+    
+    @http.route(['/my/courses/request/success'], type='http', auth='user', website=True, sitemap=False)
+    def portal_enrollment_request_success(self, **kw):
+        """Display enrollment request success page"""
+        req_number = kw.get('request')
+        
+        values = {
+            'request_number': req_number
+        }
+        
+        return request.render('student_enrollment_portal.portal_enrollment_request_success', values)
+    
+    @http.route(['/my/enrollment-requests'], type='http', auth='user', website=True)
+    def portal_my_enrollment_requests(self, **kw):
+        """Display student's enrollment requests"""
+        user = request.env.user
+        
+        # Find student record for current user
+        student = request.env['op.student'].search([
+            ('partner_id.user_ids', 'in', [user.id])
+        ], limit=1)
+        
+        if not student:
+            return request.redirect('/my')
+        
+        # Get all enrollment requests for this student
+        enrollment_requests = request.env['course.enrollment.request'].search([
+            ('student_id', '=', student.id)
+        ], order='create_date desc')
+        
+        values = {
+            'student': student,
+            'enrollment_requests': enrollment_requests,
+            'page_name': 'enrollment_requests',
+        }
+        
+        return request.render('student_enrollment_portal.portal_my_enrollment_requests', values)
+    
+    # NOTE: _prepare_home_portal_values can be added here if needed
+    # for portal customization. Registration counter can be handled
+    # in the main student portal controller.
+

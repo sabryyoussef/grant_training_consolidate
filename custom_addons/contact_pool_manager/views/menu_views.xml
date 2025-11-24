@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Contact Pool Menu -->
+    <menuitem id="menu_contact_pool_root"
+              name="Contact Pools"
+              sequence="20"
+              web_icon="contact_pool_manager,static/description/icon.png"/>
+    
+    <menuitem id="menu_contact_pool_all"
+              name="All Pools"
+              parent="menu_contact_pool_root"
+              action="action_contact_pool"
+              sequence="10"/>
+    
+    <menuitem id="menu_contact_pool_config"
+              name="Configuration"
+              parent="menu_contact_pool_root"
+              sequence="20"/>
+</odoo>
+

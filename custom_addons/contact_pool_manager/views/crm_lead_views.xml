@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Add pool_id to CRM Lead Form View (Optional - only if CRM installed) -->
+    <record id="view_crm_lead_form_inherit_pool" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.pool</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add pool_id field (readonly, related from partner) -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="pool_id" readonly="1" invisible="not partner_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add pool_id to CRM Lead List View -->
+    <record id="view_crm_lead_list_inherit_pool" model="ir.ui.view">
+        <field name="name">crm.lead.list.inherit.pool</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="pool_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Add pool filter to CRM Lead Search View -->
+    <record id="view_crm_lead_search_inherit_pool" model="ir.ui.view">
+        <field name="name">crm.lead.search.inherit.pool</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_leads']" position="after">
+                <filter string="By Pool" name="by_pool" context="{'group_by': 'pool_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

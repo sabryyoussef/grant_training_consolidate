@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_contact_pool_manager,contact.pool.manager,model_contact_pool,sales_team.group_sale_manager,1,1,1,1
+access_contact_pool_salesman,contact.pool.salesman,model_contact_pool,sales_team.group_sale_salesman,1,1,1,0
+access_contact_pool_user,contact.pool.user,model_contact_pool,base.group_user,1,0,0,0
+access_contact_pool_distribution_wizard_manager,contact.pool.distribution.wizard.manager,model_contact_pool_distribution_wizard,sales_team.group_sale_manager,1,1,1,1
+access_contact_pool_distribution_wizard_salesman,contact.pool.distribution.wizard.salesman,model_contact_pool_distribution_wizard,sales_team.group_sale_salesman,1,1,1,0
+access_contact_pool_distribution_wizard_line_manager,contact.pool.distribution.wizard.line.manager,model_contact_pool_distribution_wizard_line,sales_team.group_sale_manager,1,1,1,1
+access_contact_pool_distribution_wizard_line_salesman,contact.pool.distribution.wizard.line.salesman,model_contact_pool_distribution_wizard_line,sales_team.group_sale_salesman,1,1,1,0
+access_contact_pool_batch_assignment_wizard_manager,contact.pool.batch.assignment.wizard.manager,model_contact_pool_batch_assignment_wizard,sales_team.group_sale_manager,1,1,1,1
+access_contact_pool_batch_assignment_wizard_salesman,contact.pool.batch.assignment.wizard.salesman,model_contact_pool_batch_assignment_wizard,sales_team.group_sale_salesman,1,1,1,0
