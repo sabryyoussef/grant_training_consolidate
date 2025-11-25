@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Student Lifecycle Dashboard Kanban View -->
+    <record id="view_student_lifecycle_kanban" model="ir.ui.view">
+        <field name="name">student.lifecycle.dashboard.kanban</field>
+        <field name="model">student.lifecycle.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="icon"/>
+                <field name="color"/>
+                <field name="sequence"/>
+                <field name="total_registrations"/>
+                <field name="total_admissions"/>
+                <field name="total_enrollments"/>
+                <field name="total_students"/>
+                <field name="portal_registrations"/>
+                <field name="batch_intake_count"/>
+                <field name="contact_pool_count"/>
+                <field name="stage_count"/>
+                <templates>
+                    <t t-name="card">
+                        <t t-set="card_color" t-value="(record and record.color and record.color.raw_value) or '#3498db'"/>
+                        <t t-set="card_icon" t-value="(record and record.icon and record.icon.raw_value) or 'fa-graduation-cap'"/>
+                        <div class="workflow_card oe_kanban_card oe_kanban_global_click" 
+                             t-attf-style="border-left: 6px solid #{card_color}; 
+                                          background: linear-gradient(135deg, #{card_color}15, #{card_color}05);">
+                            
+                            <!-- Card Header -->
+                            <div class="workflow_card_header">
+                                <div class="workflow_card_icon_container">
+                                    <div class="workflow_card_icon" 
+                                         t-attf-style="background: linear-gradient(135deg, #{card_color}, #{card_color}CC);">
+                                        <i t-attf-class="fa #{card_icon}" 
+                                           style="color: white; font-size: 24px;"/>
+                                    </div>
+                                </div>
+                                <div class="workflow_card_title_section">
+                                    <h4 class="workflow_card_title">
+                                        <field name="name"/>
+                                    </h4>
+                                    <div class="workflow_card_subtitle">
+                                        <span class="workflow_stage_count">
+                                            <i class="fa fa-sitemap"/> 
+                                            <field name="stage_count"/> Stages
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Content -->
+                            <div class="workflow_card_content">
+                                <div class="workflow_description">
+                                    <field name="description"/>
+                                </div>
+                                
+                                <!-- Statistics Section -->
+                                <div class="workflow_statistics">
+                                    <div class="stat_row">
+                                        <div class="stat_item">
+                                            <i class="fa fa-user-plus text-primary"/>
+                                            <span class="stat_value"><field name="total_registrations"/></span>
+                                            <span class="stat_label">Registrations</span>
+                                        </div>
+                                        <div class="stat_item">
+                                            <i class="fa fa-file-alt text-success"/>
+                                            <span class="stat_value"><field name="total_admissions"/></span>
+                                            <span class="stat_label">Admissions</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat_row">
+                                        <div class="stat_item">
+                                            <i class="fa fa-book text-info"/>
+                                            <span class="stat_value"><field name="total_enrollments"/></span>
+                                            <span class="stat_label">Enrollments</span>
+                                        </div>
+                                        <div class="stat_item">
+                                            <i class="fa fa-graduation-cap text-warning"/>
+                                            <span class="stat_value"><field name="total_students"/></span>
+                                            <span class="stat_label">Students</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Source Breakdown -->
+                                    <div class="source_breakdown">
+                                        <h6 style="margin: 10px 0 5px 0; font-size: 11px; color: #666;">
+                                            <i class="fa fa-chart-pie"/> Registration Sources
+                                        </h6>
+                                        <div class="source_items">
+                                            <span class="source_badge" style="background: #3498db;">
+                                                Portal: <field name="portal_registrations"/>
+                                            </span>
+                                            <span class="source_badge" style="background: #e74c3c;">
+                                                Batch: <field name="batch_intake_count"/>
+                                            </span>
+                                            <span class="source_badge" style="background: #f39c12;">
+                                                Pool: <field name="contact_pool_count"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Footer -->
+                            <div class="workflow_card_footer">
+                                <button type="object" name="action_open_dashboard" 
+                                        class="workflow_action_btn btn btn-primary">
+                                    <i class="fa fa-arrow-right"/> Launch Dashboard
+                                </button>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Student Lifecycle Dashboard Form View -->
+    <record id="view_student_lifecycle_form" model="ir.ui.view">
+        <field name="name">student.lifecycle.dashboard.form</field>
+        <field name="model">student.lifecycle.dashboard</field>
+        <field name="arch" type="xml">
+            <form class="workflow_form_view">
+                <sheet>
+                    <!-- Header Section -->
+                    <div class="workflow_form_header">
+                        <div class="workflow_form_title_section">
+                            <div class="workflow_form_icon_container">
+                                <div class="workflow_form_icon">
+                                    <i class="fa fa-graduation-cap" 
+                                       style="color: white; font-size: 32px;"/>
+                                </div>
+                            </div>
+                            <div class="workflow_form_title_content">
+                                <h1 class="workflow_form_title">
+                                    <field name="name" placeholder="e.g. Student Lifecycle"/>
+                                </h1>
+                                <div class="workflow_form_subtitle">
+                                    <span class="workflow_status_badge">
+                                        <i class="fa fa-sitemap"/> Student Lifecycle Management
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Cards -->
+                    <div class="oe_button_box" name="button_box">
+                        <div class="statistics_summary" style="display: flex; gap: 15px; padding: 20px; background: #f8f9fa; border-radius: 8px; margin: 20px 0;">
+                            <div class="stat_card" style="flex: 1; background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                <i class="fa fa-user-plus" style="font-size: 24px; color: #3498db; margin-bottom: 10px;"/>
+                                <div style="font-size: 24px; font-weight: bold; color: #2c3e50;">
+                                    <field name="total_registrations"/>
+                                </div>
+                                <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Total Registrations</div>
+                            </div>
+                            <div class="stat_card" style="flex: 1; background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                <i class="fa fa-file-alt" style="font-size: 24px; color: #27ae60; margin-bottom: 10px;"/>
+                                <div style="font-size: 24px; font-weight: bold; color: #2c3e50;">
+                                    <field name="total_admissions"/>
+                                </div>
+                                <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Total Admissions</div>
+                            </div>
+                            <div class="stat_card" style="flex: 1; background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                <i class="fa fa-book" style="font-size: 24px; color: #9b59b6; margin-bottom: 10px;"/>
+                                <div style="font-size: 24px; font-weight: bold; color: #2c3e50;">
+                                    <field name="total_enrollments"/>
+                                </div>
+                                <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Total Enrollments</div>
+                            </div>
+                            <div class="stat_card" style="flex: 1; background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                <i class="fa fa-graduation-cap" style="font-size: 24px; color: #e67e22; margin-bottom: 10px;"/>
+                                <div style="font-size: 24px; font-weight: bold; color: #2c3e50;">
+                                    <field name="total_students"/>
+                                </div>
+                                <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Total Students</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Fields -->
+                    <group>
+                        <group>
+                            <field name="sequence" string="Sequence Order"/>
+                            <field name="icon" string="Icon Class"/>
+                            <field name="color" widget="color" string="Theme Color"/>
+                        </group>
+                        <group>
+                            <field name="is_active" string="Active Status"/>
+                        </group>
+                    </group>
+
+                    <!-- Notebook with Stages -->
+                    <notebook>
+                        <page string="Workflow Stages" class="workflow_stages_page">
+                            <div class="workflow_stages_header" style="padding: 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 20px;">
+                                <h3 style="margin: 0; color: #2c3e50;">
+                                    <i class="fa fa-sitemap"/> Workflow Stages
+                                </h3>
+                                <p style="margin: 5px 0 0 0; color: #7f8c8d;">Manage and navigate through the student lifecycle stages</p>
+                            </div>
+                            <field name="stage_ids">
+                                <kanban class="workflow_stages_kanban">
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="icon"/>
+                                    <field name="color"/>
+                                    <field name="sequence"/>
+                                    <field name="button_label"/>
+                                    <field name="record_count"/>
+                                    <templates>
+                                        <t t-name="card">
+                                            <t t-set="stage_color" t-value="(record and record.color and record.color.raw_value) or '#3498db'"/>
+                                            <t t-set="stage_icon" t-value="(record and record.icon and record.icon.raw_value) or 'fa-circle'"/>
+                                            <div class="workflow_stage_card" 
+                                                 t-attf-style="border-left: 4px solid #{stage_color};">
+                                                <!-- Stage Card Header -->
+                                                <div class="workflow_stage_card_header">
+                                                    <div class="workflow_stage_card_icon_container">
+                                                        <div class="workflow_stage_card_icon" 
+                                                             t-attf-style="background: #{stage_color};">
+                                                            <i t-attf-class="fa #{stage_icon}" 
+                                                               style="color: white; font-size: 18px;"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="workflow_stage_card_title_section">
+                                                        <h4 class="workflow_stage_card_title">
+                                                            <field name="name"/>
+                                                        </h4>
+                                                        <div class="workflow_stage_card_count">
+                                                            <i class="fa fa-database"/> 
+                                                            <field name="record_count"/> Records
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Stage Card Content -->
+                                                <div class="workflow_stage_card_content">
+                                                    <div class="workflow_stage_description">
+                                                        <field name="description"/>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Stage Card Footer -->
+                                                <div class="workflow_stage_card_footer">
+                                                    <button type="object" name="action_execute_stage" 
+                                                            class="workflow_stage_action_btn btn btn-primary">
+                                                        <i class="fa fa-play"/> 
+                                                        <field name="button_label"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        
+                        <page string="Workflow Diagram">
+                            <div class="workflow_diagram_container" style="padding: 20px;">
+                                <div class="workflow_stages_visual" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+                                    <div class="workflow_stage_visual" style="flex: 1; min-width: 150px; text-align: center; padding: 20px; background: #e8f4fd; border-radius: 8px; border: 2px solid #3498db;">
+                                        <div style="font-size: 32px; margin-bottom: 10px;">📝</div>
+                                        <div style="font-weight: bold; color: #2c3e50;">Registration</div>
+                                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Portal, Batch, Pool</div>
+                                        <div style="margin-top: 10px; font-size: 20px;">→</div>
+                                    </div>
+                                    
+                                    <div class="workflow_stage_visual" style="flex: 1; min-width: 150px; text-align: center; padding: 20px; background: #e8f5e9; border-radius: 8px; border: 2px solid #27ae60;">
+                                        <div style="font-size: 32px; margin-bottom: 10px;">📋</div>
+                                        <div style="font-weight: bold; color: #2c3e50;">Admission</div>
+                                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Application Review</div>
+                                        <div style="margin-top: 10px; font-size: 20px;">→</div>
+                                    </div>
+                                    
+                                    <div class="workflow_stage_visual" style="flex: 1; min-width: 150px; text-align: center; padding: 20px; background: #fef5e7; border-radius: 8px; border: 2px solid #f39c12;">
+                                        <div style="font-size: 32px; margin-bottom: 10px;">🎓</div>
+                                        <div style="font-weight: bold; color: #2c3e50;">Enrollment</div>
+                                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Course Assignment</div>
+                                        <div style="margin-top: 10px; font-size: 20px;">→</div>
+                                    </div>
+                                    
+                                    <div class="workflow_stage_visual" style="flex: 1; min-width: 150px; text-align: center; padding: 20px; background: #f4ecf7; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <div style="font-size: 32px; margin-bottom: 10px;">📚</div>
+                                        <div style="font-weight: bold; color: #2c3e50;">Academic</div>
+                                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Progress Tracking</div>
+                                        <div style="margin-top: 10px; font-size: 20px;">→</div>
+                                    </div>
+                                    
+                                    <div class="workflow_stage_visual" style="flex: 1; min-width: 150px; text-align: center; padding: 20px; background: #eaf2f8; border-radius: 8px; border: 2px solid #3498db;">
+                                        <div style="font-size: 32px; margin-bottom: 10px;">✅</div>
+                                        <div style="font-weight: bold; color: #2c3e50;">Completion</div>
+                                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">Graduation</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                                    <h4 style="color: #2c3e50; margin-bottom: 10px;">Student Lifecycle Workflow</h4>
+                                    <p style="color: #7f8c8d; margin: 0;">
+                                        Complete journey from initial registration through multiple sources (Portal, Batch Intake, Contact Pool) 
+                                        to admission, enrollment, academic progress tracking, and final completion. 
+                                        Each stage represents a key milestone in the student's educational path.
+                                    </p>
+                                </div>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Student Lifecycle Dashboard Action -->
+    <record id="action_student_lifecycle_dashboard" model="ir.actions.act_window">
+        <field name="name">Student Lifecycle Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">student.lifecycle.dashboard</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="view_student_lifecycle_kanban"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Welcome to Student Lifecycle Dashboard!
+            </p>
+            <p>
+                This dashboard provides a comprehensive view of the student journey from registration to completion.
+                Track registrations from multiple sources, monitor admissions, enrollments, and academic progress.
+            </p>
+        </field>
+    </record>
+
+</odoo>
+
+

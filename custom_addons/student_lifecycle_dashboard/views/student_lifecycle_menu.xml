@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_student_lifecycle_root"
+              name="Student Lifecycle"
+              sequence="1"
+              web_icon="student_lifecycle_dashboard,static/description/icon.png"/>
+    
+    <menuitem id="menu_student_lifecycle_dashboard"
+              name="Dashboard"
+              parent="menu_student_lifecycle_root"
+              action="action_student_lifecycle_dashboard"
+              sequence="10"/>
+</odoo>
+
+

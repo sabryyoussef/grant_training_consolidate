@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_lifecycle_dashboard_manager,student.lifecycle.dashboard.manager,model_student_lifecycle_dashboard,base.group_user,1,1,1,1
+access_student_lifecycle_stage_manager,student.lifecycle.stage.manager,model_student_lifecycle_stage,base.group_user,1,1,1,1
+
+

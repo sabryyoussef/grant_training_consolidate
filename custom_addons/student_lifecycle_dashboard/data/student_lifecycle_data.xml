@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+        <!-- Student Lifecycle Dashboard -->
+        <record id="dashboard_student_lifecycle" model="student.lifecycle.dashboard">
+            <field name="name">Student Lifecycle</field>
+            <field name="description">Complete student journey from registration through multiple sources to admission, enrollment, academic progress, and completion</field>
+            <field name="sequence">10</field>
+            <field name="icon">fa-graduation-cap</field>
+            <field name="color">#3498db</field>
+            <field name="is_active">True</field>
+        </record>
+
+        <!-- Stage 1: Registration Sources -->
+        <record id="stage_registration_portal" model="student.lifecycle.stage">
+            <field name="name">Portal Registration</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">10</field>
+            <field name="description">Student registrations submitted through the online portal</field>
+            <field name="icon">fa-globe</field>
+            <field name="color">#3498db</field>
+            <field name="button_label">View Portal Registrations</field>
+            <field name="action_method">action_open_portal_registrations</field>
+            <field name="technical_name">student_enrollment_portal</field>
+        </record>
+
+        <record id="stage_registration_batch" model="student.lifecycle.stage">
+            <field name="name">Batch Intake</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">20</field>
+            <field name="description">Bulk student registration through batch file processing</field>
+            <field name="icon">fa-file-upload</field>
+            <field name="color">#e74c3c</field>
+            <field name="button_label">View Batch Intake</field>
+            <field name="action_method">action_open_batch_intake</field>
+            <field name="technical_name">batch_intake</field>
+        </record>
+
+        <record id="stage_registration_contact_pool" model="student.lifecycle.stage">
+            <field name="name">Contact Pool</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">30</field>
+            <field name="description">Student contacts managed through the contact pool system</field>
+            <field name="icon">fa-users</field>
+            <field name="color">#f39c12</field>
+            <field name="button_label">View Contact Pool</field>
+            <field name="action_method">action_open_contact_pool</field>
+            <field name="technical_name">contact_pool_manager</field>
+        </record>
+
+        <!-- Stage 2: Admission Process -->
+        <record id="stage_admission" model="student.lifecycle.stage">
+            <field name="name">Admission Processing</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">40</field>
+            <field name="description">Review and process admission applications from all registration sources</field>
+            <field name="icon">fa-file-alt</field>
+            <field name="color">#27ae60</field>
+            <field name="button_label">View Admissions</field>
+            <field name="action_method">action_open_admissions</field>
+            <field name="technical_name">openeducat_admission</field>
+        </record>
+
+        <!-- Stage 3: Enrollment -->
+        <record id="stage_enrollment" model="student.lifecycle.stage">
+            <field name="name">Student Enrollment</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">50</field>
+            <field name="description">Enroll admitted students into courses and batches</field>
+            <field name="icon">fa-book</field>
+            <field name="color">#9b59b6</field>
+            <field name="button_label">View Enrollments</field>
+            <field name="action_method">action_open_enrollments</field>
+            <field name="technical_name">openeducat_core</field>
+        </record>
+
+        <record id="stage_students" model="student.lifecycle.stage">
+            <field name="name">Student Management</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">60</field>
+            <field name="description">Manage student records and information</field>
+            <field name="icon">fa-user-graduate</field>
+            <field name="color">#1abc9c</field>
+            <field name="button_label">View Students</field>
+            <field name="action_method">action_open_students</field>
+            <field name="technical_name">openeducat_core</field>
+        </record>
+
+        <!-- Stage 4: Academic Progress -->
+        <record id="stage_attendance" model="student.lifecycle.stage">
+            <field name="name">Attendance Tracking</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">70</field>
+            <field name="description">Track student attendance and participation</field>
+            <field name="icon">fa-calendar-check</field>
+            <field name="color">#e67e22</field>
+            <field name="button_label">View Attendance</field>
+            <field name="action_method">action_open_attendance</field>
+            <field name="technical_name">openeducat_attendance</field>
+        </record>
+
+        <record id="stage_assignments" model="student.lifecycle.stage">
+            <field name="name">Assignments</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">80</field>
+            <field name="description">Manage assignments and student submissions</field>
+            <field name="icon">fa-tasks</field>
+            <field name="color">#16a085</field>
+            <field name="button_label">View Assignments</field>
+            <field name="action_method">action_open_assignments</field>
+            <field name="technical_name">openeducat_assignment</field>
+        </record>
+
+        <record id="stage_exams" model="student.lifecycle.stage">
+            <field name="name">Examinations</field>
+            <field name="dashboard_id" ref="dashboard_student_lifecycle"/>
+            <field name="sequence">90</field>
+            <field name="description">Manage exams and assessment results</field>
+            <field name="icon">fa-clipboard-check</field>
+            <field name="color">#34495e</field>
+            <field name="button_label">View Exams</field>
+            <field name="action_method">action_open_exams</field>
+            <field name="technical_name">openeducat_exam</field>
+        </record>
+
+    </data>
+</odoo>
+
+
