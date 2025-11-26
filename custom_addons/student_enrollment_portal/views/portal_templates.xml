@@ -1,6 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
+    <!-- Custom CSS for Course Pages -->
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <style>
+                .hover-shadow {
+                    transition: all 0.3s ease;
+                }
+                .hover-shadow:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+                }
+                .sticky-top {
+                    position: -webkit-sticky;
+                    position: sticky;
+                }
+            </style>
+        </xpath>
+    </template>
+    
+    <!-- Public Course Catalog -->
+    <template id="public_courses_catalog" name="Public Course Catalog">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="s_cover pt48 pb48" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-center text-white">
+                                <h1 class="display-4 mb-3">
+                                    <i class="fa fa-graduation-cap"/> Our Courses
+                                </h1>
+                                <p class="lead mb-4">Explore our comprehensive training programs and start your learning journey</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="pt48 pb48" style="background-color: #f8f9fa;">
+                    <div class="container">
+                        <t t-if="courses">
+                            <div class="row">
+                                <t t-foreach="courses" t-as="course">
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card h-100 shadow-sm hover-shadow">
+                                            <div class="card-body d-flex flex-column">
+                                                <h4 class="card-title text-primary">
+                                                    <i class="fa fa-book"/> <t t-esc="course.name"/>
+                                                </h4>
+                                                <p class="card-text text-muted mb-3" t-if="course.code">
+                                                    <strong>Code:</strong> <t t-esc="course.code"/>
+                                                </p>
+                                                <div class="mt-auto">
+                                                    <a t-attf-href="/courses/#{course.id}" class="btn btn-outline-primary btn-sm me-2">
+                                                        <i class="fa fa-info-circle"/> View Details
+                                                    </a>
+                                                    <a t-attf-href="/student/register?course_id=#{course.id}" class="btn btn-primary btn-sm">
+                                                        <i class="fa fa-user-plus"/> Register Now
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-if="not courses">
+                            <div class="alert alert-info text-center" role="alert">
+                                <h4><i class="fa fa-info-circle"/> No Courses Available</h4>
+                                <p class="mb-0">Please check back later for available courses.</p>
+                            </div>
+                        </t>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+    
+    <!-- Public Course Detail Page -->
+    <template id="public_course_detail" name="Public Course Detail">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="s_cover pt48 pb48" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-white">
+                                <h1 class="display-4 mb-2">
+                                    <t t-esc="course.name"/>
+                                </h1>
+                                <p class="lead" t-if="course.code">
+                                    Course Code: <strong><t t-esc="course.code"/></strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="pt48 pb48">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card shadow-sm mb-4">
+                                    <div class="card-body">
+                                        <h3 class="text-primary mb-3">
+                                            <i class="fa fa-info-circle"/> Course Information
+                                        </h3>
+                                        <div class="row mb-3" t-if="course.subject_id">
+                                            <div class="col-md-4">
+                                                <strong>Subject:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <t t-esc="course.subject_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" t-if="course.course_level">
+                                            <div class="col-md-4">
+                                                <strong>Level:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <t t-esc="course.course_level"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" t-if="course.duration">
+                                            <div class="col-md-4">
+                                                <strong>Duration:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <t t-esc="course.duration"/> <t t-esc="course.duration_type"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card shadow-sm" t-if="course.description">
+                                    <div class="card-body">
+                                        <h3 class="text-primary mb-3">
+                                            <i class="fa fa-file-text"/> Description
+                                        </h3>
+                                        <div t-field="course.description" class="text-muted"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="card shadow-sm bg-light sticky-top" style="top: 20px;">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-primary mb-4">
+                                            <i class="fa fa-rocket"/> Ready to Start?
+                                        </h4>
+                                        <p class="text-muted mb-4">
+                                            Register now to begin your learning journey with this course.
+                                        </p>
+                                        <a t-attf-href="/student/register?course_id=#{course.id}" class="btn btn-primary btn-lg w-100 mb-3">
+                                            <i class="fa fa-user-plus"/> Register for this Course
+                                        </a>
+                                        <a href="/courses" class="btn btn-outline-secondary w-100">
+                                            <i class="fa fa-arrow-left"/> Back to All Courses
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+    
     <!-- Student Registration Form -->
     <template id="portal_student_registration_form" name="Student Registration Form">
         <t t-call="website.layout">
@@ -367,6 +533,28 @@
         </xpath>
     </template>
     
+    <!-- Add Available Courses Link to Portal Menu -->
+    <template id="portal_my_home_courses" name="Portal My Home: Available Courses" inherit_id="portal.portal_my_home" priority="31">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Available Courses</t>
+                <t t-set="url" t-value="'/my/available-courses'"/>
+                <t t-set="placeholder_count" t-value="'course_count'"/>
+            </t>
+        </xpath>
+    </template>
+    
+    <!-- Add Enrollment Requests Link to Portal Menu -->
+    <template id="portal_my_home_enrollment_requests" name="Portal My Home: Enrollment Requests" inherit_id="portal.portal_my_home" priority="32">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">My Enrollment Requests</t>
+                <t t-set="url" t-value="'/my/enrollment-requests'"/>
+                <t t-set="placeholder_count" t-value="'enrollment_request_count'"/>
+            </t>
+        </xpath>
+    </template>
+    
     <!-- Available Courses Page -->
     <template id="portal_available_courses" name="Available Courses">
         <t t-call="portal.portal_layout">
@@ -592,6 +780,22 @@
             </div>
         </t>
     </template>
+    
+    <!-- Website Menu: Courses -->
+    <record id="menu_courses" model="website.menu">
+        <field name="name">Courses</field>
+        <field name="url">/courses</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">50</field>
+    </record>
+    
+    <!-- Website Menu: Student Registration -->
+    <record id="menu_student_register" model="website.menu">
+        <field name="name">Register</field>
+        <field name="url">/student/register</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">51</field>
+    </record>
     
 </odoo>
 

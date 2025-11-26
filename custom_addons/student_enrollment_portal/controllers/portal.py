@@ -13,6 +13,38 @@ _logger = logging.getLogger(__name__)
 class StudentEnrollmentPortal(CustomerPortal):
     """Portal controller for student enrollment/registration"""
     
+    @http.route(['/courses'], type='http', auth='public', website=True, sitemap=True)
+    def public_courses_catalog(self, **kw):
+        """Display public course catalog for visitors"""
+        
+        # Get all active courses
+        courses = request.env['op.course'].sudo().search([
+            ('active', '=', True)
+        ], order='name')
+        
+        values = {
+            'courses': courses,
+            'page_name': 'courses',
+        }
+        
+        return request.render('student_enrollment_portal.public_courses_catalog', values)
+    
+    @http.route(['/courses/<int:course_id>'], type='http', auth='public', website=True, sitemap=False)
+    def public_course_detail(self, course_id, **kw):
+        """Display detailed information about a specific course"""
+        
+        # Get course
+        course = request.env['op.course'].sudo().browse(course_id)
+        if not course.exists():
+            return request.redirect('/courses')
+        
+        values = {
+            'course': course,
+            'page_name': 'course_detail',
+        }
+        
+        return request.render('student_enrollment_portal.public_course_detail', values)
+    
     @http.route(['/student/register'], type='http', auth='public', website=True, sitemap=False)
     def student_registration_form(self, course_id=None, **kw):
         """Display the student registration form"""
@@ -440,7 +472,34 @@ class StudentEnrollmentPortal(CustomerPortal):
         
         return request.render('student_enrollment_portal.portal_my_enrollment_requests', values)
     
-    # NOTE: _prepare_home_portal_values can be added here if needed
-    # for portal customization. Registration counter can be handled
-    # in the main student portal controller.
+    def _prepare_home_portal_values(self, counters):
+        """Override to add custom portal counters"""
+        values = super()._prepare_home_portal_values(counters)
+        user = request.env.user
+        
+        # Find student record for current user
+        student = request.env['op.student'].search([
+            ('partner_id.user_ids', 'in', [user.id])
+        ], limit=1)
+        
+        if student:
+            # Count enrollment requests
+            if 'enrollment_request_count' in counters:
+                values['enrollment_request_count'] = request.env['course.enrollment.request'].search_count([
+                    ('student_id', '=', student.id)
+                ])
+            
+            # Count available courses
+            if 'course_count' in counters:
+                values['course_count'] = request.env['op.course'].sudo().search_count([
+                    ('active', '=', True)
+                ])
+        
+        # Count registrations by email
+        if 'registration_count' in counters:
+            values['registration_count'] = request.env['student.registration'].search_count([
+                ('email', '=', user.email)
+            ])
+        
+        return values
 
