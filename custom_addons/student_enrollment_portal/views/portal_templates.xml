@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
-    <!-- Custom CSS for Course Pages -->
-    <template id="assets_frontend" inherit_id="website.assets_frontend">
-        <xpath expr="." position="inside">
-            <style>
-                .hover-shadow {
-                    transition: all 0.3s ease;
-                }
-                .hover-shadow:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
-                }
-                .sticky-top {
-                    position: -webkit-sticky;
-                    position: sticky;
-                }
-            </style>
-        </xpath>
-    </template>
-    
     <!-- Public Course Catalog -->
     <template id="public_courses_catalog" name="Public Course Catalog">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure">
+                <style>
+                    .hover-shadow {
+                        transition: all 0.3s ease;
+                    }
+                    .hover-shadow:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+                    }
+                </style>
                 <section class="s_cover pt48 pb48" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                     <div class="container">
                         <div class="row">
@@ -81,6 +71,13 @@
     <template id="public_course_detail" name="Public Course Detail">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure">
+                <style>
+                    .sticky-card {
+                        position: -webkit-sticky;
+                        position: sticky;
+                        top: 20px;
+                    }
+                </style>
                 <section class="s_cover pt48 pb48" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                     <div class="container">
                         <div class="row">
@@ -143,7 +140,7 @@
                             </div>
                             
                             <div class="col-lg-4">
-                                <div class="card shadow-sm bg-light sticky-top" style="top: 20px;">
+                                <div class="card shadow-sm bg-light sticky-card">
                                     <div class="card-body text-center">
                                         <h4 class="text-primary mb-4">
                                             <i class="fa fa-rocket"/> Ready to Start?
