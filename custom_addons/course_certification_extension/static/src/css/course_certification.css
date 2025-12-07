@@ -1,0 +1,292 @@
+/* Course Certification Extension Styles */
+/* Exact match to course_1.html design */
+
+/* Single Column Layout - Main Container */
+.certification_single_column_layout {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Badge Row */
+.badge_row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Certification Badges */
+.certification_badge {
+    background: #eef2f7;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.certification_badge.international {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.certification_badge.local {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+/* Title Block */
+.title_block {
+    margin-bottom: 20px;
+}
+
+.title_block h1.course_title_ar {
+    margin: 0;
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+    direction: rtl;
+    line-height: 1.4;
+}
+
+.title_block h2.course_title_en {
+    margin: 6px 0 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.4;
+}
+
+.title_block .o_field_widget {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+/* IBTA Badge */
+.ibta_badge {
+    font-weight: bold;
+    font-size: 22px;
+    margin: 12px 0;
+    color: #2b4eff;
+}
+
+.ibta_badge .o_field_widget {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #2b4eff !important;
+    font-weight: bold !important;
+    font-size: 22px !important;
+}
+
+/* Section */
+.certification_section {
+    margin-top: 20px;
+}
+
+/* Section Title */
+.section_title {
+    background: #2b4eff;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Targets Grid */
+.targets_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.target_item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Target Boxes */
+.target_box {
+    padding: 10px 14px;
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.target_box.target_public {
+    background: #f59e0b;
+}
+
+.target_box.target_private {
+    background: #ef4444;
+}
+
+.target_box.target_individuals {
+    background: #3b82f6;
+}
+
+.target_box.target_nonprofit {
+    background: #22c55e;
+}
+
+/* Logos Container */
+.logos_container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.logo_item {
+    width: 80px;
+    height: 80px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo_name {
+    font-size: 10px;
+    color: #555;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Description Text */
+.description_text {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #444;
+    margin-top: 10px;
+}
+
+.description_text .o_field_widget {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+    min-height: 100px !important;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .certification_single_column_layout {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .targets_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hide Odoo's default form elements in certification layout */
+.certification_single_column_layout .o_field_widget input,
+.certification_single_column_layout .o_field_widget textarea {
+    width: 100%;
+}
+
+/* Ensure proper field styling */
+.title_block .o_field_char input {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* Kanban view for logos */
+.logos_container .o_kanban_view {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logos_container .o_kanban_record {
+    width: 80px;
+    height: 80px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: none;
+    border: none;
+}
+
+/* Remove default Odoo form styling in certification section */
+.certification_single_column_layout .o_form_sheet {
+    padding: 0 !important;
+}
+
+/* Adjust field labels */
+.certification_single_column_layout label {
+    display: none;
+}
+
+/* Better integration with Odoo form */
+.o_form_view .certification_single_column_layout {
+    margin: 0 -24px;
+    max-width: none;
+}
+
+/* Fix for field widgets */
+.certification_single_column_layout .o_field_widget {
+    width: 100%;
+}
+
+/* Ensure text fields are visible */
+.title_block .o_field_char,
+.ibta_badge .o_field_char,
+.description_text .o_field_text {
+    display: block;
+    width: 100%;
+}
+
+/* Style adjustments for better appearance */
+.certification_section + .certification_section {
+    margin-top: 25px;
+}
+
+/* Badge container alignment */
+.badge_row .certification_badge:first-child {
+    margin-left: 0;
+}
+
+/* Ensure proper RTL for Arabic */
+.course_title_ar input {
+    direction: rtl;
+    text-align: right;
+}
+
+/* English title alignment */
+.course_title_en input {
+    direction: ltr;
+    text-align: left;
+}

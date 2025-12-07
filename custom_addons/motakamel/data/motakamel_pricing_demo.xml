@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Pricing: CBPLC - Standard Plan -->
+        <record id="demo_pricing_cbplc_standard" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_cbplc"/>
+            <field name="pricing_name">Standard Plan</field>
+            <field name="pricing_type">standard</field>
+            <field name="list_price" eval="12500.0"/>
+            <field name="discount_price" eval="11500.0"/>
+            <field name="installments_allowed" eval="True"/>
+            <field name="number_of_installments" eval="3"/>
+            <field name="installment_terms">Three equal installments: 40% upon registration, 30% before program start, 30% before exam date</field>
+            <field name="valid_from">2025-11-06</field>
+            <field name="valid_to">2026-06-04</field>
+            <field name="tax_applicable" eval="True"/>
+            <field name="refund_policy">conditional</field>
+            <field name="refund_policy_details">Full refund if cancellation 14 days before start date. 50% refund if cancellation 7 days before. No refund after program starts.</field>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="is_default" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Pricing: CBPLC - Early Bird -->
+        <record id="demo_pricing_cbplc_early" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_cbplc"/>
+            <field name="pricing_name">Early Bird Discount</field>
+            <field name="pricing_type">early_bird</field>
+            <field name="list_price" eval="12500.0"/>
+            <field name="discount_price" eval="10500.0"/>
+            <field name="installments_allowed" eval="True"/>
+            <field name="number_of_installments" eval="2"/>
+            <field name="valid_from" eval="(DateTime.now() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="valid_to">2025-12-21</field>
+            <field name="tax_applicable" eval="True"/>
+            <field name="refund_policy">conditional</field>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Pricing: PHRI - Standard Plan (Premium) -->
+        <record id="demo_pricing_phri_standard" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_phri"/>
+            <field name="pricing_name">Standard Plan</field>
+            <field name="pricing_type">standard</field>
+            <field name="list_price" eval="18500.0"/>
+            <field name="discount_price" eval="17500.0"/>
+            <field name="installments_allowed" eval="True"/>
+            <field name="number_of_installments" eval="4"/>
+            <field name="installment_terms">Four equal installments: 30% upon registration, 25% before program start, 25% mid-program, 20% before exam</field>
+            <field name="valid_from">2025-11-11</field>
+            <field name="valid_to">2026-06-24</field>
+            <field name="tax_applicable" eval="True"/>
+            <field name="refund_policy">conditional</field>
+            <field name="refund_policy_details">Full refund if cancellation 21 days before start date. 70% refund if cancellation 14 days before. 50% refund if cancellation 7 days before. No refund after program starts.</field>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="is_default" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Pricing: PHRI - Corporate -->
+        <record id="demo_pricing_phri_corporate" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_phri"/>
+            <field name="pricing_name">Corporate Bulk</field>
+            <field name="pricing_type">corporate</field>
+            <field name="list_price" eval="18500.0"/>
+            <field name="discount_price" eval="16500.0"/>
+            <field name="corporate_bulk_discount" eval="10.0"/>
+            <field name="min_bulk_quantity" eval="5"/>
+            <field name="bulk_price" eval="14850.0"/>
+            <field name="valid_from" eval="(DateTime.now() - timedelta(days=25)).strftime('%Y-%m-%d')"/>
+            <field name="tax_applicable" eval="True"/>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Pricing: PMP - Standard Plan (Premium) -->
+        <record id="demo_pricing_pmp_standard" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_pmp"/>
+            <field name="pricing_name">Standard Plan</field>
+            <field name="pricing_type">standard</field>
+            <field name="list_price" eval="22000.0"/>
+            <field name="discount_price" eval="21000.0"/>
+            <field name="installments_allowed" eval="True"/>
+            <field name="number_of_installments" eval="4"/>
+            <field name="installment_terms">Four equal installments: 30% upon registration, 25% before program start, 25% mid-program, 20% before exam date</field>
+            <field name="valid_from">2025-11-16</field>
+            <field name="valid_to">2026-07-14</field>
+            <field name="tax_applicable" eval="True"/>
+            <field name="refund_policy">conditional</field>
+            <field name="refund_policy_details">Full refund if cancellation 30 days before start date. 70% refund if cancellation 21 days before. 50% refund if cancellation 14 days before. No refund after program starts.</field>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="additional_inclusions">35 PDUs certificate, PMI membership application support, 180-day access to exam simulator</field>
+            <field name="is_default" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Pricing: PMP - Early Bird -->
+        <record id="demo_pricing_pmp_early" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_pmp"/>
+            <field name="pricing_name">Early Bird Special</field>
+            <field name="pricing_type">early_bird</field>
+            <field name="list_price" eval="22000.0"/>
+            <field name="discount_price" eval="19500.0"/>
+            <field name="installments_allowed" eval="True"/>
+            <field name="number_of_installments" eval="3"/>
+            <field name="valid_from" eval="(DateTime.now() - timedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="valid_to">2025-12-26</field>
+            <field name="tax_applicable" eval="True"/>
+            <field name="refund_policy">conditional</field>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Pricing: CBPCS - Standard Plan -->
+        <record id="demo_pricing_cbpcs_standard" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_cbpcs"/>
+            <field name="pricing_name">Standard Plan</field>
+            <field name="pricing_type">standard</field>
+            <field name="list_price" eval="9500.0"/>
+            <field name="discount_price" eval="8500.0"/>
+            <field name="installments_allowed" eval="True"/>
+            <field name="number_of_installments" eval="2"/>
+            <field name="installment_terms">Two equal installments: 50% upon registration, 50% before program start</field>
+            <field name="valid_from">2025-11-21</field>
+            <field name="valid_to">2026-05-05</field>
+            <field name="tax_applicable" eval="True"/>
+            <field name="refund_policy">conditional</field>
+            <field name="refund_policy_details">Full refund if cancellation 10 days before start date. 50% refund if cancellation 5 days before. No refund after program starts.</field>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="is_default" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Pricing: CBPL - Standard Plan -->
+        <record id="demo_pricing_cbpl_standard" model="motakamel.pricing">
+            <field name="program_id" ref="demo_program_cbpl"/>
+            <field name="pricing_name">Standard Plan</field>
+            <field name="pricing_type">standard</field>
+            <field name="list_price" eval="12000.0"/>
+            <field name="discount_price" eval="11000.0"/>
+            <field name="installments_allowed" eval="True"/>
+            <field name="number_of_installments" eval="3"/>
+            <field name="installment_terms">Three equal installments: 40% upon registration, 30% before program start, 30% before exam date</field>
+            <field name="valid_from">2025-11-26</field>
+            <field name="valid_to">2026-05-25</field>
+            <field name="tax_applicable" eval="True"/>
+            <field name="refund_policy">conditional</field>
+            <field name="refund_policy_details">Full refund if cancellation 14 days before start date. 50% refund if cancellation 7 days before. No refund after program starts.</field>
+            <field name="includes_exam_fee" eval="True"/>
+            <field name="includes_materials" eval="True"/>
+            <field name="includes_certificate" eval="True"/>
+            <field name="additional_inclusions">360-degree leadership assessment, personalized coaching session, leadership development workbook</field>
+            <field name="is_default" eval="True"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Accreditation 1: CBPLC - IBTA -->
+        <record id="demo_accreditation_cbplc" model="motakamel.accreditation">
+            <field name="program_id" ref="demo_program_cbplc"/>
+            <field name="international_accreditation_body">IBTA</field>
+            <field name="accreditation_code">IBTA-CBPLC-2025</field>
+            <field name="accreditation_valid_from">2025-11-06</field>
+            <field name="accreditation_valid_to">2028-12-05</field>
+            <field name="certificate_type">professional</field>
+            <field name="accreditation_level">international</field>
+            <field name="is_primary" eval="True"/>
+            <field name="verification_url">https://www.ibta.org/verify/CBPLC</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Accreditation 2: PHRI - HRCI -->
+        <record id="demo_accreditation_phri" model="motakamel.accreditation">
+            <field name="program_id" ref="demo_program_phri"/>
+            <field name="international_accreditation_body">HRCI</field>
+            <field name="accreditation_code">HRCI-PHRI-2025</field>
+            <field name="accreditation_valid_from">2025-11-11</field>
+            <field name="accreditation_valid_to">2028-12-05</field>
+            <field name="certificate_type">professional</field>
+            <field name="accreditation_level">international</field>
+            <field name="is_primary" eval="True"/>
+            <field name="verification_url">https://www.hrci.org/certification/verify/phri</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Accreditation 3: PMP - PMI -->
+        <record id="demo_accreditation_pmp" model="motakamel.accreditation">
+            <field name="program_id" ref="demo_program_pmp"/>
+            <field name="international_accreditation_body">PMI</field>
+            <field name="accreditation_code">PMI-PMP-2025</field>
+            <field name="accreditation_valid_from">2025-11-16</field>
+            <field name="accreditation_valid_to">2028-12-05</field>
+            <field name="certificate_type">professional</field>
+            <field name="accreditation_level">international</field>
+            <field name="is_primary" eval="True"/>
+            <field name="verification_url">https://www.pmi.org/certifications/certified-project-managers/pmp/verify</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Accreditation 4: CBPCS - IBTA -->
+        <record id="demo_accreditation_cbpcs" model="motakamel.accreditation">
+            <field name="program_id" ref="demo_program_cbpcs"/>
+            <field name="international_accreditation_body">IBTA</field>
+            <field name="accreditation_code">IBTA-CBPCS-2025</field>
+            <field name="accreditation_valid_from">2025-11-21</field>
+            <field name="accreditation_valid_to">2028-12-05</field>
+            <field name="certificate_type">professional</field>
+            <field name="accreditation_level">international</field>
+            <field name="is_primary" eval="True"/>
+            <field name="verification_url">https://www.ibta.org/verify/CBPCS</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Accreditation 5: CBPL - IBTA -->
+        <record id="demo_accreditation_cbpl" model="motakamel.accreditation">
+            <field name="program_id" ref="demo_program_cbpl"/>
+            <field name="international_accreditation_body">IBTA</field>
+            <field name="accreditation_code">IBTA-CBPL-2025</field>
+            <field name="accreditation_valid_from">2025-11-26</field>
+            <field name="accreditation_valid_to">2028-12-05</field>
+            <field name="certificate_type">professional</field>
+            <field name="accreditation_level">international</field>
+            <field name="is_primary" eval="True"/>
+            <field name="verification_url">https://www.ibta.org/verify/CBPL</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+    </data>
+</odoo>

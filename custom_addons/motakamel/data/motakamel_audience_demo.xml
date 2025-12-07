@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Audience: CBPLC - Public Sector -->
+        <record id="demo_audience_cbplc_public" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbplc"/>
+            <field name="target_sector">public</field>
+            <field name="career_level">senior</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 5 years of management experience. Bachelor's degree or equivalent. Experience in leading teams through organizational change.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="5"/>
+            <field name="eligible_job_titles">Senior Manager
+Department Head
+Director
+Deputy Director
+Change Management Officer
+Organizational Development Manager</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPLC - Private Sector -->
+        <record id="demo_audience_cbplc_private" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbplc"/>
+            <field name="target_sector">private</field>
+            <field name="career_level">senior</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 5 years of management experience. Bachelor's degree or equivalent. Experience in leading teams through organizational change.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="5"/>
+            <field name="eligible_job_titles">Senior Manager
+Business Unit Head
+Operations Director
+Change Management Consultant
+Transformation Manager</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPLC - Individuals -->
+        <record id="demo_audience_cbplc_individual" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbplc"/>
+            <field name="target_sector">individual</field>
+            <field name="career_level">mid</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 3 years of professional experience. Bachelor's degree preferred. Aspiring leaders seeking career advancement.</field>
+            <field name="min_education_level">diploma</field>
+            <field name="min_experience_years" eval="3"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: PHRI - Public Sector -->
+        <record id="demo_audience_phri_public" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_phri"/>
+            <field name="target_sector">public</field>
+            <field name="career_level">mid</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 2 years of HR experience. Bachelor's degree in HR, Business, or related field. Understanding of HR fundamentals.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="2"/>
+            <field name="eligible_job_titles">HR Specialist
+HR Officer
+HR Coordinator
+Personnel Officer
+Recruitment Specialist</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: PHRI - Private Sector -->
+        <record id="demo_audience_phri_private" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_phri"/>
+            <field name="target_sector">private</field>
+            <field name="career_level">mid</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 2 years of HR experience. Bachelor's degree in HR, Business, or related field. Understanding of HR fundamentals.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="2"/>
+            <field name="eligible_job_titles">HR Business Partner
+HR Generalist
+Talent Acquisition Specialist
+HR Manager
+Compensation &amp; Benefits Specialist</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: PHRI - Individuals -->
+        <record id="demo_audience_phri_individual" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_phri"/>
+            <field name="target_sector">individual</field>
+            <field name="career_level">entry</field>
+            <field name="prerequisites_required" eval="False"/>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="0"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: PMP - Public Sector -->
+        <record id="demo_audience_pmp_public" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_pmp"/>
+            <field name="target_sector">public</field>
+            <field name="career_level">senior</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 3 years of project management experience. 35 hours of project management education. Bachelor's degree or equivalent. Experience leading and directing projects.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="3"/>
+            <field name="eligible_job_titles">Project Manager
+Program Manager
+Project Coordinator
+Project Director
+Portfolio Manager</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: PMP - Private Sector -->
+        <record id="demo_audience_pmp_private" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_pmp"/>
+            <field name="target_sector">private</field>
+            <field name="career_level">senior</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 3 years of project management experience. 35 hours of project management education. Bachelor's degree or equivalent. Experience leading and directing projects.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="3"/>
+            <field name="eligible_job_titles">Project Manager
+Senior Project Manager
+Program Manager
+Project Director
+PMO Manager</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: PMP - Individuals -->
+        <record id="demo_audience_pmp_individual" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_pmp"/>
+            <field name="target_sector">individual</field>
+            <field name="career_level">mid</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 2 years of project management experience. 35 hours of project management education required.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="2"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPCS - Public Sector -->
+        <record id="demo_audience_cbpcs_public" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbpcs"/>
+            <field name="target_sector">public</field>
+            <field name="career_level">mid</field>
+            <field name="prerequisites_required" eval="False"/>
+            <field name="min_education_level">diploma</field>
+            <field name="min_experience_years" eval="1"/>
+            <field name="eligible_job_titles">Customer Service Representative
+Client Relations Officer
+Service Desk Agent
+Call Center Supervisor
+Customer Support Specialist</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPCS - Private Sector -->
+        <record id="demo_audience_cbpcs_private" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbpcs"/>
+            <field name="target_sector">private</field>
+            <field name="career_level">mid</field>
+            <field name="prerequisites_required" eval="False"/>
+            <field name="min_education_level">diploma</field>
+            <field name="min_experience_years" eval="1"/>
+            <field name="eligible_job_titles">Customer Service Manager
+Account Manager
+Client Success Manager
+Customer Experience Specialist
+Service Quality Manager</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPCS - Individuals -->
+        <record id="demo_audience_cbpcs_individual" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbpcs"/>
+            <field name="target_sector">individual</field>
+            <field name="career_level">entry</field>
+            <field name="prerequisites_required" eval="False"/>
+            <field name="min_education_level">high_school</field>
+            <field name="min_experience_years" eval="0"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPL - Public Sector -->
+        <record id="demo_audience_cbpl_public" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbpl"/>
+            <field name="target_sector">public</field>
+            <field name="career_level">senior</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 5 years of professional experience. Experience in leading teams or managing people. Bachelor's degree preferred.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="5"/>
+            <field name="eligible_job_titles">Manager
+Senior Manager
+Department Head
+Team Leader
+Supervisor</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPL - Private Sector -->
+        <record id="demo_audience_cbpl_private" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbpl"/>
+            <field name="target_sector">private</field>
+            <field name="career_level">senior</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 5 years of professional experience. Experience in leading teams or managing people. Bachelor's degree preferred.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="5"/>
+            <field name="eligible_job_titles">Business Unit Manager
+Operations Manager
+General Manager
+Regional Manager
+Executive</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Audience: CBPL - Individuals -->
+        <record id="demo_audience_cbpl_individual" model="motakamel.audience">
+            <field name="program_id" ref="demo_program_cbpl"/>
+            <field name="target_sector">individual</field>
+            <field name="career_level">mid</field>
+            <field name="prerequisites_required" eval="True"/>
+            <field name="prerequisites_description">Minimum 3 years of professional experience. Aspiring leaders seeking to develop leadership capabilities.</field>
+            <field name="min_education_level">bachelor</field>
+            <field name="min_experience_years" eval="3"/>
+            <field name="active" eval="True"/>
+        </record>
+        
+    </data>
+</odoo>

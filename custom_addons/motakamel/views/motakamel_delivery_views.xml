@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_motakamel_delivery_form" model="ir.ui.view">
+        <field name="name">motakamel.delivery.form</field>
+        <field name="model">motakamel.delivery</field>
+        <field name="arch" type="xml">
+            <form string="Delivery Options">
+                <header>
+                    <button name="action_open_registration" string="Open Registration" type="object" invisible="delivery_status != 'planned'" class="oe_highlight"/>
+                    <button name="action_start_program" string="Start Program" type="object" invisible="delivery_status != 'open'" class="oe_highlight"/>
+                    <button name="action_complete_program" string="Complete" type="object" invisible="delivery_status != 'in_progress'"/>
+                    <field name="delivery_status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="program_id"/>
+                            <field name="training_mode"/>
+                            <field name="training_language"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="total_training_hours"/>
+                            <field name="daily_training_hours"/>
+                            <field name="program_duration_days"/>
+                            <field name="exam_included"/>
+                            <field name="exam_format" invisible="not exam_included"/>
+                        </group>
+                    </group>
+                    <group string="Capacity">
+                        <group>
+                            <field name="max_participants"/>
+                            <field name="min_participants"/>
+                            <field name="current_enrollments"/>
+                        </group>
+                        <group>
+                            <field name="seats_available"/>
+                            <field name="is_full"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_motakamel_delivery_list" model="ir.ui.view">
+        <field name="name">motakamel.delivery.list</field>
+        <field name="model">motakamel.delivery</field>
+        <field name="arch" type="xml">
+            <list string="Delivery Options">
+                <field name="program_id"/>
+                <field name="training_mode"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="total_training_hours"/>
+                <field name="delivery_status"/>
+                <field name="seats_available"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="action_motakamel_delivery" model="ir.actions.act_window">
+        <field name="name">Delivery Options</field>
+        <field name="res_model">motakamel.delivery</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

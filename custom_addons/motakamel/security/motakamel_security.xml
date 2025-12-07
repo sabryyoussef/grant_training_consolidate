@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- User Groups -->
+    <record id="group_motakamel_user" model="res.groups">
+        <field name="name">Motakamel / User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Basic access to view programs and courses</field>
+    </record>
+    
+    <record id="group_motakamel_sales" model="res.groups">
+        <field name="name">Motakamel / Sales</field>
+        <field name="implied_ids" eval="[(4, ref('group_motakamel_user'))]"/>
+        <field name="comment">Sales team can view programs and create leads</field>
+    </record>
+    
+    <record id="group_motakamel_manager" model="res.groups">
+        <field name="name">Motakamel / Manager</field>
+        <field name="implied_ids" eval="[(4, ref('group_motakamel_sales'))]"/>
+        <field name="comment">Managers can create, edit, and approve programs</field>
+    </record>
+    
+    <record id="group_motakamel_admin" model="res.groups">
+        <field name="name">Motakamel / Administrator</field>
+        <field name="implied_ids" eval="[(4, ref('group_motakamel_manager'))]"/>
+        <field name="comment">Full access to all Motakamel features</field>
+    </record>
+    
+    <!-- Record Rules -->
+    
+    <!-- Programs: Public can view published programs -->
+    <record id="motakamel_program_public_rule" model="ir.rule">
+        <field name="name">Public Programs</field>
+        <field name="model_id" ref="model_motakamel_program"/>
+        <field name="domain_force">[('status', '=', 'published'), ('visibility_scope', '=', 'public')]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    
+    <!-- Programs: Portal users can view published programs -->
+    <record id="motakamel_program_portal_rule" model="ir.rule">
+        <field name="name">Portal Programs</field>
+        <field name="model_id" ref="model_motakamel_program"/>
+        <field name="domain_force">[('status', '=', 'published'), ('visibility_scope', 'in', ['public', 'registered'])]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    
+    <!-- Programs: Users can view all active programs -->
+    <record id="motakamel_program_user_rule" model="ir.rule">
+        <field name="name">User Programs</field>
+        <field name="model_id" ref="model_motakamel_program"/>
+        <field name="domain_force">[('active', '=', True)]</field>
+        <field name="groups" eval="[(4, ref('group_motakamel_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    
+    <!-- Programs: Managers can edit programs -->
+    <record id="motakamel_program_manager_rule" model="ir.rule">
+        <field name="name">Manager Programs</field>
+        <field name="model_id" ref="model_motakamel_program"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_motakamel_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    
+    <!-- Programs: Admins have full access -->
+    <record id="motakamel_program_admin_rule" model="ir.rule">
+        <field name="name">Admin Programs</field>
+        <field name="model_id" ref="model_motakamel_program"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_motakamel_admin'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    
+</odoo>

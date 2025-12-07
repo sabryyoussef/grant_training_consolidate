@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_course_accreditation_body_public,course.accreditation.body.public,model_course_accreditation_body,,1,0,0,0
+access_course_accreditation_body_user,course.accreditation.body.user,model_course_accreditation_body,base.group_user,1,0,0,0
+access_course_accreditation_body_manager,course.accreditation.body.manager,model_course_accreditation_body,website_slides.group_website_slides_manager,1,1,1,1
+

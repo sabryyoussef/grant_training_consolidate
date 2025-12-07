@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Inherit Course Form View - Exact match to course_1.html layout -->
+    <record id="view_slide_channel_form_certification" model="ir.ui.view">
+        <field name="name">slide.channel.form.certification</field>
+        <field name="model">slide.channel</field>
+        <field name="inherit_id" ref="website_slides.view_slide_channel_form"/>
+        <field name="arch" type="xml">
+            
+            <!-- Replace form layout with two-column design -->
+            <xpath expr="//field[@name='name']" position="before">
+                <!-- Hidden fields for conditions -->
+                <field name="is_internationally_certified" invisible="1"/>
+                <field name="has_local_accreditation" invisible="1"/>
+                
+                <!-- Single Column Layout Container -->
+                <div class="certification_single_column_layout">
+                    
+                    <!-- Badges Row -->
+                    <div class="badge_row">
+                        <span class="certification_badge international" invisible="not is_internationally_certified">
+                            ✅ معتمدة دوليًا
+                        </span>
+                        <span class="certification_badge local" invisible="not has_local_accreditation">
+                            🏛 جهة الاعتماد المحلية
+                        </span>
+                    </div>
+                    
+                    <!-- Course Titles -->
+                    <div class="title_block">
+                        <h1 class="course_title_ar">
+                            <field name="course_name_arabic" 
+                                   placeholder="شهادة محترف أعمال معتمد في إدارة التغيير"
+                                   nolabel="1"/>
+                        </h1>
+                        <h2 class="course_title_en">
+                            <field name="course_name_english" 
+                                   placeholder="Certified Business Professional in Leading Through Change"
+                                   nolabel="1"/>
+                        </h2>
+                        <div class="ibta_badge" invisible="not is_internationally_certified">
+                            <field name="certification_body" 
+                                   placeholder="IBTA"
+                                   nolabel="1"/>
+                        </div>
+                    </div>
+                    
+                    <!-- Target Beneficiaries Section -->
+                    <div class="certification_section">
+                        <div class="section_title">الجهات المستفيدة</div>
+                        <div class="targets_grid">
+                            <div class="target_item">
+                                <field name="target_public_sector" invisible="1"/>
+                                <div class="target_box target_public" invisible="not target_public_sector">
+                                    القطاع العام
+                                </div>
+                            </div>
+                            <div class="target_item">
+                                <field name="target_private_sector" invisible="1"/>
+                                <div class="target_box target_private" invisible="not target_private_sector">
+                                    القطاع الخاص
+                                </div>
+                            </div>
+                            <div class="target_item">
+                                <field name="target_individuals" invisible="1"/>
+                                <div class="target_box target_individuals" invisible="not target_individuals">
+                                    الأفراد
+                                </div>
+                            </div>
+                            <div class="target_item">
+                                <field name="target_nonprofit" invisible="1"/>
+                                <div class="target_box target_nonprofit" invisible="not target_nonprofit">
+                                    القطاع غير الربحي
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Accreditation Bodies Section -->
+                    <div class="certification_section" invisible="not has_local_accreditation">
+                        <div class="section_title">جهات الاعتماد المحلية</div>
+                        <div class="logos_container">
+                            <field name="accreditation_body_ids" 
+                                   widget="many2many_tags"
+                                   nolabel="1"/>
+                        </div>
+                    </div>
+                    
+                    <!-- Certification Details Section -->
+                    <div class="certification_section">
+                        <div class="section_title">تفاصيل الشهادة</div>
+                        <div class="description_text">
+                            <field name="certification_description" 
+                                   placeholder="شهادة محترف أعمال معتمد في إدارة التغيير تُعد من الشهادات المهنية المتخصصة التي تركز على تطوير مهارات القادة والمديرين في قيادة المؤسسات خلال التغيير والتحول المؤسسي بكفاءة واحترافية عالية، مع تطبيق أفضل الممارسات العالمية."
+                                   nolabel="1"/>
+                        </div>
+                    </div>
+                    
+                </div>
+            </xpath>
+            
+        </field>
+    </record>
+    
+    <!-- Accreditation Body Form View -->
+    <record id="view_accreditation_body_form" model="ir.ui.view">
+        <field name="name">course.accreditation.body.form</field>
+        <field name="model">course.accreditation.body</field>
+        <field name="arch" type="xml">
+            <form string="Accreditation Body">
+                <sheet>
+                    <field name="logo" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Accreditation Body Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name_arabic" placeholder="الاسم بالعربي"/>
+                            <field name="website" widget="url" placeholder="https://www.example.com"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" placeholder="Description of the accreditation body..."/>
+                        </page>
+                        <page string="Accredited Courses">
+                            <field name="course_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Accreditation Body List View -->
+    <record id="view_accreditation_body_list" model="ir.ui.view">
+        <field name="name">course.accreditation.body.list</field>
+        <field name="model">course.accreditation.body</field>
+        <field name="arch" type="xml">
+            <list string="Accreditation Bodies">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="name_arabic"/>
+                <field name="website"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    
+    <!-- Accreditation Body Action -->
+    <record id="action_accreditation_body" model="ir.actions.act_window">
+        <field name="name">Accreditation Bodies</field>
+        <field name="res_model">course.accreditation.body</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first accreditation body
+            </p>
+            <p>
+                Add local and international accreditation bodies that certify your courses.
+            </p>
+        </field>
+    </record>
+    
+    <!-- Menu Item for Accreditation Bodies -->
+    <menuitem id="menu_accreditation_body"
+              name="Accreditation Bodies"
+              parent="website_slides.website_slides_menu_configuration"
+              action="action_accreditation_body"
+              sequence="50"/>
+
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Main Menu -->
+    <menuitem id="menu_motakamel_root"
+              name="Motakamel"
+              sequence="10"
+              action="action_motakamel_program"/>
+    
+    <!-- Programs Menu -->
+    <menuitem id="menu_motakamel_programs"
+              name="Programs"
+              parent="menu_motakamel_root"
+              sequence="10"
+              action="action_motakamel_program"/>
+    
+    <!-- Configuration Menu -->
+    <menuitem id="menu_motakamel_config"
+              name="Configuration"
+              parent="menu_motakamel_root"
+              sequence="100"
+              groups="motakamel.group_motakamel_manager"/>
+    
+    <!-- Accreditation Menu -->
+    <menuitem id="menu_motakamel_accreditation"
+              name="Accreditations"
+              parent="menu_motakamel_config"
+              sequence="10"
+              action="action_motakamel_accreditation"/>
+    
+    <!-- Audience Menu -->
+    <menuitem id="menu_motakamel_audience"
+              name="Target Audience"
+              parent="menu_motakamel_config"
+              sequence="20"
+              action="action_motakamel_audience"/>
+    
+    <!-- Delivery Menu -->
+    <menuitem id="menu_motakamel_delivery"
+              name="Delivery Options"
+              parent="menu_motakamel_config"
+              sequence="30"
+              action="action_motakamel_delivery"/>
+    
+    <!-- Pricing Menu -->
+    <menuitem id="menu_motakamel_pricing"
+              name="Pricing"
+              parent="menu_motakamel_config"
+              sequence="40"
+              action="action_motakamel_pricing"/>
+    
+    <!-- Credentials Menu -->
+    <menuitem id="menu_motakamel_credential"
+              name="Credentials"
+              parent="menu_motakamel_config"
+              sequence="50"
+              action="action_motakamel_credential"/>
+    
+    <!-- Marketing Menu -->
+    <menuitem id="menu_motakamel_marketing"
+              name="Marketing"
+              parent="menu_motakamel_config"
+              sequence="60"
+              action="action_motakamel_marketing"/>
+    
+</odoo>

@@ -204,6 +204,23 @@
                                         
                                         <form action="/student/register/submit" method="post" enctype="multipart/form-data" class="needs-validation">
                                             
+                                            <!-- Hidden field to preserve program_id -->
+                                            <t t-if="program_id">
+                                                <input type="hidden" name="program_id" t-att-value="program_id"/>
+                                            </t>
+                                            
+                                            <!-- Program Information Display -->
+                                            <t t-if="program">
+                                                <div class="alert alert-info mb-4">
+                                                    <h5 class="alert-heading">
+                                                        <i class="fa fa-graduation-cap"/> Program Selected
+                                                    </h5>
+                                                    <p class="mb-1"><strong>Program:</strong> <span t-esc="program.program_name"/></p>
+                                                    <p class="mb-1" t-if="program.program_name_ar" dir="rtl"><strong>البرنامج:</strong> <span t-esc="program.program_name_ar"/></p>
+                                                    <p class="mb-0"><strong>Code:</strong> <span t-esc="program.program_code"/></p>
+                                                </div>
+                                            </t>
+                                            
                                             <!-- Personal Information -->
                                             <h5 class="text-primary mb-3">
                                                 <i class="fa fa-user"/> Personal Information
@@ -795,4 +812,3 @@
     </record>
     
 </odoo>
-

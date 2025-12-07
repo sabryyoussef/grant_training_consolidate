@@ -1,0 +1,2057 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* motakamel
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-07 05:50:00\n"
+"PO-Revision-Date: 2025-12-07 05:50:00\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+
+#. module: motakamel
+#: model:ir.module.category,name:motakamel.module_category_motakamel
+msgid "Motakamel"
+msgstr "متكامل"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_program
+msgid "Training Program"
+msgstr "برنامج تدريبي"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_accreditation
+msgid "Accreditation"
+msgstr "اعتماد"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_audience
+msgid "Target Audience"
+msgstr "الجمهور المستهدف"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_delivery
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_pricing
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_credential
+msgid "Credential"
+msgstr "شهادة"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_marketing
+msgid "Marketing"
+msgstr "التسويق"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Training Program"
+msgstr "برنامج تدريبي"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Submit for Review"
+msgstr "إرسال للمراجعة"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Approve"
+msgstr "موافقة"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Publish"
+msgstr "نشر"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Archive"
+msgstr "أرشفة"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Accreditations"
+msgstr "الاعتمادات"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Pricing Plans"
+msgstr "خطط التسعير"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Description"
+msgstr "الوصف"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Target Audience"
+msgstr "الجمهور المستهدف"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Delivery"
+msgstr "التوصيل"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Credentials"
+msgstr "الشهادات"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Marketing"
+msgstr "التسويق"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Administration"
+msgstr "الإدارة"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_list
+msgid "Training Programs"
+msgstr "البرامج التدريبية"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Search Programs"
+msgstr "بحث البرامج"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Published"
+msgstr "منشور"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Approved"
+msgstr "موافق عليه"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Under Review"
+msgstr "قيد المراجعة"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Active"
+msgstr "نشط"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Category"
+msgstr "الفئة"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Level"
+msgstr "المستوى"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Provider"
+msgstr "المزود"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_search
+msgid "Status"
+msgstr "الحالة"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_root
+msgid "Motakamel"
+msgstr "متكامل"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_programs
+msgid "Programs"
+msgstr "البرامج"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_config
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_accreditation
+msgid "Accreditations"
+msgstr "الاعتمادات"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_audience
+msgid "Target Audience"
+msgstr "الجمهور المستهدف"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_delivery
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_pricing
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_credential
+msgid "Credentials"
+msgstr "الشهادات"
+
+#. module: motakamel
+#: model:ir.ui.menu,name:motakamel.menu_motakamel_marketing
+msgid "Marketing"
+msgstr "التسويق"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__program_id
+msgid "Program ID"
+msgstr "معرف البرنامج"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__program_name
+msgid "Program Name (English)"
+msgstr "اسم البرنامج (بالإنجليزية)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__program_name_ar
+msgid "Program Name (Arabic)"
+msgstr "اسم البرنامج (بالعربية)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__program_code
+msgid "Program Code"
+msgstr "رمز البرنامج"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__program_category
+msgid "Program Category"
+msgstr "فئة البرنامج"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__program_level
+msgid "Program Level"
+msgstr "مستوى البرنامج"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__provider_name
+msgid "Provider Name"
+msgstr "اسم المزود"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__provider_type
+msgid "Provider Type"
+msgstr "نوع المزود"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__description_en
+msgid "Description (English)"
+msgstr "الوصف (بالإنجليزية)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__description_ar
+msgid "Description (Arabic)"
+msgstr "الوصف (بالعربية)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__program_objective
+msgid "Program Objectives"
+msgstr "أهداف البرنامج"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__career_outcome
+msgid "Career Outcomes"
+msgstr "النتائج المهنية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__status
+msgid "Status"
+msgstr "الحالة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__accreditation_ids
+msgid "Accreditations"
+msgstr "الاعتمادات"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__audience_ids
+msgid "Target Audience"
+msgstr "الجمهور المستهدف"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__delivery_ids
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__pricing_ids
+msgid "Pricing Plans"
+msgstr "خطط التسعير"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__credential_ids
+msgid "Credentials"
+msgstr "الشهادات"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__marketing_ids
+msgid "Marketing Materials"
+msgstr "المواد التسويقية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__created_by
+msgid "Created By"
+msgstr "تم الإنشاء بواسطة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__approved_by
+msgid "Approved By"
+msgstr "تمت الموافقة بواسطة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__created_date
+msgid "Created Date"
+msgstr "تاريخ الإنشاء"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__last_updated
+msgid "Last Updated"
+msgstr "آخر تحديث"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__internal_notes
+msgid "Internal Notes"
+msgstr "ملاحظات داخلية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__display_order
+msgid "Display Order"
+msgstr "ترتيب العرض"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__visibility_scope
+msgid "Visibility Scope"
+msgstr "نطاق الرؤية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__accreditation_count
+msgid "Accreditations"
+msgstr "الاعتمادات"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__delivery_count
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_program__pricing_count
+msgid "Pricing Plans"
+msgstr "خطط التسعير"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Professional Certification"
+msgstr "شهادة مهنية"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Technical Training"
+msgstr "تدريب تقني"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Management & Leadership"
+msgstr "الإدارة والقيادة"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Information Technology"
+msgstr "تقنية المعلومات"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Finance & Accounting"
+msgstr "المالية والمحاسبة"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Human Resources"
+msgstr "الموارد البشرية"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Marketing & Sales"
+msgstr "التسويق والمبيعات"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Healthcare"
+msgstr "الرعاية الصحية"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Engineering"
+msgstr "الهندسة"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Legal & Compliance"
+msgstr "القانون والامتثال"
+
+#. module: motakamel
+#: selection:motakamel.program,program_category:0
+msgid "Other"
+msgstr "أخرى"
+
+#. module: motakamel
+#: selection:motakamel.program,program_level:0
+msgid "Foundation"
+msgstr "أساسي"
+
+#. module: motakamel
+#: selection:motakamel.program,program_level:0
+msgid "Intermediate"
+msgstr "متوسط"
+
+#. module: motakamel
+#: selection:motakamel.program,program_level:0
+msgid "Advanced"
+msgstr "متقدم"
+
+#. module: motakamel
+#: selection:motakamel.program,program_level:0
+msgid "Expert"
+msgstr "خبير"
+
+#. module: motakamel
+#: selection:motakamel.program,program_level:0
+msgid "Master"
+msgstr "ماجستير"
+
+#. module: motakamel
+#: selection:motakamel.program,provider_type:0
+msgid "Internal"
+msgstr "داخلي"
+
+#. module: motakamel
+#: selection:motakamel.program,provider_type:0
+msgid "External Partner"
+msgstr "شريك خارجي"
+
+#. module: motakamel
+#: selection:motakamel.program,provider_type:0
+msgid "Accredited Body"
+msgstr "هيئة معتمدة"
+
+#. module: motakamel
+#: selection:motakamel.program,provider_type:0
+msgid "University"
+msgstr "جامعة"
+
+#. module: motakamel
+#: selection:motakamel.program,provider_type:0
+msgid "Vendor Authorized"
+msgstr "معتمد من البائع"
+
+#. module: motakamel
+#: selection:motakamel.program,status:0
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: motakamel
+#: selection:motakamel.program,status:0
+msgid "Under Review"
+msgstr "قيد المراجعة"
+
+#. module: motakamel
+#: selection:motakamel.program,status:0
+msgid "Approved"
+msgstr "موافق عليه"
+
+#. module: motakamel
+#: selection:motakamel.program,status:0
+msgid "Published"
+msgstr "منشور"
+
+#. module: motakamel
+#: selection:motakamel.program,status:0
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: motakamel
+#: selection:motakamel.program,visibility_scope:0
+msgid "Public"
+msgstr "عام"
+
+#. module: motakamel
+#: selection:motakamel.program,visibility_scope:0
+msgid "Registered Users Only"
+msgstr "المستخدمون المسجلون فقط"
+
+#. module: motakamel
+#: selection:motakamel.program,visibility_scope:0
+msgid "Corporate Clients Only"
+msgstr "العملاء المؤسسيون فقط"
+
+#. module: motakamel
+#: selection:motakamel.program,visibility_scope:0
+msgid "Internal Only"
+msgstr "داخلي فقط"
+
+#. module: motakamel
+#: model:ir.actions.act_window,name:motakamel.action_motakamel_program
+msgid "Training Programs"
+msgstr "البرامج التدريبية"
+
+#. module: motakamel
+#: model:ir.actions.act_window,name:motakamel.action_motakamel_accreditation
+msgid "Accreditations"
+msgstr "الاعتمادات"
+
+#. module: motakamel
+#: model:ir.actions.act_window,name:motakamel.action_motakamel_audience
+msgid "Target Audience"
+msgstr "الجمهور المستهدف"
+
+#. module: motakamel
+#: model:ir.actions.act_window,name:motakamel.action_motakamel_delivery
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: model:ir.actions.act_window,name:motakamel.action_motakamel_pricing
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: motakamel
+#: model:ir.actions.act_window,name:motakamel.action_motakamel_credential
+msgid "Credentials"
+msgstr "الشهادات"
+
+#. module: motakamel
+#: model:ir.actions.act_window,name:motakamel.action_motakamel_marketing
+msgid "Marketing"
+msgstr "التسويق"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__program_id
+msgid "Unique identifier for the program"
+msgstr "معرف فريد للبرنامج"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__program_name
+msgid "Official program name in English"
+msgstr "الاسم الرسمي للبرنامج بالإنجليزية"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__program_name_ar
+msgid "Official program name in Arabic"
+msgstr "الاسم الرسمي للبرنامج بالعربية"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__program_code
+msgid "Short code for the program (e.g., PMP, CBAP, ITIL)"
+msgstr "رمز قصير للبرنامج (مثل: PMP, CBAP, ITIL)"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__provider_name
+msgid "Name of the training provider or certification body"
+msgstr "اسم مزود التدريب أو هيئة الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__description_en
+msgid "Detailed program description in English"
+msgstr "وصف تفصيلي للبرنامج بالإنجليزية"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__description_ar
+msgid "Detailed program description in Arabic"
+msgstr "وصف تفصيلي للبرنامج بالعربية"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__program_objective
+msgid "Learning objectives and outcomes"
+msgstr "أهداف التعلم والنتائج"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__career_outcome
+msgid "Expected career benefits and opportunities"
+msgstr "الفوائد والفرص المهنية المتوقعة"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__active
+msgid "Set to false to archive the program without deleting it"
+msgstr "اضبط على خطأ لأرشفة البرنامج دون حذفه"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__accreditation_ids
+msgid "International and local accreditations"
+msgstr "الاعتمادات الدولية والمحلية"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__audience_ids
+msgid "Target sectors and eligible participants"
+msgstr "القطاعات المستهدفة والمشاركون المؤهلون"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__delivery_ids
+msgid "Training delivery modes and schedules"
+msgstr "طرق وجداول توصيل التدريب"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__pricing_ids
+msgid "Pricing options and discounts"
+msgstr "خيارات التسعير والخصومات"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__credential_ids
+msgid "Certificate and credential information"
+msgstr "معلومات الشهادة والاعتماد"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__marketing_ids
+msgid "SEO, landing pages, and promotional content"
+msgstr "تحسين محركات البحث وصفحات الهبوط والمحتوى الترويجي"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__internal_notes
+msgid "Internal notes for administrators"
+msgstr "ملاحظات داخلية للمسؤولين"
+
+#. module: motakamel
+#: model:ir.model.fields,help:motakamel.field_motakamel_program__display_order
+msgid "Order for displaying programs (lower numbers appear first)"
+msgstr "ترتيب عرض البرامج (الأرقام الأقل تظهر أولاً)"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_program.py:0
+#, python-format
+msgid "Program code must contain only letters, numbers, hyphens, and underscores."
+msgstr "يجب أن يحتوي رمز البرنامج على أحرف وأرقام وشرطات وشرطات سفلية فقط."
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_program.py:0
+#, python-format
+msgid "Program code must be unique!"
+msgstr "يجب أن يكون رمز البرنامج فريداً!"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_program.py:0
+#, python-format
+msgid "New"
+msgstr "جديد"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_program.py:0
+#, python-format
+msgid "Accreditations"
+msgstr "الاعتمادات"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_program.py:0
+#, python-format
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_program.py:0
+#, python-format
+msgid "Pricing Plans"
+msgstr "خطط التسعير"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_program_form
+msgid "Are you sure you want to archive this program?"
+msgstr "هل أنت متأكد من أنك تريد أرشفة هذا البرنامج؟"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_pricing_form
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_pricing_form
+msgid "Installments"
+msgstr "الأقساط"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_pricing_form
+msgid "Validity"
+msgstr "الصلاحية"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_pricing_list
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_form
+msgid "Marketing"
+msgstr "التسويق"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_form
+msgid "Activate"
+msgstr "تفعيل"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_form
+msgid "Pause"
+msgstr "إيقاف مؤقت"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_form
+msgid "Complete"
+msgstr "إكمال"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_form
+msgid "SEO"
+msgstr "تحسين محركات البحث"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_form
+msgid "Materials"
+msgstr "المواد"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_form
+msgid "Performance"
+msgstr "الأداء"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_marketing_list
+msgid "Marketing"
+msgstr "التسويق"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_delivery_form
+msgid "Delivery Options"
+msgstr "خيارات التوصيل"
+
+#. module: motakamel
+#: model:ir.ui.view,arch_db:motakamel.view_motakamel_delivery_form
+msgid "Open Registration"
+msgstr "فتح التسجيل"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__program_id
+msgid "Program"
+msgstr "البرنامج"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__international_accreditation_body
+msgid "International Accreditation Body"
+msgstr "هيئة الاعتماد الدولية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__local_accreditation_body
+msgid "Local Accreditation Body"
+msgstr "هيئة الاعتماد المحلية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__accreditation_code
+msgid "Accreditation Code"
+msgstr "رمز الاعتماد"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__accreditation_valid_from
+msgid "Valid From"
+msgstr "صالح من"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__accreditation_valid_to
+msgid "Valid To"
+msgstr "صالح حتى"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__certificate_type
+msgid "Certificate Type"
+msgstr "نوع الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__verification_url
+msgid "Verification URL"
+msgstr "رابط التحقق"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__certificate_sample_file
+msgid "Certificate Sample"
+msgstr "نموذج الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__accreditation_level
+msgid "Accreditation Level"
+msgstr "مستوى الاعتماد"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__is_primary
+msgid "Primary Accreditation"
+msgstr "الاعتماد الأساسي"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__is_valid
+msgid "Is Valid"
+msgstr "صالح"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_accreditation__days_until_expiry
+msgid "Days Until Expiry"
+msgstr "أيام حتى انتهاء الصلاحية"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,certificate_type:0
+msgid "Professional Certification"
+msgstr "شهادة مهنية"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,certificate_type:0
+msgid "Certificate of Completion"
+msgstr "شهادة إتمام"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,certificate_type:0
+msgid "Certificate of Achievement"
+msgstr "شهادة إنجاز"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,certificate_type:0
+msgid "Certificate of Attendance"
+msgstr "شهادة حضور"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,certificate_type:0
+msgid "Competency Certificate"
+msgstr "شهادة الكفاءة"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,certificate_type:0
+msgid "Diploma"
+msgstr "دبلوم"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,certificate_type:0
+msgid "Degree"
+msgstr "درجة علمية"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,accreditation_level:0
+msgid "International"
+msgstr "دولي"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,accreditation_level:0
+msgid "Regional"
+msgstr "إقليمي"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,accreditation_level:0
+msgid "National"
+msgstr "وطني"
+
+#. module: motakamel
+#: selection:motakamel.accreditation,accreditation_level:0
+msgid "Local"
+msgstr "محلي"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_accreditation.py:0
+#, python-format
+msgid "Valid To date must be after Valid From date."
+msgstr "يجب أن يكون تاريخ الصلاحية حتى بعد تاريخ الصلاحية من."
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_accreditation.py:0
+#, python-format
+msgid "Only one primary accreditation is allowed per program."
+msgstr "يُسمح باعتماد أساسي واحد فقط لكل برنامج."
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__target_sector
+msgid "Target Sector"
+msgstr "القطاع المستهدف"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__eligible_job_titles
+msgid "Eligible Job Titles"
+msgstr "المسميات الوظيفية المؤهلة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__career_level
+msgid "Career Level"
+msgstr "المستوى المهني"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__industry_focus
+msgid "Industry Focus"
+msgstr "التركيز على الصناعة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__prerequisites_required
+msgid "Prerequisites Required"
+msgstr "المتطلبات المسبقة مطلوبة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__prerequisites_description
+msgid "Prerequisites Description"
+msgstr "وصف المتطلبات المسبقة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__min_education_level
+msgid "Minimum Education Level"
+msgstr "الحد الأدنى لمستوى التعليم"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__min_experience_years
+msgid "Minimum Experience (Years)"
+msgstr "الحد الأدنى للخبرة (بالسنوات)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__required_certifications
+msgid "Required Certifications"
+msgstr "الشهادات المطلوبة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__age_restriction
+msgid "Age Restriction"
+msgstr "قيود العمر"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__language_requirements
+msgid "Language Requirements"
+msgstr "متطلبات اللغة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_audience__technical_requirements
+msgid "Technical Requirements"
+msgstr "المتطلبات التقنية"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Public Sector"
+msgstr "القطاع العام"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Private Sector"
+msgstr "القطاع الخاص"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Non-Profit Sector"
+msgstr "القطاع غير الربحي"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Individuals"
+msgstr "أفراد"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Government Entities"
+msgstr "الكيانات الحكومية"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Corporate"
+msgstr "الشركات"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Small & Medium Enterprises"
+msgstr "المؤسسات الصغيرة والمتوسطة"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Startups"
+msgstr "الشركات الناشئة"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Educational Institutions"
+msgstr "المؤسسات التعليمية"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "Healthcare"
+msgstr "الرعاية الصحية"
+
+#. module: motakamel
+#: selection:motakamel.audience,target_sector:0
+msgid "All Sectors"
+msgstr "جميع القطاعات"
+
+#. module: motakamel
+#: selection:motakamel.audience,career_level:0
+msgid "Entry Level"
+msgstr "مستوى المبتدئين"
+
+#. module: motakamel
+#: selection:motakamel.audience,career_level:0
+msgid "Junior (1-3 years)"
+msgstr "مبتدئ (1-3 سنوات)"
+
+#. module: motakamel
+#: selection:motakamel.audience,career_level:0
+msgid "Mid-Level (3-5 years)"
+msgstr "متوسط المستوى (3-5 سنوات)"
+
+#. module: motakamel
+#: selection:motakamel.audience,career_level:0
+msgid "Senior (5-10 years)"
+msgstr "كبير (5-10 سنوات)"
+
+#. module: motakamel
+#: selection:motakamel.audience,career_level:0
+msgid "Lead/Principal (10+ years)"
+msgstr "رئيسي/قائد (10+ سنوات)"
+
+#. module: motakamel
+#: selection:motakamel.audience,career_level:0
+msgid "Executive/C-Level"
+msgstr "تنفيذي/مستوى C"
+
+#. module: motakamel
+#: selection:motakamel.audience,career_level:0
+msgid "All Levels"
+msgstr "جميع المستويات"
+
+#. module: motakamel
+#: selection:motakamel.audience,min_education_level:0
+msgid "High School"
+msgstr "الثانوية العامة"
+
+#. module: motakamel
+#: selection:motakamel.audience,min_education_level:0
+msgid "Diploma"
+msgstr "دبلوم"
+
+#. module: motakamel
+#: selection:motakamel.audience,min_education_level:0
+msgid "Bachelor Degree"
+msgstr "درجة البكالوريوس"
+
+#. module: motakamel
+#: selection:motakamel.audience,min_education_level:0
+msgid "Master Degree"
+msgstr "درجة الماجستير"
+
+#. module: motakamel
+#: selection:motakamel.audience,min_education_level:0
+msgid "PhD"
+msgstr "دكتوراه"
+
+#. module: motakamel
+#: selection:motakamel.audience,min_education_level:0
+msgid "No Requirement"
+msgstr "لا يوجد متطلب"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__delivery_name
+msgid "Delivery Name"
+msgstr "اسم التوصيل"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__training_mode
+msgid "Training Mode"
+msgstr "طريقة التدريب"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__training_language
+msgid "Training Language"
+msgstr "لغة التدريب"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__total_training_hours
+msgid "Total Training Hours"
+msgstr "إجمالي ساعات التدريب"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__daily_training_hours
+msgid "Daily Training Hours"
+msgstr "ساعات التدريب اليومية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__program_duration_days
+msgid "Program Duration (Days)"
+msgstr "مدة البرنامج (بالأيام)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__start_date
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__end_date
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__schedule_details
+msgid "Schedule Details"
+msgstr "تفاصيل الجدول"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__exam_included
+msgid "Exam Included"
+msgstr "الامتحان مشمول"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__exam_format
+msgid "Exam Format"
+msgstr "نوع الامتحان"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__exam_date
+msgid "Exam Date"
+msgstr "تاريخ الامتحان"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__study_material_included
+msgid "Study Materials Included"
+msgstr "المواد الدراسية مشمولة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__study_material_details
+msgid "Study Material Details"
+msgstr "تفاصيل المواد الدراسية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__mock_exam_included
+msgid "Mock Exam Included"
+msgstr "الامتحان التجريبي مشمول"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__venue_name
+msgid "Venue Name"
+msgstr "اسم المكان"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__venue_address
+msgid "Venue Address"
+msgstr "عنوان المكان"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__venue_city
+msgid "City"
+msgstr "المدينة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__venue_country_id
+msgid "Country"
+msgstr "الدولة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__online_platform
+msgid "Online Platform"
+msgstr "المنصة الإلكترونية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__max_participants
+msgid "Maximum Participants"
+msgstr "الحد الأقصى للمشاركين"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__min_participants
+msgid "Minimum Participants"
+msgstr "الحد الأدنى للمشاركين"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__current_enrollments
+msgid "Current Enrollments"
+msgstr "التسجيلات الحالية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__delivery_status
+msgid "Delivery Status"
+msgstr "حالة التوصيل"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__seats_available
+msgid "Seats Available"
+msgstr "المقاعد المتاحة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_delivery__is_full
+msgid "Is Full"
+msgstr "ممتلئ"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_mode:0
+msgid "Online Live (Virtual Classroom)"
+msgstr "عبر الإنترنت مباشر (فصل افتراضي)"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_mode:0
+msgid "Online Self-Paced"
+msgstr "عبر الإنترنت ذاتي"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_mode:0
+msgid "On-Site (In-Person)"
+msgstr "في الموقع (حضوري)"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_mode:0
+msgid "Hybrid (Online + On-Site)"
+msgstr "هجين (عبر الإنترنت + في الموقع)"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_mode:0
+msgid "Blended Learning"
+msgstr "التعلم المدمج"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_mode:0
+msgid "Workshop"
+msgstr "ورشة عمل"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_mode:0
+msgid "Bootcamp"
+msgstr "معسكر تدريبي"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_language:0
+msgid "English"
+msgstr "الإنجليزية"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_language:0
+msgid "Arabic"
+msgstr "العربية"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_language:0
+msgid "Bilingual (English & Arabic)"
+msgstr "ثنائي اللغة (الإنجليزية والعربية)"
+
+#. module: motakamel
+#: selection:motakamel.delivery,training_language:0
+msgid "Other"
+msgstr "أخرى"
+
+#. module: motakamel
+#: selection:motakamel.delivery,exam_format:0
+msgid "Online Exam"
+msgstr "امتحان عبر الإنترنت"
+
+#. module: motakamel
+#: selection:motakamel.delivery,exam_format:0
+msgid "On-Site Exam"
+msgstr "امتحان في الموقع"
+
+#. module: motakamel
+#: selection:motakamel.delivery,exam_format:0
+msgid "Proctored Online"
+msgstr "مراقب عبر الإنترنت"
+
+#. module: motakamel
+#: selection:motakamel.delivery,exam_format:0
+msgid "Paper-Based"
+msgstr "ورقي"
+
+#. module: motakamel
+#: selection:motakamel.delivery,exam_format:0
+msgid "Practical Assessment"
+msgstr "تقييم عملي"
+
+#. module: motakamel
+#: selection:motakamel.delivery,exam_format:0
+msgid "No Exam"
+msgstr "لا يوجد امتحان"
+
+#. module: motakamel
+#: selection:motakamel.delivery,delivery_status:0
+msgid "Planned"
+msgstr "مخطط"
+
+#. module: motakamel
+#: selection:motakamel.delivery,delivery_status:0
+msgid "Open for Registration"
+msgstr "مفتوح للتسجيل"
+
+#. module: motakamel
+#: selection:motakamel.delivery,delivery_status:0
+msgid "Fully Booked"
+msgstr "محجوز بالكامل"
+
+#. module: motakamel
+#: selection:motakamel.delivery,delivery_status:0
+msgid "In Progress"
+msgstr "قيد التنفيذ"
+
+#. module: motakamel
+#: selection:motakamel.delivery,delivery_status:0
+msgid "Completed"
+msgstr "مكتمل"
+
+#. module: motakamel
+#: selection:motakamel.delivery,delivery_status:0
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_delivery.py:0
+#, python-format
+msgid "End date must be after start date."
+msgstr "يجب أن يكون تاريخ الانتهاء بعد تاريخ البدء."
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_delivery.py:0
+#, python-format
+msgid "Minimum participants cannot exceed maximum participants."
+msgstr "لا يمكن أن يتجاوز الحد الأدنى للمشاركين الحد الأقصى."
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_delivery.py:0
+#, python-format
+msgid "Current enrollments cannot exceed maximum participants."
+msgstr "لا يمكن أن تتجاوز التسجيلات الحالية الحد الأقصى للمشاركين."
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__pricing_name
+msgid "Pricing Plan Name"
+msgstr "اسم خطة التسعير"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__list_price
+msgid "List Price"
+msgstr "السعر الأساسي"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__discount_price
+msgid "Discounted Price"
+msgstr "السعر المخفض"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__discount_percentage
+msgid "Discount %"
+msgstr "نسبة الخصم %"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__final_price
+msgid "Final Price"
+msgstr "السعر النهائي"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__installments_allowed
+msgid "Installments Allowed"
+msgstr "الأقساط مسموحة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__installment_terms
+msgid "Installment Terms"
+msgstr "شروط الأقساط"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__number_of_installments
+msgid "Number of Installments"
+msgstr "عدد الأقساط"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__installment_amount
+msgid "Installment Amount"
+msgstr "مبلغ القسط"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__corporate_bulk_discount
+msgid "Corporate Bulk Discount (%)"
+msgstr "خصم الشركات بالجملة (%)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__min_bulk_quantity
+msgid "Minimum Bulk Quantity"
+msgstr "الحد الأدنى للكمية بالجملة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__bulk_price
+msgid "Bulk Price Per Person"
+msgstr "سعر الجملة للشخص الواحد"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__pricing_type
+msgid "Pricing Type"
+msgstr "نوع التسعير"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__valid_from
+msgid "Valid From"
+msgstr "صالح من"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__valid_to
+msgid "Valid To"
+msgstr "صالح حتى"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__is_active_pricing
+msgid "Is Active"
+msgstr "نشط"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__tax_applicable
+msgid "Tax Applicable"
+msgstr "الضريبة قابلة للتطبيق"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__tax_ids
+msgid "Taxes"
+msgstr "الضرائب"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__refund_policy
+msgid "Refund Policy"
+msgstr "سياسة الاسترداد"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__refund_policy_details
+msgid "Refund Policy Details"
+msgstr "تفاصيل سياسة الاسترداد"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__includes_exam_fee
+msgid "Includes Exam Fee"
+msgstr "يشمل رسوم الامتحان"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__includes_materials
+msgid "Includes Materials"
+msgstr "يشمل المواد"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__includes_certificate
+msgid "Includes Certificate"
+msgstr "يشمل الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__additional_inclusions
+msgid "Additional Inclusions"
+msgstr "إضافات أخرى"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_pricing__is_default
+msgid "Default Pricing"
+msgstr "التسعير الافتراضي"
+
+#. module: motakamel
+#: selection:motakamel.pricing,pricing_type:0
+msgid "Standard"
+msgstr "قياسي"
+
+#. module: motakamel
+#: selection:motakamel.pricing,pricing_type:0
+msgid "Early Bird"
+msgstr "الطائر المبكر"
+
+#. module: motakamel
+#: selection:motakamel.pricing,pricing_type:0
+msgid "Corporate"
+msgstr "الشركات"
+
+#. module: motakamel
+#: selection:motakamel.pricing,pricing_type:0
+msgid "Government"
+msgstr "حكومي"
+
+#. module: motakamel
+#: selection:motakamel.pricing,pricing_type:0
+msgid "Student"
+msgstr "طالب"
+
+#. module: motakamel
+#: selection:motakamel.pricing,pricing_type:0
+msgid "Group Discount"
+msgstr "خصم المجموعة"
+
+#. module: motakamel
+#: selection:motakamel.pricing,pricing_type:0
+msgid "Promotional"
+msgstr "ترويجي"
+
+#. module: motakamel
+#: selection:motakamel.pricing,refund_policy:0
+msgid "Full Refund"
+msgstr "استرداد كامل"
+
+#. module: motakamel
+#: selection:motakamel.pricing,refund_policy:0
+msgid "Partial Refund"
+msgstr "استرداد جزئي"
+
+#. module: motakamel
+#: selection:motakamel.pricing,refund_policy:0
+msgid "No Refund"
+msgstr "لا يوجد استرداد"
+
+#. module: motakamel
+#: selection:motakamel.pricing,refund_policy:0
+msgid "Conditional Refund"
+msgstr "استرداد مشروط"
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_pricing.py:0
+#, python-format
+msgid "List price cannot be negative."
+msgstr "لا يمكن أن يكون السعر الأساسي سالباً."
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_pricing.py:0
+#, python-format
+msgid "Discount price cannot exceed list price."
+msgstr "لا يمكن أن يتجاوز السعر المخفض السعر الأساسي."
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_pricing.py:0
+#, python-format
+msgid "Valid To date must be after Valid From date."
+msgstr "يجب أن يكون تاريخ الصلاحية حتى بعد تاريخ الصلاحية من."
+
+#. module: motakamel
+#: code:addons/motakamel/models/motakamel_pricing.py:0
+#, python-format
+msgid "Only one default pricing is allowed per program."
+msgstr "يُسمح بتسعير افتراضي واحد فقط لكل برنامج."
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__credential_name
+msgid "Credential Name"
+msgstr "اسم الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__certificate_issued
+msgid "Certificate Issued"
+msgstr "تم إصدار الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__certificate_type
+msgid "Certificate Type"
+msgstr "نوع الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__certificate_serial_format
+msgid "Certificate Serial Format"
+msgstr "تنسيق الرقم التسلسلي للشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__issuing_authority
+msgid "Issuing Authority"
+msgstr "الجهة المصدرة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__issuing_authority_logo
+msgid "Authority Logo"
+msgstr "شعار الجهة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__co_branded
+msgid "Co-Branded Certificate"
+msgstr "شهادة مشتركة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__partner_organizations
+msgid "Partner Organizations"
+msgstr "المنظمات الشريكة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__certificate_delivery_days
+msgid "Delivery Time (Days)"
+msgstr "وقت التسليم (بالأيام)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__delivery_method
+msgid "Delivery Method"
+msgstr "طريقة التسليم"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__renewal_required
+msgid "Renewal Required"
+msgstr "التجديد مطلوب"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__renewal_cycle_years
+msgid "Renewal Cycle (Years)"
+msgstr "دورة التجديد (بالسنوات)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__continuing_education_required
+msgid "Continuing Education Required"
+msgstr "التعليم المستمر مطلوب"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__ce_hours_required
+msgid "CE Hours Required"
+msgstr "ساعات التعليم المستمر المطلوبة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__verification_available
+msgid "Verification Available"
+msgstr "التحقق متاح"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__verification_url
+msgid "Verification URL"
+msgstr "رابط التحقق"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__verification_method
+msgid "Verification Method"
+msgstr "طريقة التحقق"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__digital_badge_available
+msgid "Digital Badge Available"
+msgstr "الشارة الرقمية متاحة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__badge_platform
+msgid "Badge Platform"
+msgstr "منصة الشارة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__linkedin_integration
+msgid "LinkedIn Integration"
+msgstr "تكامل LinkedIn"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__certificate_template
+msgid "Certificate Template"
+msgstr "قالب الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__certificate_sample
+msgid "Certificate Sample"
+msgstr "نموذج الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__transcript_available
+msgid "Transcript Available"
+msgstr "السجل الدراسي متاح"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__wallet_card_available
+msgid "Wallet Card Available"
+msgstr "بطاقة المحفظة متاحة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__certificate_features
+msgid "Certificate Features"
+msgstr "مميزات الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_credential__validity_period
+msgid "Validity Period"
+msgstr "فترة الصلاحية"
+
+#. module: motakamel
+#: selection:motakamel.credential,certificate_type:0
+msgid "Micro-Credential"
+msgstr "شهادة مصغرة"
+
+#. module: motakamel
+#: selection:motakamel.credential,certificate_type:0
+msgid "Digital Badge"
+msgstr "شارة رقمية"
+
+#. module: motakamel
+#: selection:motakamel.credential,delivery_method:0
+msgid "Digital (Email/Download)"
+msgstr "رقمي (بريد إلكتروني/تحميل)"
+
+#. module: motakamel
+#: selection:motakamel.credential,delivery_method:0
+msgid "Physical (Mail)"
+msgstr "مادي (بريد)"
+
+#. module: motakamel
+#: selection:motakamel.credential,delivery_method:0
+msgid "Both Digital & Physical"
+msgstr "رقمي ومادي"
+
+#. module: motakamel
+#: selection:motakamel.credential,delivery_method:0
+msgid "Blockchain Verified"
+msgstr "متحقق عبر البلوك تشين"
+
+#. module: motakamel
+#: selection:motakamel.credential,verification_method:0
+msgid "QR Code"
+msgstr "رمز QR"
+
+#. module: motakamel
+#: selection:motakamel.credential,verification_method:0
+msgid "Serial Number Lookup"
+msgstr "البحث عن الرقم التسلسلي"
+
+#. module: motakamel
+#: selection:motakamel.credential,verification_method:0
+msgid "Blockchain"
+msgstr "البلوك تشين"
+
+#. module: motakamel
+#: selection:motakamel.credential,verification_method:0
+msgid "API Integration"
+msgstr "تكامل API"
+
+#. module: motakamel
+#: selection:motakamel.credential,verification_method:0
+msgid "Manual Verification"
+msgstr "التحقق اليدوي"
+
+#. module: motakamel
+#: selection:motakamel.credential,badge_platform:0
+msgid "Credly"
+msgstr "Credly"
+
+#. module: motakamel
+#: selection:motakamel.credential,badge_platform:0
+msgid "Badgr"
+msgstr "Badgr"
+
+#. module: motakamel
+#: selection:motakamel.credential,badge_platform:0
+msgid "Accredible"
+msgstr "Accredible"
+
+#. module: motakamel
+#: selection:motakamel.credential,badge_platform:0
+msgid "Open Badges"
+msgstr "Open Badges"
+
+#. module: motakamel
+#: selection:motakamel.credential,badge_platform:0
+msgid "Custom Platform"
+msgstr "منصة مخصصة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__campaign_name
+msgid "Campaign Name"
+msgstr "اسم الحملة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__featured_on_homepage
+msgid "Featured on Homepage"
+msgstr "مميز على الصفحة الرئيسية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__featured_priority
+msgid "Featured Priority"
+msgstr "أولوية التميز"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__show_on_catalog
+msgid "Show on Catalog"
+msgstr "عرض في الكتالوج"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__seo_title
+msgid "SEO Title"
+msgstr "عنوان SEO"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__seo_description
+msgid "SEO Meta Description"
+msgstr "وصف SEO"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__seo_keywords
+msgid "SEO Keywords"
+msgstr "كلمات مفتاحية لـ SEO"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__canonical_url
+msgid "Canonical URL"
+msgstr "رابط Canonical"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__og_image
+msgid "Open Graph Image"
+msgstr "صورة Open Graph"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__landing_page_url
+msgid "Landing Page URL"
+msgstr "رابط صفحة الهبوط"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__landing_page_template
+msgid "Landing Page Template"
+msgstr "قالب صفحة الهبوط"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__call_to_action_text
+msgid "CTA Button Text"
+msgstr "نص زر CTA"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__call_to_action_url
+msgid "CTA URL"
+msgstr "رابط CTA"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__brochure_pdf
+msgid "Program Brochure (PDF)"
+msgstr "كتيب البرنامج (PDF)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__promo_video_url
+msgid "Promotional Video URL"
+msgstr "رابط الفيديو الترويجي"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__promo_images
+msgid "Promotional Images"
+msgstr "الصور الترويجية"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__testimonial_video_url
+msgid "Testimonial Video URL"
+msgstr "رابط فيديو الشهادة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__whatsapp_lead_link
+msgid "WhatsApp Lead Link"
+msgstr "رابط WhatsApp للعملاء المحتملين"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__lead_form_enabled
+msgid "Lead Form Enabled"
+msgstr "نموذج العملاء المحتملين مفعّل"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__lead_magnet_type
+msgid "Lead Magnet"
+msgstr "مغناطيس العملاء المحتملين"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__lead_magnet_file
+msgid "Lead Magnet File"
+msgstr "ملف مغناطيس العملاء المحتملين"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__email_campaign_active
+msgid "Email Campaign Active"
+msgstr "حملة البريد الإلكتروني نشطة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__email_template_id
+msgid "Email Template"
+msgstr "قالب البريد الإلكتروني"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__drip_campaign_enabled
+msgid "Drip Campaign Enabled"
+msgstr "حملة التنقيط مفعّلة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__facebook_post_text
+msgid "Facebook Post"
+msgstr "منشور Facebook"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__twitter_post_text
+msgid "Twitter/X Post"
+msgstr "منشور Twitter/X"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__linkedin_post_text
+msgid "LinkedIn Post"
+msgstr "منشور LinkedIn"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__instagram_caption
+msgid "Instagram Caption"
+msgstr "تعليق Instagram"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__hashtags
+msgid "Hashtags"
+msgstr "الهاشتاغات"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__utm_source
+msgid "UTM Source"
+msgstr "مصدر UTM"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__utm_medium
+msgid "UTM Medium"
+msgstr "وسيط UTM"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__utm_campaign
+msgid "UTM Campaign"
+msgstr "حملة UTM"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__google_analytics_id
+msgid "Google Analytics ID"
+msgstr "معرف Google Analytics"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__facebook_pixel_id
+msgid "Facebook Pixel ID"
+msgstr "معرف Facebook Pixel"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__campaign_start_date
+msgid "Campaign Start Date"
+msgstr "تاريخ بدء الحملة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__campaign_end_date
+msgid "Campaign End Date"
+msgstr "تاريخ انتهاء الحملة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__campaign_budget
+msgid "Campaign Budget"
+msgstr "ميزانية الحملة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__leads_generated
+msgid "Leads Generated"
+msgstr "العملاء المحتملون المولّدون"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__conversions
+msgid "Conversions"
+msgstr "التحويلات"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__conversion_rate
+msgid "Conversion Rate (%)"
+msgstr "معدل التحويل (%)"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_marketing__campaign_status
+msgid "Campaign Status"
+msgstr "حالة الحملة"
+
+#. module: motakamel
+#: selection:motakamel.marketing,landing_page_template:0
+msgid "Default Template"
+msgstr "القالب الافتراضي"
+
+#. module: motakamel
+#: selection:motakamel.marketing,landing_page_template:0
+msgid "Modern Template"
+msgstr "القالب الحديث"
+
+#. module: motakamel
+#: selection:motakamel.marketing,landing_page_template:0
+msgid "Minimal Template"
+msgstr "القالب البسيط"
+
+#. module: motakamel
+#: selection:motakamel.marketing,landing_page_template:0
+msgid "Corporate Template"
+msgstr "القالب المؤسسي"
+
+#. module: motakamel
+#: selection:motakamel.marketing,landing_page_template:0
+msgid "Custom Template"
+msgstr "القالب المخصص"
+
+#. module: motakamel
+#: selection:motakamel.marketing,lead_magnet_type:0
+msgid "Download Brochure"
+msgstr "تحميل الكتيب"
+
+#. module: motakamel
+#: selection:motakamel.marketing,lead_magnet_type:0
+msgid "Free Sample Lesson"
+msgstr "درس تجريبي مجاني"
+
+#. module: motakamel
+#: selection:motakamel.marketing,lead_magnet_type:0
+msgid "Free Consultation"
+msgstr "استشارة مجانية"
+
+#. module: motakamel
+#: selection:motakamel.marketing,lead_magnet_type:0
+msgid "Free Webinar"
+msgstr "ندوة مجانية"
+
+#. module: motakamel
+#: selection:motakamel.marketing,lead_magnet_type:0
+msgid "Free E-Book"
+msgstr "كتاب إلكتروني مجاني"
+
+#. module: motakamel
+#: selection:motakamel.marketing,lead_magnet_type:0
+msgid "None"
+msgstr "لا شيء"
+
+#. module: motakamel
+#: selection:motakamel.marketing,campaign_status:0
+msgid "Scheduled"
+msgstr "مجدول"
+
+#. module: motakamel
+#: selection:motakamel.marketing,campaign_status:0
+msgid "Paused"
+msgstr "متوقف مؤقتاً"
+
+#. module: motakamel
+#: model:ir.model,name:motakamel.model_motakamel_industry
+msgid "Industry Category"
+msgstr "فئة الصناعة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_industry__name
+msgid "Industry Name"
+msgstr "اسم الصناعة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_industry__code
+msgid "Industry Code"
+msgstr "رمز الصناعة"
+
+#. module: motakamel
+#: model:ir.model.fields,field_description:motakamel.field_motakamel_industry__description
+msgid "Description"
+msgstr "الوصف"
+

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Program 1: Certified Business Professional in Leading Through Change (IBTA) -->
+        <record id="demo_program_cbplc" model="motakamel.program">
+            <field name="program_id">PROG-00001</field>
+            <field name="program_name">Certified Business Professional in Leading Through Change</field>
+            <field name="program_name_ar">محترف أعمال معتمد في القيادة خلال التغيير</field>
+            <field name="program_code">CBPLC</field>
+            <field name="program_category">management</field>
+            <field name="program_level">advanced</field>
+            <field name="provider_name">IBTA</field>
+            <field name="provider_type">accredited</field>
+            <field name="description_en"><![CDATA[
+                <p>The Certified Business Professional in Leading Through Change program equips leaders and managers with essential skills to navigate organizational transformation effectively. This comprehensive certification covers change management methodologies, stakeholder engagement strategies, and resilience-building techniques.</p>
+                <p>Participants will learn to design and implement change initiatives, manage resistance, and create sustainable transformation outcomes. The program combines theoretical frameworks with practical case studies from leading organizations.</p>
+            ]]></field>
+            <field name="description_ar"><![CDATA[
+                <p>يؤهل برنامج محترف أعمال معتمد في القيادة خلال التغيير القادة والمديرين بالمهارات الأساسية للتنقل في التحول التنظيمي بفعالية. تغطي هذه الشهادة الشاملة منهجيات إدارة التغيير واستراتيجيات مشاركة أصحاب المصلحة وتقنيات بناء المرونة.</p>
+                <p>سيتعلم المشاركون تصميم وتنفيذ مبادرات التغيير وإدارة المقاومة وإنشاء نتائج تحول مستدامة. يجمع البرنامج بين الأطر النظرية ودراسات الحالة العملية من المنظمات الرائدة.</p>
+            ]]></field>
+            <field name="program_objective">Master change management frameworks, develop stakeholder engagement strategies, build organizational resilience, and lead successful transformation initiatives.</field>
+            <field name="career_outcome">Graduates can advance to senior leadership roles, change management positions, organizational development roles, and consulting positions in transformation management.</field>
+            <field name="status">published</field>
+            <field name="active" eval="True"/>
+            <field name="visibility_scope">public</field>
+            <field name="display_order" eval="1"/>
+            <field name="created_date">2025-10-22 10:00:00</field>
+            <field name="internal_notes">Program launched in Q1 2025. High demand from public and private sectors. Featured program for leadership development.</field>
+        </record>
+        
+        <!-- Program 2: Professional in Human Resources – International (PHRI) -->
+        <record id="demo_program_phri" model="motakamel.program">
+            <field name="program_id">PROG-00002</field>
+            <field name="program_name">Professional in Human Resources – International</field>
+            <field name="program_name_ar">محترف في الموارد البشرية - دولي</field>
+            <field name="program_code">PHRI</field>
+            <field name="program_category">hr</field>
+            <field name="program_level">advanced</field>
+            <field name="provider_name">HRCI</field>
+            <field name="provider_type">accredited</field>
+            <field name="description_en"><![CDATA[
+                <p>The Professional in Human Resources – International (PHRI) certification is a globally recognized credential for HR professionals. This program validates expertise in HR operations, talent management, employee relations, and strategic HR planning.</p>
+                <p>PHRI certification demonstrates mastery of international HR practices and compliance standards. It is ideal for HR professionals seeking to advance their careers in multinational organizations or global HR consulting.</p>
+            ]]></field>
+            <field name="description_ar"><![CDATA[
+                <p>شهادة محترف في الموارد البشرية - دولي (PHRI) هي اعتماد معترف به عالميًا لمتخصصي الموارد البشرية. يتحقق هذا البرنامج من الخبرة في عمليات الموارد البشرية وإدارة المواهب وعلاقات الموظفين والتخطيط الاستراتيجي للموارد البشرية.</p>
+                <p>تثبت شهادة PHRI إتقان ممارسات الموارد البشرية الدولية ومعايير الامتثال. إنها مثالية لمتخصصي الموارد البشرية الذين يسعون لتطوير مسيرتهم المهنية في المنظمات متعددة الجنسيات أو استشارات الموارد البشرية العالمية.</p>
+            ]]></field>
+            <field name="program_objective">Achieve international HR certification, master global HR practices, understand compliance requirements, and develop strategic HR capabilities.</field>
+            <field name="career_outcome">Certified professionals can pursue roles as HR managers, HR business partners, talent acquisition specialists, and HR consultants in international organizations.</field>
+            <field name="status">published</field>
+            <field name="active" eval="True"/>
+            <field name="visibility_scope">public</field>
+            <field name="display_order" eval="2"/>
+            <field name="created_date">2025-10-27 10:00:00</field>
+            <field name="internal_notes">Premium certification program. Requires renewal every 3 years. High market value in HR sector.</field>
+        </record>
+        
+        <!-- Program 3: Project Management Professional (PMP) -->
+        <record id="demo_program_pmp" model="motakamel.program">
+            <field name="program_id">PROG-00003</field>
+            <field name="program_name">Project Management Professional</field>
+            <field name="program_name_ar">محترف إدارة المشاريع</field>
+            <field name="program_code">PMP</field>
+            <field name="program_category">management</field>
+            <field name="program_level">expert</field>
+            <field name="provider_name">PMI</field>
+            <field name="provider_type">accredited</field>
+            <field name="description_en"><![CDATA[
+                <p>The Project Management Professional (PMP) certification is the gold standard for project managers worldwide. This prestigious credential validates your ability to lead and direct projects, demonstrating mastery of project management knowledge and skills.</p>
+                <p>PMP certification covers the complete project lifecycle from initiation to closure, including scope, time, cost, quality, risk, and stakeholder management. It is recognized across industries and geographies as a mark of excellence in project management.</p>
+            ]]></field>
+            <field name="description_ar"><![CDATA[
+                <p>شهادة محترف إدارة المشاريع (PMP) هي المعيار الذهبي لمديري المشاريع في جميع أنحاء العالم. يتحقق هذا الاعتماد المرموق من قدرتك على قيادة وتوجيه المشاريع، مما يثبت إتقان معرفة ومهارات إدارة المشاريع.</p>
+                <p>تغطي شهادة PMP دورة حياة المشروع الكاملة من البدء إلى الإغلاق، بما في ذلك إدارة النطاق والوقت والتكلفة والجودة والمخاطر وأصحاب المصلحة. يتم الاعتراف بها عبر الصناعات والجغرافيا كعلامة على التميز في إدارة المشاريع.</p>
+            ]]></field>
+            <field name="program_objective">Master PMI's project management framework, develop advanced project leadership skills, understand agile and predictive methodologies, and achieve globally recognized PMP certification.</field>
+            <field name="career_outcome">PMP-certified professionals can pursue senior project management roles, program management positions, portfolio management roles, and executive positions in project-driven organizations.</field>
+            <field name="status">published</field>
+            <field name="active" eval="True"/>
+            <field name="visibility_scope">public</field>
+            <field name="display_order" eval="3"/>
+            <field name="created_date">2025-11-01 10:00:00</field>
+            <field name="internal_notes">Most popular certification. Premium pricing. Requires 35 PDUs for renewal every 3 years. High ROI for participants.</field>
+        </record>
+        
+        <!-- Program 4: Certified Business Professional in Customer Services (IBTA) -->
+        <record id="demo_program_cbpcs" model="motakamel.program">
+            <field name="program_id">PROG-00004</field>
+            <field name="program_name">Certified Business Professional in Customer Services</field>
+            <field name="program_name_ar">محترف أعمال معتمد في خدمة العملاء</field>
+            <field name="program_code">CBPCS</field>
+            <field name="program_category">professional</field>
+            <field name="program_level">intermediate</field>
+            <field name="provider_name">IBTA</field>
+            <field name="provider_type">accredited</field>
+            <field name="description_en"><![CDATA[
+                <p>The Certified Business Professional in Customer Services program provides comprehensive training in customer relationship management, service excellence, and customer experience optimization. This certification is designed for professionals who interact directly with customers or manage customer service teams.</p>
+                <p>Participants will learn advanced communication techniques, conflict resolution strategies, customer journey mapping, and service quality measurement. The program emphasizes practical application through real-world scenarios and case studies.</p>
+            ]]></field>
+            <field name="description_ar"><![CDATA[
+                <p>يوفر برنامج محترف أعمال معتمد في خدمة العملاء تدريبًا شاملاً في إدارة علاقات العملاء والتميز في الخدمة وتحسين تجربة العملاء. تم تصميم هذه الشهادة للمهنيين الذين يتفاعلون مباشرة مع العملاء أو يديرون فرق خدمة العملاء.</p>
+                <p>سيتعلم المشاركون تقنيات الاتصال المتقدمة واستراتيجيات حل النزاعات ورسم خريطة رحلة العميل وقياس جودة الخدمة. يركز البرنامج على التطبيق العملي من خلال سيناريوهات ودراسات حالة من العالم الحقيقي.</p>
+            ]]></field>
+            <field name="program_objective">Develop exceptional customer service skills, master customer relationship management, learn service quality frameworks, and create outstanding customer experiences.</field>
+            <field name="career_outcome">Graduates can advance to customer service manager roles, customer experience specialist positions, client relationship manager roles, and service quality consultant positions.</field>
+            <field name="status">published</field>
+            <field name="active" eval="True"/>
+            <field name="visibility_scope">public</field>
+            <field name="display_order" eval="4"/>
+            <field name="created_date">2025-11-06 10:00:00</field>
+            <field name="internal_notes">Strong demand from retail, banking, and telecommunications sectors. Suitable for individuals seeking career advancement in customer-facing roles.</field>
+        </record>
+        
+        <!-- Program 5: Certified Business Professional in Leadership (IBTA) -->
+        <record id="demo_program_cbpl" model="motakamel.program">
+            <field name="program_id">PROG-00005</field>
+            <field name="program_name">Certified Business Professional in Leadership</field>
+            <field name="program_name_ar">محترف أعمال معتمد في القيادة</field>
+            <field name="program_code">CBPL</field>
+            <field name="program_category">management</field>
+            <field name="program_level">advanced</field>
+            <field name="provider_name">IBTA</field>
+            <field name="provider_type">accredited</field>
+            <field name="description_en"><![CDATA[
+                <p>The Certified Business Professional in Leadership program is designed for current and aspiring leaders who want to enhance their leadership capabilities. This comprehensive certification covers leadership theories, emotional intelligence, team dynamics, and strategic decision-making.</p>
+                <p>Participants will develop skills in leading diverse teams, managing organizational culture, driving innovation, and creating high-performance work environments. The program combines leadership assessment, coaching, and practical leadership challenges.</p>
+            ]]></field>
+            <field name="description_ar"><![CDATA[
+                <p>تم تصميم برنامج محترف أعمال معتمد في القيادة للقادة الحاليين والطموحين الذين يرغبون في تعزيز قدراتهم القيادية. تغطي هذه الشهادة الشاملة نظريات القيادة والذكاء العاطفي وديناميكيات الفريق واتخاذ القرارات الاستراتيجية.</p>
+                <p>سيطور المشاركون مهارات في قيادة الفرق المتنوعة وإدارة الثقافة التنظيمية ودفع الابتكار وإنشاء بيئات عمل عالية الأداء. يجمع البرنامج بين تقييم القيادة والتدريب وتحديات القيادة العملية.</p>
+            ]]></field>
+            <field name="program_objective">Develop advanced leadership competencies, master emotional intelligence, learn team leadership strategies, and create high-performance organizational cultures.</field>
+            <field name="career_outcome">Certified leaders can pursue executive leadership roles, senior management positions, organizational development roles, and leadership consulting opportunities.</field>
+            <field name="status">published</field>
+            <field name="active" eval="True"/>
+            <field name="visibility_scope">public</field>
+            <field name="display_order" eval="5"/>
+            <field name="created_date">2025-11-11 10:00:00</field>
+            <field name="internal_notes">Popular among mid-level managers seeking promotion. Strong corporate demand. Featured in leadership development programs.</field>
+        </record>
+        
+    </data>
+</odoo>

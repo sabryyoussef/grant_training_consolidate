@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Override the course header template -->
+    <template id="course_main_certification" inherit_id="website_slides.course_main" name="Course Certification Portal" priority="99">
+        
+        <!-- Replace the row with our custom layout -->
+        <xpath expr="//div[@class='row align-items-end align-items-md-stretch']" position="replace">
+            
+            <!-- Custom Certification Layout -->
+            <div class="page-wrapper">
+                
+                <!-- Right Panel - Image -->
+                <div class="right-panel">
+                    <img t-if="channel.certificate_image" 
+                         t-att-src="image_data_uri(channel.certificate_image)" 
+                         alt="Certificate Sample"
+                         class="certificate-image"/>
+                    <img t-else="" 
+                         t-field="channel.image_1920"
+                         t-options="{'widget': 'image', 'class': 'certificate-image', 'preview_image': 'image_1024'}"/>
+                </div>
+                
+                <!-- Left Panel - Content -->
+                <div class="left-panel">
+                    
+                    <!-- Badges Row -->
+                    <div class="badge-row">
+                        <t t-if="channel.is_internationally_certified">
+                            <div class="badge certified">✅ معتمدة دوليًا</div>
+                        </t>
+                        <t t-if="channel.has_local_accreditation">
+                            <div class="badge accredited">🏛 جهة الاعتماد المحلية</div>
+                        </t>
+                    </div>
+                    
+                    <!-- Course Titles -->
+                    <div class="title-block">
+                        <h1 class="course_title_ar" t-if="channel.course_name_arabic">
+                            <t t-esc="channel.course_name_arabic"/>
+                        </h1>
+                        <h1 class="course_title_ar" t-else="">
+                            <t t-field="channel.name"/>
+                        </h1>
+                        <h2 class="course_title_en" t-if="channel.course_name_english">
+                            <t t-esc="channel.course_name_english"/>
+                        </h2>
+                        <div class="ibta" t-if="channel.certification_body">
+                            <t t-esc="channel.certification_body"/>
+                        </div>
+                    </div>
+                    
+                    <!-- Target Beneficiaries Section -->
+                    <div class="section" t-if="channel.target_public_sector or channel.target_private_sector or channel.target_individuals or channel.target_nonprofit">
+                        <div class="section-title">الجهات المستفيدة</div>
+                        <div class="targets">
+                            <t t-if="channel.target_public_sector">
+                                <div class="target public">القطاع العام</div>
+                            </t>
+                            <t t-if="channel.target_private_sector">
+                                <div class="target private">القطاع الخاص</div>
+                            </t>
+                            <t t-if="channel.target_individuals">
+                                <div class="target individuals">الأفراد</div>
+                            </t>
+                            <t t-if="channel.target_nonprofit">
+                                <div class="target nonprofit">القطاع غير الربحي</div>
+                            </t>
+                        </div>
+                    </div>
+                    
+                    <!-- Accreditation Bodies Section -->
+                    <div class="section" t-if="channel.accreditation_body_ids">
+                        <div class="section-title">جهات الاعتماد المحلية</div>
+                        <div class="logos">
+                            <t t-foreach="channel.accreditation_body_ids" t-as="body">
+                                <div class="logo">
+                                    <img t-if="body.logo" 
+                                         t-att-src="image_data_uri(body.logo)" 
+                                         t-att-alt="body.name"
+                                         class="logo-img"/>
+                                    <span t-else="" t-esc="body.name"/>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                    
+                    <!-- Certification Description Section -->
+                    <div class="section" t-if="channel.certification_description">
+                        <div class="section-title">تفاصيل الشهادة</div>
+                        <div class="description">
+                            <t t-out="channel.certification_description"/>
+                        </div>
+                    </div>
+                    
+                    <!-- Original Description (fallback) -->
+                    <div class="section" t-if="not channel.certification_description and channel.description">
+                        <div class="description">
+                            <t t-field="channel.description"/>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </xpath>
+        
+    </template>
+    
+</odoo>

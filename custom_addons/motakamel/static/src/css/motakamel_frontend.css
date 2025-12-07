@@ -1,0 +1,201 @@
+/* Motakamel Frontend Styles */
+
+.motakamel_program_card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.motakamel_program_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.motakamel_program_header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 0;
+}
+
+.motakamel_badge {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.motakamel_badge_primary {
+    background-color: #667eea;
+    color: white;
+}
+
+.motakamel_badge_info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.motakamel_price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.motakamel_enroll_card {
+    position: sticky;
+    top: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* RTL (Right-to-Left) Support for Arabic */
+html[dir="rtl"] body,
+body.o_rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .motakamel_program_card,
+.o_rtl .motakamel_program_card {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .motakamel_program_header,
+.o_rtl .motakamel_program_header {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .motakamel_badge,
+.o_rtl .motakamel_badge {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+html[dir="rtl"] .motakamel_badge:first-child,
+.o_rtl .motakamel_badge:first-child {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+/* Arabic text should be RTL */
+html[dir="rtl"] .program_name_ar,
+.o_rtl .program_name_ar,
+html[dir="rtl"] [data-field="program_name_ar"],
+.o_rtl [data-field="program_name_ar"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* English text should remain LTR even in RTL mode */
+html[dir="rtl"] .program_name,
+.o_rtl .program_name,
+html[dir="rtl"] [data-field="program_name"],
+.o_rtl [data-field="program_name"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* RTL for card layouts */
+html[dir="rtl"] .card,
+.o_rtl .card {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .card-body,
+.o_rtl .card-body {
+    text-align: right;
+}
+
+html[dir="rtl"] .card-title,
+.o_rtl .card-title {
+    text-align: right;
+}
+
+/* RTL for buttons */
+html[dir="rtl"] .btn,
+.o_rtl .btn {
+    direction: rtl;
+}
+
+html[dir="rtl"] .btn-group,
+.o_rtl .btn-group {
+    direction: rtl;
+}
+
+/* RTL for grid layouts */
+html[dir="rtl"] .row,
+.o_rtl .row {
+    direction: rtl;
+}
+
+html[dir="rtl"] .col-lg-8,
+html[dir="rtl"] .col-lg-4,
+html[dir="rtl"] .col-md-6,
+.o_rtl .col-lg-8,
+.o_rtl .col-lg-4,
+.o_rtl .col-md-6 {
+    direction: rtl;
+}
+
+/* RTL for lists */
+html[dir="rtl"] ul,
+html[dir="rtl"] ol,
+.o_rtl ul,
+.o_rtl ol {
+    direction: rtl;
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+html[dir="rtl"] ul li,
+html[dir="rtl"] ol li,
+.o_rtl ul li,
+.o_rtl ol li {
+    text-align: right;
+}
+
+/* RTL for sticky elements */
+html[dir="rtl"] .motakamel_enroll_card,
+.o_rtl .motakamel_enroll_card {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL for badges row */
+html[dir="rtl"] .badge-row,
+.o_rtl .badge-row {
+    direction: rtl;
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .badge-row .badge,
+.o_rtl .badge-row .badge {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+html[dir="rtl"] .badge-row .badge:first-child,
+.o_rtl .badge-row .badge:first-child {
+    margin-left: 0;
+}
+
+/* RTL for two-column layouts */
+html[dir="rtl"] .page-wrapper,
+.o_rtl .page-wrapper {
+    direction: rtl;
+}
+
+html[dir="rtl"] .left-panel,
+.o_rtl .left-panel {
+    order: 2;
+}
+
+html[dir="rtl"] .right-panel,
+.o_rtl .right-panel {
+    order: 1;
+}
+

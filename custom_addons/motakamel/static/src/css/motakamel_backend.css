@@ -1,0 +1,137 @@
+/* Motakamel Backend Styles */
+
+.o_motakamel_program_kanban {
+    padding: 10px;
+}
+
+.o_motakamel_stat_button {
+    margin: 5px;
+}
+
+/* Status badges */
+.o_motakamel_status_draft {
+    background-color: #6c757d;
+    color: white;
+}
+
+.o_motakamel_status_review {
+    background-color: #ffc107;
+    color: black;
+}
+
+.o_motakamel_status_approved {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.o_motakamel_status_published {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Form improvements */
+.o_motakamel_form_header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* RTL (Right-to-Left) Support for Arabic */
+.o_rtl .o_motakamel_form_header {
+    text-align: right;
+}
+
+.o_rtl .o_motakamel_program_kanban {
+    direction: rtl;
+}
+
+/* Arabic text fields should be RTL */
+.o_rtl .o_field_char[name="program_name_ar"] input,
+.o_rtl .o_field_text[name="program_name_ar"] textarea,
+.o_rtl .o_field_html[name="description_ar"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* English text fields should remain LTR even in RTL mode */
+.o_rtl .o_field_char[name="program_name"] input,
+.o_rtl .o_field_text[name="program_name"] textarea,
+.o_rtl .o_field_html[name="description_en"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* RTL adjustments for form groups */
+.o_rtl .o_form_view .o_group {
+    direction: rtl;
+}
+
+.o_rtl .o_form_view .o_group .o_group {
+    padding-right: 0;
+    padding-left: 16px;
+}
+
+/* RTL for stat buttons */
+.o_rtl .oe_button_box {
+    left: 0;
+    right: auto;
+}
+
+/* RTL for notebook tabs */
+.o_rtl .o_notebook .nav-tabs {
+    direction: rtl;
+}
+
+.o_rtl .o_notebook .nav-tabs .nav-item {
+    float: right;
+}
+
+/* RTL for form labels */
+.o_rtl .o_form_label {
+    text-align: right;
+}
+
+/* RTL for buttons in header */
+.o_rtl .o_form_view header {
+    direction: rtl;
+}
+
+.o_rtl .o_form_view header .btn {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.o_rtl .o_form_view header .btn:first-child {
+    margin-left: 0;
+}
+
+/* RTL for statusbar */
+.o_rtl .o_statusbar_status {
+    direction: rtl;
+}
+
+/* RTL for list views */
+.o_rtl .o_list_view {
+    direction: rtl;
+}
+
+.o_rtl .o_list_view thead th {
+    text-align: right;
+}
+
+.o_rtl .o_list_view tbody td {
+    text-align: right;
+}
+
+/* RTL for kanban views */
+.o_rtl .o_kanban_view {
+    direction: rtl;
+}
+
+.o_rtl .o_kanban_record {
+    direction: rtl;
+    text-align: right;
+}
+

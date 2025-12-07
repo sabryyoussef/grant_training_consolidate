@@ -46,7 +46,7 @@ class StudentEnrollmentPortal(CustomerPortal):
         return request.render('student_enrollment_portal.public_course_detail', values)
     
     @http.route(['/student/register'], type='http', auth='public', website=True, sitemap=False)
-    def student_registration_form(self, course_id=None, **kw):
+    def student_registration_form(self, course_id=None, program_id=None, **kw):
         """Display the student registration form"""
         
         # Get available courses
@@ -62,9 +62,28 @@ class StudentEnrollmentPortal(CustomerPortal):
             except (ValueError, TypeError):
                 selected_course = None
         
+        # Get program information if program_id is provided (from motakamel module)
+        program = None
+        if program_id:
+            try:
+                # Check if motakamel module is installed
+                motakamel_module = request.env['ir.module.module'].sudo().search([
+                    ('name', '=', 'motakamel'),
+                    ('state', '=', 'installed')
+                ], limit=1)
+                
+                if motakamel_module:
+                    program = request.env['motakamel.program'].sudo().browse(int(program_id))
+                    if not program.exists():
+                        program = None
+            except (ValueError, TypeError):
+                program = None
+        
         values = {
             'courses': courses,
             'selected_course': selected_course,
+            'program': program,
+            'program_id': program_id,
             'post': kw,  # Pass form data for repopulation
             'error': {},
             'error_message': []
@@ -107,8 +126,27 @@ class StudentEnrollmentPortal(CustomerPortal):
         # If there are errors, re-render the form
         if error_message:
             courses = request.env['op.course'].sudo().search([])
+            
+            # Get program information if program_id is in post
+            program = None
+            program_id = post.get('program_id')
+            if program_id:
+                try:
+                    motakamel_module = request.env['ir.module.module'].sudo().search([
+                        ('name', '=', 'motakamel'),
+                        ('state', '=', 'installed')
+                    ], limit=1)
+                    if motakamel_module:
+                        program = request.env['motakamel.program'].sudo().browse(int(program_id))
+                        if not program.exists():
+                            program = None
+                except (ValueError, TypeError):
+                    program = None
+            
             values = {
                 'courses': courses,
+                'program': program,
+                'program_id': program_id,
                 'error': error,
                 'error_message': error_message,
                 'post': post
@@ -123,7 +161,29 @@ class StudentEnrollmentPortal(CustomerPortal):
                 return value[0] if value else default
             return value
         
+        # Get program information if program_id is provided
+        program_info = ''
+        program_id = get_post_value('program_id')
+        if program_id:
+            try:
+                # Check if motakamel module is installed
+                motakamel_module = request.env['ir.module.module'].sudo().search([
+                    ('name', '=', 'motakamel'),
+                    ('state', '=', 'installed')
+                ], limit=1)
+                
+                if motakamel_module:
+                    program = request.env['motakamel.program'].sudo().browse(int(program_id))
+                    if program.exists():
+                        program_info = f"\n\nProgram: {program.program_name} ({program.program_code})"
+            except (ValueError, TypeError):
+                pass
+        
         # Prepare registration data
+        requested_courses = get_post_value('requested_courses', '')
+        if program_info:
+            requested_courses = (requested_courses + program_info).strip()
+        
         registration_vals = {
             'student_name_english': get_post_value('student_name_english'),
             'student_name_arabic': get_post_value('student_name_arabic'),
@@ -136,7 +196,7 @@ class StudentEnrollmentPortal(CustomerPortal):
             'native_language': get_post_value('native_language', 'Arabic'),
             'has_previous_certificate': bool(get_post_value('has_previous_certificate')),
             'certificate_type': get_post_value('certificate_type') if get_post_value('has_previous_certificate') else False,
-            'requested_courses': get_post_value('requested_courses', ''),
+            'requested_courses': requested_courses,
             'state': 'draft'
         }
         
