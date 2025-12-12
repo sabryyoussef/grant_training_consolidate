@@ -9,6 +9,7 @@
             <field name="featured_on_homepage" eval="True"/>
             <field name="featured_priority" eval="3"/>
             <field name="show_on_catalog" eval="True"/>
+            <field name="og_image_filename">cbplc_og_image.jpg</field>
             <field name="seo_title">Certified Business Professional in Leading Through Change - IBTA Certification</field>
             <field name="seo_description">Master change management and organizational transformation with IBTA's Certified Business Professional in Leading Through Change. Hybrid training, bilingual support, 5-day program. Enroll now!</field>
             <field name="seo_keywords">change management, leadership certification, IBTA, organizational change, transformation management, business professional, Cairo training</field>
@@ -37,6 +38,7 @@
             <field name="featured_on_homepage" eval="True"/>
             <field name="featured_priority" eval="2"/>
             <field name="show_on_catalog" eval="True"/>
+            <field name="og_image_filename">phri_og_image.jpg</field>
             <field name="seo_title">Professional in Human Resources International (PHRI) - HRCI Certification Egypt</field>
             <field name="seo_description">Earn your PHRI certification from HRCI. International HR credential recognized worldwide. Hybrid training in Cairo and Alexandria. 5-day intensive program with exam preparation.</field>
             <field name="seo_keywords">PHRI, HRCI, human resources certification, international HR, HR professional, HR certification Egypt, Alexandria training</field>
@@ -65,6 +67,7 @@
             <field name="featured_on_homepage" eval="True"/>
             <field name="featured_priority" eval="1"/>
             <field name="show_on_catalog" eval="True"/>
+            <field name="og_image_filename">pmp_og_image.jpg</field>
             <field name="seo_title">PMP Certification Training - Project Management Professional PMI Egypt</field>
             <field name="seo_description">Get your PMP certification from PMI. World's most recognized project management credential. 5-day hybrid training in Cairo. Includes 35 PDUs and exam preparation. Premium program.</field>
             <field name="seo_keywords">PMP, PMI, project management certification, PMP Egypt, project manager, PMBOK, PMP training Cairo, 35 PDUs</field>
@@ -93,6 +96,7 @@
             <field name="campaign_name">Customer Service Excellence Certification 2025</field>
             <field name="featured_on_homepage" eval="False"/>
             <field name="show_on_catalog" eval="True"/>
+            <field name="og_image_filename">cbpcs_og_image.jpg</field>
             <field name="seo_title">Certified Business Professional in Customer Services - IBTA Certification</field>
             <field name="seo_description">Excel in customer service with IBTA's certification program. Learn advanced customer relationship management and service excellence. 5-day hybrid training in Cairo.</field>
             <field name="seo_keywords">customer service certification, customer relations, service excellence, IBTA, customer experience, Cairo training</field>
@@ -121,6 +125,7 @@
             <field name="featured_on_homepage" eval="True"/>
             <field name="featured_priority" eval="4"/>
             <field name="show_on_catalog" eval="True"/>
+            <field name="og_image_filename">cbpl_og_image.jpg</field>
             <field name="seo_title">Certified Business Professional in Leadership - IBTA Leadership Certification</field>
             <field name="seo_description">Develop exceptional leadership skills with IBTA's Certified Business Professional in Leadership program. 5-day hybrid training with 360-degree assessment. Enroll today!</field>
             <field name="seo_keywords">leadership certification, leadership development, business leadership, IBTA, executive leadership, Cairo training</field>

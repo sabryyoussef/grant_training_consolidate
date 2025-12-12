@@ -313,6 +313,274 @@ class MotakamelMarketing(models.Model):
                 record.conversion_rate = 0.0
     
     # ========================================================
+    # ENROLLMENT TRACKING
+    # ========================================================
+    
+    delivery_ids = fields.One2many(
+        related='program_id.delivery_ids',
+        string='Deliveries',
+        readonly=True,
+        help="All delivery schedules for this program"
+    )
+    
+    total_capacity = fields.Integer(
+        string='Total Capacity',
+        compute='_compute_enrollment_stats',
+        help="Total maximum capacity across all deliveries"
+    )
+    
+    total_enrolled = fields.Integer(
+        string='Total Enrolled',
+        compute='_compute_enrollment_stats',
+        help="Total current enrollments across all deliveries"
+    )
+    
+    total_available = fields.Integer(
+        string='Total Available Seats',
+        compute='_compute_enrollment_stats',
+        help="Total available seats across all deliveries"
+    )
+    
+    enrollment_rate = fields.Float(
+        string='Enrollment Fill Rate (%)',
+        compute='_compute_enrollment_stats',
+        help="Percentage of capacity filled"
+    )
+    
+    @api.depends('program_id.delivery_ids.max_participants', 
+                 'program_id.delivery_ids.current_enrollments')
+    def _compute_enrollment_stats(self):
+        for record in self:
+            deliveries = record.program_id.delivery_ids.filtered(
+                lambda d: d.delivery_status in ['open', 'in_progress']
+            )
+            
+            total_cap = sum(d.max_participants for d in deliveries if d.max_participants)
+            total_enr = sum(d.current_enrollments for d in deliveries)
+            
+            record.total_capacity = total_cap
+            record.total_enrolled = total_enr
+            record.total_available = max(0, total_cap - total_enr)
+            record.enrollment_rate = (total_enr / total_cap * 100) if total_cap else 0.0
+    
+    # ========================================================
+    # STUDENTS & LEADS TRACKING
+    # ========================================================
+    
+    enrolled_student_ids = fields.Many2many(
+        'op.student',
+        compute='_compute_students_and_leads',
+        string='Enrolled Students',
+        help="Students currently enrolled in courses for this program"
+    )
+    
+    enrolled_count = fields.Integer(
+        string='Enrolled Count',
+        compute='_compute_students_and_leads'
+    )
+    
+    enrollment_request_ids = fields.One2many(
+        'course.enrollment.request',
+        compute='_compute_students_and_leads',
+        string='Enrollment Requests',
+        help="Pending enrollment requests for this program"
+    )
+    
+    pending_request_count = fields.Integer(
+        string='Pending Requests',
+        compute='_compute_students_and_leads'
+    )
+    
+    lead_ids = fields.One2many(
+        'crm.lead',
+        compute='_compute_students_and_leads',
+        string='Interested Leads',
+        help="CRM leads interested in this program"
+    )
+    
+    lead_count = fields.Integer(
+        string='Lead Count',
+        compute='_compute_students_and_leads'
+    )
+    
+    @api.depends('program_id')
+    def _compute_students_and_leads(self):
+        """Compute enrolled students, enrollment requests, and leads"""
+        for record in self:
+            # Get enrolled students from batch intakes related to this program
+            batch_intakes = self.env['batch.intake'].search([
+                '|',
+                ('course_id.name', 'ilike', record.program_id.name if record.program_id else ''),
+                ('name', 'ilike', record.program_id.name if record.program_id else '')
+            ])
+            enrolled_students = batch_intakes.mapped('openeducat_student_ids')
+            record.enrolled_student_ids = enrolled_students
+            record.enrolled_count = len(enrolled_students)
+            
+            # Get enrollment requests for courses matching this program
+            if record.program_id:
+                courses = self.env['op.course'].search([
+                    '|',
+                    ('name', 'ilike', record.program_id.name),
+                    ('code', 'ilike', record.program_id.code)
+                ])
+                requests = self.env['course.enrollment.request'].search([
+                    ('course_id', 'in', courses.ids),
+                    ('state', 'in', ['draft', 'submitted', 'pending'])
+                ])
+                record.enrollment_request_ids = requests
+                record.pending_request_count = len(requests)
+            else:
+                record.enrollment_request_ids = False
+                record.pending_request_count = 0
+            
+            # Get CRM leads related to this program
+            if record.program_id:
+                leads = self.env['crm.lead'].search([
+                    '|', '|',
+                    ('name', 'ilike', record.program_id.name),
+                    ('description', 'ilike', record.program_id.name),
+                    ('description', 'ilike', record.campaign_name)
+                ])
+                record.lead_ids = leads
+                record.lead_count = len(leads)
+            else:
+                record.lead_ids = False
+                record.lead_count = 0
+    
+    # ========================================================
+    # COURSE REQUIREMENTS & ACADEMIC MANAGEMENT
+    # ========================================================
+    
+    course_ids = fields.Many2many(
+        'op.course',
+        compute='_compute_course_resources',
+        string='Related Courses',
+        help="OpenEduCat courses related to this program"
+    )
+    
+    exam_ids = fields.One2many(
+        'op.exam',
+        compute='_compute_course_resources',
+        string='Exams',
+        help="Exams scheduled for this program"
+    )
+    
+    exam_count = fields.Integer(
+        string='Exam Count',
+        compute='_compute_course_resources'
+    )
+    
+    assignment_ids = fields.One2many(
+        'op.assignment',
+        compute='_compute_course_resources',
+        string='Assignments',
+        help="Assignments for this program"
+    )
+    
+    assignment_count = fields.Integer(
+        string='Assignment Count',
+        compute='_compute_course_resources'
+    )
+    
+    classroom_ids = fields.Many2many(
+        'op.classroom',
+        compute='_compute_course_resources',
+        string='Classrooms',
+        help="Classrooms allocated for this program"
+    )
+    
+    classroom_count = fields.Integer(
+        string='Classroom Count',
+        compute='_compute_course_resources'
+    )
+    
+    timetable_ids = fields.One2many(
+        'op.timetable',
+        compute='_compute_course_resources',
+        string='Timetables',
+        help="Class schedules for this program"
+    )
+    
+    timetable_count = fields.Integer(
+        string='Timetable Count',
+        compute='_compute_course_resources'
+    )
+    
+    attendance_sheet_ids = fields.One2many(
+        'op.attendance.sheet',
+        compute='_compute_course_resources',
+        string='Attendance Sheets',
+        help="Attendance records for this program"
+    )
+    
+    attendance_count = fields.Integer(
+        string='Attendance Count',
+        compute='_compute_course_resources'
+    )
+    
+    @api.depends('program_id')
+    def _compute_course_resources(self):
+        """Compute related course resources (exams, assignments, classes, etc.)"""
+        for record in self:
+            if not record.program_id:
+                record.course_ids = False
+                record.exam_ids = False
+                record.exam_count = 0
+                record.assignment_ids = False
+                record.assignment_count = 0
+                record.classroom_ids = False
+                record.classroom_count = 0
+                record.timetable_ids = False
+                record.timetable_count = 0
+                record.attendance_sheet_ids = False
+                record.attendance_count = 0
+                continue
+                
+            # Find related courses
+            courses = self.env['op.course'].search([
+                '|',
+                ('name', 'ilike', record.program_id.name),
+                ('code', 'ilike', record.program_id.code)
+            ])
+            record.course_ids = courses
+            
+            # Find exams for these courses
+            exams = self.env['op.exam'].search([
+                ('course_id', 'in', courses.ids)
+            ])
+            record.exam_ids = exams
+            record.exam_count = len(exams)
+            
+            # Find assignments
+            assignments = self.env['op.assignment'].search([
+                ('course_id', 'in', courses.ids)
+            ])
+            record.assignment_ids = assignments
+            record.assignment_count = len(assignments)
+            
+            # Find classrooms
+            classrooms = self.env['op.classroom'].search([
+                ('course_id', 'in', courses.ids)
+            ])
+            record.classroom_ids = classrooms
+            record.classroom_count = len(classrooms)
+            
+            # Find timetables
+            timetables = self.env['op.timetable'].search([
+                ('course_id', 'in', courses.ids)
+            ])
+            record.timetable_ids = timetables
+            record.timetable_count = len(timetables)
+            
+            # Find attendance sheets
+            attendance_sheets = self.env['op.attendance.sheet'].search([
+                ('course_id', 'in', courses.ids)
+            ])
+            record.attendance_sheet_ids = attendance_sheets
+            record.attendance_count = len(attendance_sheets)
+    
+    # ========================================================
     # STATUS
     # ========================================================
     
@@ -336,6 +604,206 @@ class MotakamelMarketing(models.Model):
     # ========================================================
     # METHODS
     # ========================================================
+    
+    def action_view_enrollments(self):
+        """View all deliveries with enrollment details"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Enrollment Details - %s') % self.program_id.name,
+            'res_model': 'motakamel.delivery',
+            'view_mode': 'tree,form',
+            'domain': [('program_id', '=', self.program_id.id)],
+            'context': {
+                'default_program_id': self.program_id.id,
+                'group_by': 'venue_city',
+            }
+        }
+    
+    def action_view_enrolled_students(self):
+        """View enrolled students"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Enrolled Students - %s') % self.program_id.name,
+            'res_model': 'op.student',
+            'view_mode': 'tree,form',
+            'domain': [('id', 'in', self.enrolled_student_ids.ids)],
+            'context': {'create': False}
+        }
+    
+    def action_view_enrollment_requests(self):
+        """View pending enrollment requests"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Enrollment Requests - %s') % self.program_id.name,
+            'res_model': 'course.enrollment.request',
+            'view_mode': 'tree,form',
+            'domain': [('id', 'in', self.enrollment_request_ids.ids)],
+            'context': {
+                'create': False,
+                'default_state': 'pending'
+            }
+        }
+    
+    def action_view_leads(self):
+        """View interested leads"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Interested Leads - %s') % self.program_id.name,
+            'res_model': 'crm.lead',
+            'view_mode': 'tree,form,kanban',
+            'domain': [('id', 'in', self.lead_ids.ids)],
+            'context': {
+                'default_name': self.program_id.name,
+                'default_description': f'Interested in {self.campaign_name}'
+            }
+        }
+    
+    # Course Requirements Actions
+    
+    def action_view_exams(self):
+        """View or create exams"""
+        self.ensure_one()
+        action = {
+            'type': 'ir.actions.act_window',
+            'name': _('Exams - %s') % self.program_id.name,
+            'res_model': 'op.exam',
+            'view_mode': 'tree,form,calendar',
+            'domain': [('id', 'in', self.exam_ids.ids)],
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+        return action
+    
+    def action_create_exam(self):
+        """Create new exam"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Create Exam - %s') % self.program_id.name,
+            'res_model': 'op.exam',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_view_assignments(self):
+        """View or create assignments"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Assignments - %s') % self.program_id.name,
+            'res_model': 'op.assignment',
+            'view_mode': 'tree,form',
+            'domain': [('id', 'in', self.assignment_ids.ids)],
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_create_assignment(self):
+        """Create new assignment"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Create Assignment - %s') % self.program_id.name,
+            'res_model': 'op.assignment',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_view_classrooms(self):
+        """View or create classrooms"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Classrooms - %s') % self.program_id.name,
+            'res_model': 'op.classroom',
+            'view_mode': 'tree,form',
+            'domain': [('id', 'in', self.classroom_ids.ids)],
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_create_classroom(self):
+        """Create new classroom"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Create Classroom - %s') % self.program_id.name,
+            'res_model': 'op.classroom',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_view_timetables(self):
+        """View or create timetables"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Timetables - %s') % self.program_id.name,
+            'res_model': 'op.timetable',
+            'view_mode': 'tree,form,calendar',
+            'domain': [('id', 'in', self.timetable_ids.ids)],
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_create_timetable(self):
+        """Create new timetable"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Create Timetable - %s') % self.program_id.name,
+            'res_model': 'op.timetable',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_view_attendance(self):
+        """View or create attendance sheets"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Attendance - %s') % self.program_id.name,
+            'res_model': 'op.attendance.sheet',
+            'view_mode': 'tree,form',
+            'domain': [('id', 'in', self.attendance_sheet_ids.ids)],
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
+    
+    def action_create_attendance(self):
+        """Create new attendance sheet"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Create Attendance Sheet - %s') % self.program_id.name,
+            'res_model': 'op.attendance.sheet',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_course_id': self.course_ids[0].id if self.course_ids else False,
+            }
+        }
     
     def action_activate_campaign(self):
         self.write({'campaign_status': 'active', 'campaign_start_date': fields.Date.today()})

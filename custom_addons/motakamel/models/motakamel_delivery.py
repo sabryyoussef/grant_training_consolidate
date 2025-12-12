@@ -226,6 +226,30 @@ class MotakamelDelivery(models.Model):
         for record in self:
             record.is_full = record.seats_available <= 0 if record.max_participants else False
     
+    batch_intake_ids = fields.One2many(
+        'batch.intake',
+        compute='_compute_batch_intakes',
+        string='Related Batches',
+        help="Batch intakes related to this delivery"
+    )
+    
+    batch_intake_count = fields.Integer(
+        string='Batch Count',
+        compute='_compute_batch_intakes'
+    )
+    
+    @api.depends('program_id')
+    def _compute_batch_intakes(self):
+        """Find batch intakes related to this delivery's program"""
+        for record in self:
+            # Try to find batches by matching course/program
+            batches = self.env['batch.intake'].search([
+                ('course_id.name', 'ilike', record.program_id.name if record.program_id else ''),
+                ('state', 'in', ['open', 'in_progress'])
+            ])
+            record.batch_intake_ids = batches
+            record.batch_intake_count = len(batches)
+    
     # ========================================================
     # CONSTRAINTS
     # ========================================================
@@ -253,6 +277,31 @@ class MotakamelDelivery(models.Model):
     # ========================================================
     # METHODS
     # ========================================================
+    
+    def action_view_enrolled_students(self):
+        """View all enrolled students across related batch intakes"""
+        self.ensure_one()
+        batch_ids = self.batch_intake_ids.ids
+        
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Enrolled Students - %s') % self.delivery_name,
+            'res_model': 'res.partner',
+            'view_mode': 'tree,form',
+            'domain': [('batch_intake_id', 'in', batch_ids), ('is_company', '=', False)],
+            'context': {'default_batch_intake_id': batch_ids[0] if batch_ids else False}
+        }
+    
+    def action_view_batch_intakes(self):
+        """View related batch intakes"""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Batch Intakes - %s') % self.delivery_name,
+            'res_model': 'batch.intake',
+            'view_mode': 'tree,form',
+            'domain': [('id', 'in', self.batch_intake_ids.ids)],
+        }
     
     def action_open_registration(self):
         self.write({'delivery_status': 'open'})

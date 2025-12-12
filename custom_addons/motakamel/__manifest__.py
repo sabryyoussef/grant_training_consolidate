@@ -50,6 +50,16 @@
         'crm',
         'sale',
         'website_sale',
+        # OpenEduCat Integration
+        'openeducat_core',
+        'openeducat_exam',
+        'openeducat_assignment',
+        'openeducat_classroom',
+        'openeducat_timetable',
+        'openeducat_attendance',
+        # Custom Modules
+        'batch_intake',
+        'student_enrollment_portal',
     ],
     'data': [
         # Security

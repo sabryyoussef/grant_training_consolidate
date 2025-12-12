@@ -23,7 +23,9 @@ All sessions include breaks and interactive activities</field>
             <field name="study_material_details">Comprehensive course materials, case studies, templates, and access to online learning platform</field>
             <field name="mock_exam_included" eval="True"/>
             <field name="venue_name">Cairo Training Center</field>
+            <field name="venue_address">123 Tahrir Street, Downtown</field>
             <field name="venue_city">Cairo</field>
+            <field name="venue_country_id" ref="base.eg"/>
             <field name="online_platform">Zoom &amp; Microsoft Teams</field>
             <field name="max_participants" eval="25"/>
             <field name="min_participants" eval="10"/>
@@ -53,7 +55,9 @@ Exam scheduled separately after completion</field>
             <field name="study_material_details">HRCI study guide, practice exams, flashcards, online resources, and exam preparation materials</field>
             <field name="mock_exam_included" eval="True"/>
             <field name="venue_name">Alexandria Business Center</field>
+            <field name="venue_address">45 Corniche Road, Sidi Gaber</field>
             <field name="venue_city">Alexandria</field>
+            <field name="venue_country_id" ref="base.eg"/>
             <field name="online_platform">Zoom &amp; HRCI Learning Portal</field>
             <field name="max_participants" eval="20"/>
             <field name="min_participants" eval="8"/>
@@ -83,7 +87,9 @@ Day 4-5: Online exam simulation and review (9:00 AM - 4:00 PM)
             <field name="study_material_details">PMBOK Guide 7th Edition, PMI exam simulator, practice questions bank, formula guide, and 35 PDUs certificate</field>
             <field name="mock_exam_included" eval="True"/>
             <field name="venue_name">Cairo Project Management Institute</field>
+            <field name="venue_address">789 Nasr City, Fifth District</field>
             <field name="venue_city">Cairo</field>
+            <field name="venue_country_id" ref="base.eg"/>
             <field name="online_platform">Zoom &amp; PMI Learning Platform</field>
             <field name="max_participants" eval="30"/>
             <field name="min_participants" eval="12"/>
@@ -112,7 +118,9 @@ Day 4-5: Online advanced techniques and certification exam (10:00 AM - 4:00 PM)<
             <field name="study_material_details">Customer service handbook, communication templates, case studies, and online resource library</field>
             <field name="mock_exam_included" eval="True"/>
             <field name="venue_name">Customer Service Excellence Center</field>
+            <field name="venue_address">56 Mohandessin Street, Dokki</field>
             <field name="venue_city">Cairo</field>
+            <field name="venue_country_id" ref="base.eg"/>
             <field name="online_platform">Microsoft Teams</field>
             <field name="max_participants" eval="30"/>
             <field name="min_participants" eval="10"/>
@@ -142,12 +150,162 @@ Includes 360-degree feedback assessment</field>
             <field name="study_material_details">Leadership assessment tools, case studies, video library, and leadership development workbook</field>
             <field name="mock_exam_included" eval="False"/>
             <field name="venue_name">Leadership Development Institute</field>
+            <field name="venue_address">12 Zamalek Street, Garden City</field>
             <field name="venue_city">Cairo</field>
+            <field name="venue_country_id" ref="base.eg"/>
             <field name="online_platform">Zoom &amp; Leadership Portal</field>
             <field name="max_participants" eval="20"/>
             <field name="min_participants" eval="8"/>
             <field name="current_enrollments" eval="14"/>
             <field name="delivery_status">open</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Additional Delivery Sessions for Different Locations -->
+        
+        <!-- PMP - Alexandria Session -->
+        <record id="demo_delivery_pmp_2" model="motakamel.delivery">
+            <field name="program_id" ref="demo_program_pmp"/>
+            <field name="training_mode">hybrid</field>
+            <field name="training_language">bilingual</field>
+            <field name="total_training_hours" eval="35.0"/>
+            <field name="daily_training_hours" eval="7.0"/>
+            <field name="program_duration_days" eval="5"/>
+            <field name="start_date">2026-03-15</field>
+            <field name="end_date">2026-03-19</field>
+            <field name="schedule_details">Day 1-2: Online PMBOK Guide sessions (9:00 AM - 4:00 PM)
+Day 3: On-site intensive workshop (9:00 AM - 6:00 PM)
+Day 4-5: Online exam simulation and review (9:00 AM - 4:00 PM)</field>
+            <field name="exam_included" eval="True"/>
+            <field name="exam_format">proctored</field>
+            <field name="study_material_included" eval="True"/>
+            <field name="mock_exam_included" eval="True"/>
+            <field name="venue_name">Alexandria Training Hub</field>
+            <field name="venue_address">88 Stanley Street, Raml Station</field>
+            <field name="venue_city">Alexandria</field>
+            <field name="venue_country_id" ref="base.eg"/>
+            <field name="online_platform">Zoom &amp; PMI Learning Platform</field>
+            <field name="max_participants" eval="25"/>
+            <field name="min_participants" eval="10"/>
+            <field name="current_enrollments" eval="8"/>
+            <field name="delivery_status">open</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- PHRI - Cairo Session -->
+        <record id="demo_delivery_phri_2" model="motakamel.delivery">
+            <field name="program_id" ref="demo_program_phri"/>
+            <field name="training_mode">online</field>
+            <field name="training_language">english</field>
+            <field name="total_training_hours" eval="40.0"/>
+            <field name="daily_training_hours" eval="8.0"/>
+            <field name="program_duration_days" eval="5"/>
+            <field name="start_date">2026-02-22</field>
+            <field name="end_date">2026-02-26</field>
+            <field name="schedule_details">Fully online intensive program
+Daily sessions: 9:00 AM - 5:00 PM
+Interactive virtual workshops
+Live Q&amp;A sessions</field>
+            <field name="exam_included" eval="True"/>
+            <field name="exam_format">proctored</field>
+            <field name="study_material_included" eval="True"/>
+            <field name="mock_exam_included" eval="True"/>
+            <field name="venue_city">Cairo</field>
+            <field name="venue_country_id" ref="base.eg"/>
+            <field name="online_platform">Zoom &amp; HRCI Learning Portal</field>
+            <field name="max_participants" eval="30"/>
+            <field name="min_participants" eval="8"/>
+            <field name="current_enrollments" eval="18"/>
+            <field name="delivery_status">open</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- CBPLC - Giza Session -->
+        <record id="demo_delivery_cbplc_2" model="motakamel.delivery">
+            <field name="program_id" ref="demo_program_cbplc"/>
+            <field name="training_mode">onsite</field>
+            <field name="training_language">arabic</field>
+            <field name="total_training_hours" eval="35.0"/>
+            <field name="daily_training_hours" eval="7.0"/>
+            <field name="program_duration_days" eval="5"/>
+            <field name="start_date">2026-02-10</field>
+            <field name="end_date">2026-02-14</field>
+            <field name="schedule_details">Full on-site intensive training
+Daily: 9:00 AM - 5:00 PM
+Includes lunch and refreshments
+Interactive workshops and group activities</field>
+            <field name="exam_included" eval="True"/>
+            <field name="exam_format">written</field>
+            <field name="study_material_included" eval="True"/>
+            <field name="mock_exam_included" eval="True"/>
+            <field name="venue_name">Giza Corporate Training Center</field>
+            <field name="venue_address">34 Pyramids Road, Giza</field>
+            <field name="venue_city">Giza</field>
+            <field name="venue_country_id" ref="base.eg"/>
+            <field name="max_participants" eval="20"/>
+            <field name="min_participants" eval="10"/>
+            <field name="current_enrollments" eval="20"/>
+            <field name="delivery_status">full</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- CBPL - Mansoura Session -->
+        <record id="demo_delivery_cbpl_2" model="motakamel.delivery">
+            <field name="program_id" ref="demo_program_cbpl"/>
+            <field name="training_mode">hybrid</field>
+            <field name="training_language">bilingual</field>
+            <field name="total_training_hours" eval="32.0"/>
+            <field name="daily_training_hours" eval="6.5"/>
+            <field name="program_duration_days" eval="5"/>
+            <field name="start_date">2026-03-01</field>
+            <field name="end_date">2026-03-05</field>
+            <field name="schedule_details">Day 1-2: Online leadership fundamentals
+Day 3: On-site workshop in Mansoura
+Day 4-5: Online practical exercises
+360-degree assessment included</field>
+            <field name="exam_included" eval="True"/>
+            <field name="exam_format">practical</field>
+            <field name="study_material_included" eval="True"/>
+            <field name="mock_exam_included" eval="False"/>
+            <field name="venue_name">Mansoura Business Academy</field>
+            <field name="venue_address">15 University Street, Mansoura</field>
+            <field name="venue_city">Mansoura</field>
+            <field name="venue_country_id" ref="base.eg"/>
+            <field name="online_platform">Zoom &amp; Leadership Portal</field>
+            <field name="max_participants" eval="15"/>
+            <field name="min_participants" eval="8"/>
+            <field name="current_enrollments" eval="6"/>
+            <field name="delivery_status">open</field>
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- CBPCS - Assiut Session (Completed Example) -->
+        <record id="demo_delivery_cbpcs_2" model="motakamel.delivery">
+            <field name="program_id" ref="demo_program_cbpcs"/>
+            <field name="training_mode">hybrid</field>
+            <field name="training_language">arabic</field>
+            <field name="total_training_hours" eval="30.0"/>
+            <field name="daily_training_hours" eval="6.0"/>
+            <field name="program_duration_days" eval="5"/>
+            <field name="start_date">2025-11-20</field>
+            <field name="end_date">2025-11-24</field>
+            <field name="schedule_details">Completed program - Upper Egypt region
+Day 1-2: Online fundamentals
+Day 3: On-site workshop
+Day 4-5: Online certification</field>
+            <field name="exam_included" eval="True"/>
+            <field name="exam_format">online</field>
+            <field name="study_material_included" eval="True"/>
+            <field name="mock_exam_included" eval="True"/>
+            <field name="venue_name">Assiut Training Center</field>
+            <field name="venue_address">22 El Gomhoreya Street, Assiut</field>
+            <field name="venue_city">Assiut</field>
+            <field name="venue_country_id" ref="base.eg"/>
+            <field name="online_platform">Microsoft Teams</field>
+            <field name="max_participants" eval="20"/>
+            <field name="min_participants" eval="8"/>
+            <field name="current_enrollments" eval="16"/>
+            <field name="delivery_status">completed</field>
             <field name="active" eval="True"/>
         </record>
         

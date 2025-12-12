@@ -12,6 +12,24 @@
                     <field name="delivery_status" widget="statusbar"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_enrolled_students" type="object" class="oe_stat_button" icon="fa-graduation-cap">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="current_enrollments"/>
+                                </span>
+                                <span class="o_stat_text">Enrolled Students</span>
+                            </div>
+                        </button>
+                        <button name="action_view_batch_intakes" type="object" class="oe_stat_button" icon="fa-cubes" invisible="batch_intake_count == 0">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="batch_intake_count"/>
+                                </span>
+                                <span class="o_stat_text">Batch Intakes</span>
+                            </div>
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="program_id"/>
@@ -37,6 +55,17 @@
                         <group>
                             <field name="seats_available"/>
                             <field name="is_full"/>
+                        </group>
+                    </group>
+                    <group string="Location &amp; Venue">
+                        <group>
+                            <field name="venue_name"/>
+                            <field name="venue_address"/>
+                            <field name="venue_city"/>
+                            <field name="venue_country_id"/>
+                        </group>
+                        <group>
+                            <field name="online_platform" invisible="training_mode != 'online'"/>
                         </group>
                     </group>
                 </sheet>
