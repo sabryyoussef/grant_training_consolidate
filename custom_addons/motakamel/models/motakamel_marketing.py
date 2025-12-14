@@ -619,7 +619,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Enrollment Details - %s') % self.program_id.program_name,
             'res_model': 'motakamel.delivery',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('program_id', '=', self.program_id.id)],
             'context': {
                 'default_program_id': self.program_id.id,
@@ -634,7 +634,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Enrolled Students - %s') % self.program_id.program_name,
             'res_model': 'op.student',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', self.enrolled_student_ids.ids)],
             'context': {'create': False}
         }
@@ -646,7 +646,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Enrollment Requests - %s') % self.program_id.program_name,
             'res_model': 'course.enrollment.request',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', self.enrollment_request_ids.ids)],
             'context': {
                 'create': False,
@@ -661,7 +661,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Interested Leads - %s') % self.program_id.program_name,
             'res_model': 'crm.lead',
-            'view_mode': 'tree,form,kanban',
+            'view_mode': 'list,form,kanban',
             'domain': [('id', 'in', self.lead_ids.ids)],
             'context': {
                 'default_name': self.program_id.program_name,
@@ -678,7 +678,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Exams - %s') % self.program_id.program_name,
             'res_model': 'op.exam',
-            'view_mode': 'tree,form,calendar',
+            'view_mode': 'list,form,calendar',
             'domain': [('id', 'in', self.exam_ids.ids)],
             'context': {
                 'default_course_id': self.course_ids[0].id if self.course_ids else False,
@@ -707,7 +707,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Assignments - %s') % self.program_id.program_name,
             'res_model': 'op.assignment',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', self.assignment_ids.ids)],
             'context': {
                 'default_course_id': self.course_ids[0].id if self.course_ids else False,
@@ -735,7 +735,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Classrooms - %s') % self.program_id.program_name,
             'res_model': 'op.classroom',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', self.classroom_ids.ids)],
             'context': {
                 'default_course_id': self.course_ids[0].id if self.course_ids else False,
@@ -763,7 +763,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Timetables - %s') % self.program_id.program_name,
             'res_model': 'op.session',
-            'view_mode': 'tree,form,calendar',
+            'view_mode': 'list,form,calendar',
             'domain': [('id', 'in', self.timetable_ids.ids)],
             'context': {
                 'default_course_id': self.course_ids[0].id if self.course_ids else False,
@@ -791,7 +791,7 @@ class MotakamelMarketing(models.Model):
             'type': 'ir.actions.act_window',
             'name': _('Attendance - %s') % self.program_id.program_name,
             'res_model': 'op.attendance.sheet',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', self.attendance_sheet_ids.ids)],
             'context': {
                 'default_course_id': self.course_ids[0].id if self.course_ids else False,
