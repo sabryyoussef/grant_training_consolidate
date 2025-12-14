@@ -21,6 +21,28 @@ This directory contains Python scripts for populating demo data in the Motakamel
 - Batch Intake module installed
 - Motakamel module installed
 
+## 🚀 Automatic Demo Data Loading
+
+**NEW**: Demo data now loads automatically when the module is installed or updated!
+
+The module includes a `post_init_hook` that automatically executes all demo data scripts in the correct order. This means:
+
+- ✅ Install/upgrade the module → Demo data loads automatically
+- ✅ No manual script execution needed
+- ✅ All scripts run in proper sequence
+- ✅ Errors are logged but don't stop the process
+- ✅ Progress tracked in Odoo logs
+
+To install with auto-loading:
+```bash
+odoo-bin -c config.conf -d database -i motakamel
+```
+
+To upgrade with auto-loading:
+```bash
+odoo-bin -c config.conf -d database -u motakamel
+```
+
 ---
 
 ## Core Demo Data Scripts
