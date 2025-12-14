@@ -156,24 +156,10 @@
                                 </group>
                             </group>
                             <group string="Delivery Schedules &amp; Enrollments">
-                                <field name="delivery_ids" nolabel="1">
-                                    <tree string="Deliveries">
-                                        <field name="delivery_name"/>
-                                        <field name="delivery_mode"/>
-                                        <field name="start_date"/>
-                                        <field name="end_date"/>
-                                        <field name="venue_city"/>
-                                        <field name="venue_country_id"/>
-                                        <field name="max_participants"/>
-                                        <field name="current_enrollments"/>
-                                        <field name="seats_available"/>
-                                        <field name="delivery_status" widget="badge" 
-                                               decoration-success="delivery_status == 'open'"
-                                               decoration-info="delivery_status == 'in_progress'"
-                                               decoration-warning="delivery_status == 'full'"
-                                               decoration-muted="delivery_status == 'completed'"/>
-                                    </tree>
-                                </field>
+                                <field name="program_id" readonly="1"/>
+                                <div>
+                                    <p>View delivery schedules from the related Program record.</p>
+                                </div>
                             </group>
                         </page>
                         <page string="Students &amp; Leads" name="students_leads">
@@ -192,17 +178,7 @@
                                             Click on any student to view their complete enrollment details and academic progress.
                                         </div>
                                     </group>
-                                    <field name="enrolled_student_ids" nolabel="1">
-                                        <tree string="Enrolled Students" create="false" delete="false">
-                                            <field name="name"/>
-                                            <field name="email"/>
-                                            <field name="phone"/>
-                                            <field name="course_detail_ids" widget="badge"/>
-                                            <field name="roll_number"/>
-                                            <field name="batch_id"/>
-                                            <field name="nationality_id"/>
-                                        </tree>
-                                    </field>
+                                    <field name="enrolled_student_ids" nolabel="1" readonly="1"/>
                                 </page>
                                 <page string="Pending Enrollment Requests" name="enrollment_requests">
                                     <group>
@@ -211,22 +187,7 @@
                                             Click on any request to review and approve/reject.
                                         </div>
                                     </group>
-                                    <field name="enrollment_request_ids" nolabel="1">
-                                        <tree string="Enrollment Requests" create="false" decoration-info="state == 'pending'">
-                                            <field name="name"/>
-                                            <field name="student_id"/>
-                                            <field name="course_id"/>
-                                            <field name="batch_id"/>
-                                            <field name="request_date"/>
-                                            <field name="state" widget="badge" 
-                                                   decoration-warning="state == 'pending'"
-                                                   decoration-info="state == 'submitted'"
-                                                   decoration-muted="state == 'draft'"/>
-                                            <button name="action_approve" string="Approve" type="object" 
-                                                    invisible="state not in ['pending', 'submitted']"
-                                                    class="btn-success" icon="fa-check"/>
-                                        </tree>
-                                    </field>
+                                    <field name="enrollment_request_ids" nolabel="1" readonly="1"/>
                                 </page>
                                 <page string="Interested Leads" name="interested_leads">
                                     <group>
@@ -235,19 +196,7 @@
                                             Click on any lead to follow up and convert to enrollment.
                                         </div>
                                     </group>
-                                    <field name="lead_ids" nolabel="1">
-                                        <tree string="Leads" create="false">
-                                            <field name="name"/>
-                                            <field name="contact_name"/>
-                                            <field name="email_from"/>
-                                            <field name="phone"/>
-                                            <field name="stage_id"/>
-                                            <field name="user_id"/>
-                                            <field name="date_open"/>
-                                            <field name="probability" widget="progressbar"/>
-                                            <field name="expected_revenue"/>
-                                        </tree>
-                                    </field>
+                                    <field name="lead_ids" nolabel="1" readonly="1"/>
                                 </page>
                             </notebook>
                         </page>
@@ -263,79 +212,31 @@
                                     <group>
                                         <button name="action_create_exam" string="Create New Exam" type="object" class="btn-primary" icon="fa-plus"/>
                                     </group>
-                                    <field name="exam_ids" nolabel="1">
-                                        <tree string="Exams" create="false">
-                                            <field name="name"/>
-                                            <field name="exam_code"/>
-                                            <field name="course_id"/>
-                                            <field name="batch_id"/>
-                                            <field name="start_time"/>
-                                            <field name="end_time"/>
-                                            <field name="total_marks"/>
-                                            <field name="state" widget="badge"/>
-                                        </tree>
-                                    </field>
+                                    <field name="exam_ids" nolabel="1" readonly="1"/>
                                 </page>
                                 <page string="Assignments" name="assignments">
                                     <group>
                                         <button name="action_create_assignment" string="Create New Assignment" type="object" class="btn-primary" icon="fa-plus"/>
                                     </group>
-                                    <field name="assignment_ids" nolabel="1">
-                                        <tree string="Assignments" create="false">
-                                            <field name="name"/>
-                                            <field name="course_id"/>
-                                            <field name="batch_id"/>
-                                            <field name="issued_date"/>
-                                            <field name="submission_date"/>
-                                            <field name="marks"/>
-                                            <field name="state" widget="badge"/>
-                                        </tree>
-                                    </field>
+                                    <field name="assignment_ids" nolabel="1" readonly="1"/>
                                 </page>
                                 <page string="Classrooms" name="classrooms">
                                     <group>
                                         <button name="action_create_classroom" string="Create New Classroom" type="object" class="btn-primary" icon="fa-plus"/>
                                     </group>
-                                    <field name="classroom_ids" nolabel="1">
-                                        <tree string="Classrooms" create="false">
-                                            <field name="name"/>
-                                            <field name="code"/>
-                                            <field name="course_id"/>
-                                            <field name="batch_id"/>
-                                            <field name="capacity"/>
-                                            <field name="active" widget="boolean_toggle"/>
-                                        </tree>
-                                    </field>
+                                    <field name="classroom_ids" nolabel="1" readonly="1"/>
                                 </page>
                                 <page string="Timetables" name="timetables">
                                     <group>
                                         <button name="action_create_timetable" string="Create New Schedule" type="object" class="btn-primary" icon="fa-plus"/>
                                     </group>
-                                    <field name="timetable_ids" nolabel="1">
-                                        <tree string="Timetables" create="false">
-                                            <field name="name"/>
-                                            <field name="course_id"/>
-                                            <field name="batch_id"/>
-                                            <field name="faculty_id"/>
-                                            <field name="subject_id"/>
-                                            <field name="start_datetime"/>
-                                            <field name="end_datetime"/>
-                                        </tree>
-                                    </field>
+                                    <field name="timetable_ids" nolabel="1" readonly="1"/>
                                 </page>
                                 <page string="Attendance" name="attendance">
                                     <group>
                                         <button name="action_create_attendance" string="Create Attendance Sheet" type="object" class="btn-primary" icon="fa-plus"/>
                                     </group>
-                                    <field name="attendance_sheet_ids" nolabel="1">
-                                        <tree string="Attendance Sheets" create="false">
-                                            <field name="name"/>
-                                            <field name="course_id"/>
-                                            <field name="batch_id"/>
-                                            <field name="attendance_date"/>
-                                            <field name="state" widget="badge"/>
-                                        </tree>
-                                    </field>
+                                    <field name="attendance_sheet_ids" nolabel="1" readonly="1"/>
                                 </page>
                             </notebook>
                         </page>

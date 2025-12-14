@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         
         <!-- Pricing: CBPLC - Standard Plan -->
         <record id="demo_pricing_cbplc_standard" model="motakamel.pricing">

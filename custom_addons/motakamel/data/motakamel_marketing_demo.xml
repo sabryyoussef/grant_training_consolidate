@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         
         <!-- Marketing: CBPLC -->
         <record id="demo_marketing_cbplc" model="motakamel.marketing">
@@ -21,12 +21,58 @@
             <field name="whatsapp_lead_link">https://wa.me/201234567890?text=أريد%20المزيد%20من%20المعلومات%20عن%20برنامج%20CBPLC</field>
             <field name="lead_form_enabled" eval="True"/>
             <field name="lead_magnet_type">brochure</field>
+            <field name="brochure_pdf_filename">CBPLC_Brochure_2025.pdf</field>
             <field name="promo_video_url">https://www.youtube.com/watch?v=cbplc2025</field>
+            <field name="testimonial_video_url">https://www.youtube.com/watch?v=cbplc_testimonials</field>
             <field name="hashtags">#ChangeManagement #Leadership #IBTA #Certification #CairoTraining</field>
+            <field name="facebook_post_text">🚀 Transform your leadership skills with IBTA's Certified Business Professional in Leading Through Change! 
+
+✅ Master change management frameworks
+✅ Build organizational resilience
+✅ Lead successful transformations
+✅ 5-day hybrid program in Cairo
+
+Register now for our January 2026 session!
+#CBPLC #ChangeManagement #Leadership</field>
+            <field name="twitter_post_text">Master change management with IBTA CBPLC certification. 5-day hybrid program in Cairo. Transform organizations effectively. Register now! #ChangeManagement #Leadership</field>
+            <field name="linkedin_post_text">Are you ready to lead organizational transformation with confidence?
+
+IBTA's Certified Business Professional in Leading Through Change (CBPLC) equips you with essential skills to navigate complex change initiatives.
+
+📌 Program Highlights:
+• Change management methodologies
+• Stakeholder engagement strategies  
+• Resilience-building techniques
+• Practical case studies
+• 5-day hybrid training in Cairo
+
+Perfect for managers and leaders in both public and private sectors.
+
+Learn more and register: [link]
+#ChangeManagement #Leadership #IBTA #OrganizationalDevelopment</field>
+            <field name="instagram_caption">Leading through change requires more than just strategy – it requires the right skills! 💼✨
+
+Join our CBPLC certification program and become a transformation leader.
+
+🎯 5-day hybrid training
+📍 Cairo, Egypt
+🌐 Bilingual (Arabic/English)
+
+DM us for registration details!
+
+#ChangeManagement #Leadership #IBTA #ProfessionalDevelopment #CairoTraining #BusinessTransformation</field>
             <field name="utm_source">website</field>
             <field name="utm_medium">organic</field>
             <field name="utm_campaign">cbplc_q1_2025</field>
+            <field name="google_analytics_id">G-CBPLC2025</field>
+            <field name="facebook_pixel_id">123456789012345</field>
             <field name="campaign_start_date">2025-11-06</field>
+            <field name="campaign_end_date">2026-01-09</field>
+            <field name="campaign_budget" eval="50000.0"/>
+            <field name="leads_generated" eval="125"/>
+            <field name="conversions" eval="18"/>
+            <field name="email_campaign_active" eval="True"/>
+            <field name="drip_campaign_enabled" eval="True"/>
             <field name="campaign_status">active</field>
             <field name="active" eval="True"/>
         </record>
@@ -50,12 +96,23 @@
             <field name="whatsapp_lead_link">https://wa.me/201234567890?text=أريد%20المزيد%20من%20المعلومات%20عن%20شهادة%20PHRI</field>
             <field name="lead_form_enabled" eval="True"/>
             <field name="lead_magnet_type">sample</field>
+            <field name="brochure_pdf_filename">PHRI_Program_Guide_2025.pdf</field>
             <field name="promo_video_url">https://www.youtube.com/watch?v=phri2025</field>
+            <field name="testimonial_video_url">https://www.youtube.com/watch?v=phri_success</field>
             <field name="hashtags">#PHRI #HRCI #HumanResources #HRCertification #InternationalHR</field>
+            <field name="facebook_post_text">🎓 Elevate your HR career with HRCI's PHRI certification! Global credential for HR professionals. 5-day hybrid program in Egypt. #PHRI #HRCI</field>
+            <field name="linkedin_post_text">Take Your HR Career Global with PHRI certification from HRCI. International HR expertise, comprehensive training, exam preparation included.</field>
+            <field name="instagram_caption">Your HR career deserves global recognition! PHRI certification from HRCI. 5-day hybrid program. Register now! #PHRI #HRCertification</field>
             <field name="utm_source">website</field>
             <field name="utm_medium">organic</field>
             <field name="utm_campaign">phri_2025</field>
+            <field name="google_analytics_id">G-PHRI2025</field>
             <field name="campaign_start_date">2025-11-11</field>
+            <field name="campaign_end_date">2026-01-24</field>
+            <field name="campaign_budget" eval="65000.0"/>
+            <field name="leads_generated" eval="87"/>
+            <field name="conversions" eval="14"/>
+            <field name="email_campaign_active" eval="True"/>
             <field name="campaign_status">active</field>
             <field name="active" eval="True"/>
         </record>
@@ -79,13 +136,26 @@
             <field name="whatsapp_lead_link">https://wa.me/201234567890?text=أريد%20المزيد%20من%20المعلومات%20عن%20شهادة%20PMP</field>
             <field name="lead_form_enabled" eval="True"/>
             <field name="lead_magnet_type">webinar</field>
+            <field name="brochure_pdf_filename">PMP_Premium_Package_2025.pdf</field>
             <field name="promo_video_url">https://www.youtube.com/watch?v=pmp2025</field>
             <field name="testimonial_video_url">https://www.youtube.com/watch?v=pmp_testimonials</field>
             <field name="hashtags">#PMP #PMI #ProjectManagement #PMPCertification #ProjectManager #Cairo</field>
+            <field name="facebook_post_text">🚀 Become a Certified Project Management Professional! PMI's PMP - the gold standard. 35 PDUs + exam prep. Register now! #PMP #PMI</field>
+            <field name="twitter_post_text">Earn the world's #1 project management credential! PMP from PMI. 5-day premium training in Cairo. 35 PDUs + exam prep. #PMP #PMI</field>
+            <field name="linkedin_post_text">Ready to Join the Elite in Project Management? The PMP from PMI is the world's most recognized PM certification. Premium 5-day program in Cairo.</field>
+            <field name="instagram_caption">Level up your PM career! 📈 PMP certification = Career transformation. World's #1 PM credential. Premium training in Cairo. #PMP #PMI</field>
             <field name="utm_source">website</field>
             <field name="utm_medium">organic</field>
             <field name="utm_campaign">pmp_premium_2025</field>
+            <field name="google_analytics_id">G-PMP2025</field>
+            <field name="facebook_pixel_id">345678901234567</field>
             <field name="campaign_start_date">2025-11-16</field>
+            <field name="campaign_end_date">2026-03-06</field>
+            <field name="campaign_budget" eval="95000.0"/>
+            <field name="leads_generated" eval="245"/>
+            <field name="conversions" eval="28"/>
+            <field name="email_campaign_active" eval="True"/>
+            <field name="drip_campaign_enabled" eval="True"/>
             <field name="campaign_status">active</field>
             <field name="active" eval="True"/>
         </record>
@@ -108,12 +178,22 @@
             <field name="whatsapp_lead_link">https://wa.me/201234567890?text=أريد%20المزيد%20من%20المعلومات%20عن%20برنامج%20خدمة%20العملاء</field>
             <field name="lead_form_enabled" eval="True"/>
             <field name="lead_magnet_type">brochure</field>
+            <field name="brochure_pdf_filename">CBPCS_Service_Excellence_2025.pdf</field>
             <field name="promo_video_url">https://www.youtube.com/watch?v=cbpcs2025</field>
             <field name="hashtags">#CustomerService #ServiceExcellence #IBTA #CustomerExperience</field>
+            <field name="facebook_post_text">⭐ Master customer service excellence! IBTA's CBPCS certification. 5-day training in Cairo. #CustomerService #IBTA</field>
+            <field name="linkedin_post_text">Excel in customer service with IBTA's certification. Master CRM, service quality, and customer experience optimization.</field>
+            <field name="instagram_caption">Transform customer experiences! ⭐ CBPCS certification. 5-day program in Cairo. #CustomerService #ServiceExcellence</field>
             <field name="utm_source">website</field>
             <field name="utm_medium">organic</field>
             <field name="utm_campaign">cbpcs_2025</field>
+            <field name="google_analytics_id">G-CBPCS2025</field>
             <field name="campaign_start_date">2025-11-21</field>
+            <field name="campaign_end_date">2026-02-20</field>
+            <field name="campaign_budget" eval="35000.0"/>
+            <field name="leads_generated" eval="95"/>
+            <field name="conversions" eval="22"/>
+            <field name="email_campaign_active" eval="True"/>
             <field name="campaign_status">active</field>
             <field name="active" eval="True"/>
         </record>
@@ -137,12 +217,26 @@
             <field name="whatsapp_lead_link">https://wa.me/201234567890?text=أريد%20المزيد%20من%20المعلومات%20عن%20برنامج%20القيادة</field>
             <field name="lead_form_enabled" eval="True"/>
             <field name="lead_magnet_type">consultation</field>
+            <field name="brochure_pdf_filename">CBPL_Leadership_Program_2025.pdf</field>
             <field name="promo_video_url">https://www.youtube.com/watch?v=cbpl2025</field>
+            <field name="testimonial_video_url">https://www.youtube.com/watch?v=cbpl_leaders</field>
             <field name="hashtags">#Leadership #LeadershipDevelopment #IBTA #ExecutiveLeadership #BusinessLeadership</field>
+            <field name="facebook_post_text">🎯 Transform into an exceptional leader! IBTA's CBPL certification. Emotional intelligence, team dynamics, strategic decision-making. 5 days in Cairo. #Leadership #IBTA</field>
+            <field name="twitter_post_text">Develop advanced leadership competencies with IBTA CBPL. Master emotional intelligence &amp; team leadership. 5-day program. Register! #Leadership #IBTA</field>
+            <field name="linkedin_post_text">Enhance your leadership capabilities with IBTA's Certified Business Professional in Leadership. Comprehensive program covering leadership theories, emotional intelligence, and high-performance culture.</field>
+            <field name="instagram_caption">Your leadership journey starts here! 🌟 CBPL certification by IBTA. Develop exceptional leadership skills. 5-day hybrid training. #Leadership #LeadershipDevelopment</field>
             <field name="utm_source">website</field>
             <field name="utm_medium">organic</field>
             <field name="utm_campaign">cbpl_2025</field>
+            <field name="google_analytics_id">G-CBPL2025</field>
+            <field name="facebook_pixel_id">456789012345678</field>
             <field name="campaign_start_date">2025-11-26</field>
+            <field name="campaign_end_date">2026-02-25</field>
+            <field name="campaign_budget" eval="45000.0"/>
+            <field name="leads_generated" eval="156"/>
+            <field name="conversions" eval="24"/>
+            <field name="email_campaign_active" eval="True"/>
+            <field name="drip_campaign_enabled" eval="False"/>
             <field name="campaign_status">active</field>
             <field name="active" eval="True"/>
         </record>

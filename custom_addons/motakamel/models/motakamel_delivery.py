@@ -243,10 +243,13 @@ class MotakamelDelivery(models.Model):
         """Find batch intakes related to this delivery's program"""
         for record in self:
             # Try to find batches by matching course/program
-            batches = self.env['batch.intake'].search([
-                ('course_id.name', 'ilike', record.program_id.name if record.program_id else ''),
-                ('state', 'in', ['open', 'in_progress'])
-            ])
+            if record.program_id:
+                batches = self.env['batch.intake'].search([
+                    ('course_id.name', 'ilike', record.program_id.program_name),
+                    ('state', 'in', ['open', 'in_progress'])
+                ])
+            else:
+                batches = self.env['batch.intake']
             record.batch_intake_ids = batches
             record.batch_intake_count = len(batches)
     

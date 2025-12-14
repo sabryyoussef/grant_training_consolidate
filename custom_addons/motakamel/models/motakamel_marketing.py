@@ -316,12 +316,19 @@ class MotakamelMarketing(models.Model):
     # ENROLLMENT TRACKING
     # ========================================================
     
-    delivery_ids = fields.One2many(
-        related='program_id.delivery_ids',
+    delivery_ids = fields.Many2many(
+        'motakamel.delivery',
         string='Deliveries',
         readonly=True,
+        compute='_compute_delivery_ids',
+        store=False,
         help="All delivery schedules for this program"
     )
+    
+    @api.depends('program_id.delivery_ids')
+    def _compute_delivery_ids(self):
+        for record in self:
+            record.delivery_ids = record.program_id.delivery_ids if record.program_id else False
     
     total_capacity = fields.Integer(
         string='Total Capacity',
@@ -410,8 +417,8 @@ class MotakamelMarketing(models.Model):
             # Get enrolled students from batch intakes related to this program
             batch_intakes = self.env['batch.intake'].search([
                 '|',
-                ('course_id.name', 'ilike', record.program_id.name if record.program_id else ''),
-                ('name', 'ilike', record.program_id.name if record.program_id else '')
+                ('course_id.name', 'ilike', record.program_id.program_name if record.program_id else ''),
+                ('name', 'ilike', record.program_id.program_name if record.program_id else '')
             ])
             enrolled_students = batch_intakes.mapped('openeducat_student_ids')
             record.enrolled_student_ids = enrolled_students
@@ -421,8 +428,8 @@ class MotakamelMarketing(models.Model):
             if record.program_id:
                 courses = self.env['op.course'].search([
                     '|',
-                    ('name', 'ilike', record.program_id.name),
-                    ('code', 'ilike', record.program_id.code)
+                    ('name', 'ilike', record.program_id.program_name),
+                    ('code', 'ilike', record.program_id.program_code)
                 ])
                 requests = self.env['course.enrollment.request'].search([
                     ('course_id', 'in', courses.ids),
@@ -438,8 +445,8 @@ class MotakamelMarketing(models.Model):
             if record.program_id:
                 leads = self.env['crm.lead'].search([
                     '|', '|',
-                    ('name', 'ilike', record.program_id.name),
-                    ('description', 'ilike', record.program_id.name),
+                    ('name', 'ilike', record.program_id.program_name),
+                    ('description', 'ilike', record.program_id.program_name),
                     ('description', 'ilike', record.campaign_name)
                 ])
                 record.lead_ids = leads
@@ -496,7 +503,7 @@ class MotakamelMarketing(models.Model):
     )
     
     timetable_ids = fields.One2many(
-        'op.timetable',
+        'op.session',
         compute='_compute_course_resources',
         string='Timetables',
         help="Class schedules for this program"
@@ -540,8 +547,8 @@ class MotakamelMarketing(models.Model):
             # Find related courses
             courses = self.env['op.course'].search([
                 '|',
-                ('name', 'ilike', record.program_id.name),
-                ('code', 'ilike', record.program_id.code)
+                ('name', 'ilike', record.program_id.program_name),
+                ('code', 'ilike', record.program_id.program_code)
             ])
             record.course_ids = courses
             
@@ -567,7 +574,7 @@ class MotakamelMarketing(models.Model):
             record.classroom_count = len(classrooms)
             
             # Find timetables
-            timetables = self.env['op.timetable'].search([
+            timetables = self.env['op.session'].search([
                 ('course_id', 'in', courses.ids)
             ])
             record.timetable_ids = timetables
@@ -610,7 +617,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Enrollment Details - %s') % self.program_id.name,
+            'name': _('Enrollment Details - %s') % self.program_id.program_name,
             'res_model': 'motakamel.delivery',
             'view_mode': 'tree,form',
             'domain': [('program_id', '=', self.program_id.id)],
@@ -625,7 +632,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Enrolled Students - %s') % self.program_id.name,
+            'name': _('Enrolled Students - %s') % self.program_id.program_name,
             'res_model': 'op.student',
             'view_mode': 'tree,form',
             'domain': [('id', 'in', self.enrolled_student_ids.ids)],
@@ -637,7 +644,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Enrollment Requests - %s') % self.program_id.name,
+            'name': _('Enrollment Requests - %s') % self.program_id.program_name,
             'res_model': 'course.enrollment.request',
             'view_mode': 'tree,form',
             'domain': [('id', 'in', self.enrollment_request_ids.ids)],
@@ -652,12 +659,12 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Interested Leads - %s') % self.program_id.name,
+            'name': _('Interested Leads - %s') % self.program_id.program_name,
             'res_model': 'crm.lead',
             'view_mode': 'tree,form,kanban',
             'domain': [('id', 'in', self.lead_ids.ids)],
             'context': {
-                'default_name': self.program_id.name,
+                'default_name': self.program_id.program_name,
                 'default_description': f'Interested in {self.campaign_name}'
             }
         }
@@ -669,7 +676,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         action = {
             'type': 'ir.actions.act_window',
-            'name': _('Exams - %s') % self.program_id.name,
+            'name': _('Exams - %s') % self.program_id.program_name,
             'res_model': 'op.exam',
             'view_mode': 'tree,form,calendar',
             'domain': [('id', 'in', self.exam_ids.ids)],
@@ -684,7 +691,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Create Exam - %s') % self.program_id.name,
+            'name': _('Create Exam - %s') % self.program_id.program_name,
             'res_model': 'op.exam',
             'view_mode': 'form',
             'target': 'new',
@@ -698,7 +705,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Assignments - %s') % self.program_id.name,
+            'name': _('Assignments - %s') % self.program_id.program_name,
             'res_model': 'op.assignment',
             'view_mode': 'tree,form',
             'domain': [('id', 'in', self.assignment_ids.ids)],
@@ -712,7 +719,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Create Assignment - %s') % self.program_id.name,
+            'name': _('Create Assignment - %s') % self.program_id.program_name,
             'res_model': 'op.assignment',
             'view_mode': 'form',
             'target': 'new',
@@ -726,7 +733,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Classrooms - %s') % self.program_id.name,
+            'name': _('Classrooms - %s') % self.program_id.program_name,
             'res_model': 'op.classroom',
             'view_mode': 'tree,form',
             'domain': [('id', 'in', self.classroom_ids.ids)],
@@ -740,7 +747,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Create Classroom - %s') % self.program_id.name,
+            'name': _('Create Classroom - %s') % self.program_id.program_name,
             'res_model': 'op.classroom',
             'view_mode': 'form',
             'target': 'new',
@@ -754,8 +761,8 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Timetables - %s') % self.program_id.name,
-            'res_model': 'op.timetable',
+            'name': _('Timetables - %s') % self.program_id.program_name,
+            'res_model': 'op.session',
             'view_mode': 'tree,form,calendar',
             'domain': [('id', 'in', self.timetable_ids.ids)],
             'context': {
@@ -768,8 +775,8 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Create Timetable - %s') % self.program_id.name,
-            'res_model': 'op.timetable',
+            'name': _('Create Timetable - %s') % self.program_id.program_name,
+            'res_model': 'op.session',
             'view_mode': 'form',
             'target': 'new',
             'context': {
@@ -782,7 +789,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Attendance - %s') % self.program_id.name,
+            'name': _('Attendance - %s') % self.program_id.program_name,
             'res_model': 'op.attendance.sheet',
             'view_mode': 'tree,form',
             'domain': [('id', 'in', self.attendance_sheet_ids.ids)],
@@ -796,7 +803,7 @@ class MotakamelMarketing(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Create Attendance Sheet - %s') % self.program_id.name,
+            'name': _('Create Attendance Sheet - %s') % self.program_id.program_name,
             'res_model': 'op.attendance.sheet',
             'view_mode': 'form',
             'target': 'new',

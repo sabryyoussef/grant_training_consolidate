@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         
         <!-- Program 1: Certified Business Professional in Leading Through Change (IBTA) -->
         <record id="demo_program_cbplc" model="motakamel.program">
