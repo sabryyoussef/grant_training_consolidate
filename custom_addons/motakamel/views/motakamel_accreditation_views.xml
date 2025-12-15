@@ -32,6 +32,10 @@
                         <field name="notes"/>
                     </group>
                 </sheet>
+<<<<<<< HEAD
+=======
+                <chatter/>
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
             </form>
         </field>
     </record>

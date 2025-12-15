@@ -13,7 +13,137 @@
               parent="menu_motakamel_root"
               sequence="10"
               action="action_motakamel_program"/>
+<<<<<<< HEAD
     
+=======
+
+    <!-- Admissions Menu (High-level admissions views) -->
+    <menuitem id="menu_motakamel_admissions"
+              name="Admissions"
+              parent="menu_motakamel_root"
+              sequence="20"/>
+
+    <!-- Admissions: Applications & Registers from OpenEduCat Admission -->
+    <menuitem id="menu_motakamel_admissions_applications"
+              name="Applications"
+              parent="menu_motakamel_admissions"
+              sequence="10"
+              action="openeducat_admission.act_open_op_admission_view"/>
+
+    <menuitem id="menu_motakamel_admissions_registers"
+              name="Admission Registers"
+              parent="menu_motakamel_admissions"
+              sequence="20"
+              action="openeducat_admission.act_open_op_admission_register_view"/>
+
+    <!-- Academic Operations Menu (OpenEduCat academic layer) -->
+    <menuitem id="menu_motakamel_academic_ops"
+              name="Academic Operations"
+              parent="menu_motakamel_root"
+              sequence="30"/>
+
+    <!-- Academic Operations / Learners -->
+    <menuitem id="menu_motakamel_academic_learners"
+              name="Learners"
+              parent="menu_motakamel_academic_ops"
+              sequence="10"/>
+
+    <menuitem id="menu_motakamel_academic_students"
+              name="Students"
+              parent="menu_motakamel_academic_learners"
+              sequence="10"
+              action="openeducat_core.act_open_op_student_view_2"/>
+
+    <!-- Academic Operations / Classes & Sessions -->
+    <menuitem id="menu_motakamel_academic_classes"
+              name="Classes &amp; Sessions"
+              parent="menu_motakamel_academic_ops"
+              sequence="20"/>
+
+    <menuitem id="menu_motakamel_academic_classrooms"
+              name="Classrooms"
+              parent="menu_motakamel_academic_classes"
+              sequence="10"
+              action="openeducat_classroom.act_open_op_classroom_view"/>
+
+    <menuitem id="menu_motakamel_academic_sessions"
+              name="Sessions"
+              parent="menu_motakamel_academic_classes"
+              sequence="20"
+              action="openeducat_timetable.act_open_op_session_view_list"/>
+
+    <!-- Academic Operations / Exams & Assignments -->
+    <menuitem id="menu_motakamel_academic_assessment"
+              name="Exams &amp; Assignments"
+              parent="menu_motakamel_academic_ops"
+              sequence="30"/>
+
+    <menuitem id="menu_motakamel_academic_exams"
+              name="Exams"
+              parent="menu_motakamel_academic_assessment"
+              sequence="10"
+              action="openeducat_exam.act_open_op_exam_view"/>
+
+    <menuitem id="menu_motakamel_academic_exam_sessions"
+              name="Exam Sessions"
+              parent="menu_motakamel_academic_assessment"
+              sequence="20"
+              action="openeducat_exam.act_open_op_exam_session_view"/>
+
+    <menuitem id="menu_motakamel_academic_assignments"
+              name="Assignments"
+              parent="menu_motakamel_academic_assessment"
+              sequence="30"
+              action="openeducat_assignment.act_open_op_assignment_view"/>
+
+    <menuitem id="menu_motakamel_academic_submissions"
+              name="Submissions"
+              parent="menu_motakamel_academic_assessment"
+              sequence="40"
+              action="openeducat_assignment.act_open_op_assignment_sub_line_view"/>
+
+    <!-- Academic Operations / Attendance & Activities -->
+    <menuitem id="menu_motakamel_academic_attendance"
+              name="Attendance &amp; Activities"
+              parent="menu_motakamel_academic_ops"
+              sequence="40"/>
+
+    <menuitem id="menu_motakamel_attendance_registers"
+              name="Attendance Registers"
+              parent="menu_motakamel_academic_attendance"
+              sequence="10"
+              action="openeducat_attendance.act_open_op_attendance_register_view"/>
+
+    <menuitem id="menu_motakamel_attendance_sheets"
+              name="Attendance Sheets"
+              parent="menu_motakamel_academic_attendance"
+              sequence="20"
+              action="openeducat_attendance.act_open_op_attendance_sheet_view"/>
+
+    <menuitem id="menu_motakamel_student_activities"
+              name="Student Activities"
+              parent="menu_motakamel_academic_attendance"
+              sequence="30"
+              action="openeducat_activity.act_open_op_activity_view"/>
+
+    <!-- Dashboards Menu -->
+    <menuitem id="menu_motakamel_dashboards"
+              name="Dashboards"
+              parent="menu_motakamel_root"
+              sequence="40"/>
+
+    <menuitem id="menu_motakamel_training_dashboard"
+              name="Training Dashboard"
+              parent="menu_motakamel_dashboards"
+              sequence="10"
+              action="training_dashboard.action_training_dashboard"/>
+
+    <menuitem id="menu_motakamel_student_lifecycle_dashboard"
+              name="Student Lifecycle Dashboard"
+              parent="menu_motakamel_dashboards"
+              sequence="20"
+              action="student_lifecycle_dashboard.action_student_lifecycle_dashboard"/>
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
     <!-- Configuration Menu -->
     <menuitem id="menu_motakamel_config"
               name="Configuration"

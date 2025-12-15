@@ -22,6 +22,7 @@
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_accreditations" type="object" class="oe_stat_button" icon="fa-certificate">
+<<<<<<< HEAD
                             <field name="accreditation_count" widget="statbutton" string="Accreditations"/>
                         </button>
                         <button name="action_view_delivery" type="object" class="oe_stat_button" icon="fa-calendar">
@@ -29,6 +30,46 @@
                         </button>
                         <button name="action_view_pricing" type="object" class="oe_stat_button" icon="fa-money">
                             <field name="pricing_count" widget="statbutton" string="Pricing Plans"/>
+=======
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="accreditation_count" nolabel="1"/>
+                                </span>
+                                <span class="o_stat_text">Accreditations</span>
+                            </div>
+                        </button>
+                        <button name="action_view_delivery" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="delivery_count" nolabel="1"/>
+                                </span>
+                                <span class="o_stat_text">Delivery Options</span>
+                            </div>
+                        </button>
+                        <button name="action_view_pricing" type="object" class="oe_stat_button" icon="fa-money">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="pricing_count" nolabel="1"/>
+                                </span>
+                                <span class="o_stat_text">Pricing Plans</span>
+                            </div>
+                        </button>
+                        <button name="action_view_courses" type="object" class="oe_stat_button" icon="fa-book">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="course_count" nolabel="1"/>
+                                </span>
+                                <span class="o_stat_text">Courses</span>
+                            </div>
+                        </button>
+                        <button name="action_view_marketing" type="object" class="oe_stat_button" icon="fa-bullhorn">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="marketing_count" nolabel="1"/>
+                                </span>
+                                <span class="o_stat_text">Marketing &amp; Media</span>
+                            </div>
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
                         </button>
                     </div>
                     
@@ -62,8 +103,12 @@
                     <notebook>
                         <page string="Description" name="description">
                             <group>
+<<<<<<< HEAD
                                 <field name="description_en" widget="html" placeholder="Detailed program description in English..."/>
                                 <field name="description_ar" widget="html" placeholder="وصف تفصيلي للبرنامج بالعربي..." options="{'direction': 'rtl'}"/>
+=======
+                                <field name="description_en" widget="html" placeholder="Detailed program description (use translation for Arabic)..."/>
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
                             </group>
                             <group>
                                 <field name="program_objective" placeholder="Learning objectives and outcomes..."/>
@@ -169,6 +214,10 @@
                         </page>
                     </notebook>
                 </sheet>
+<<<<<<< HEAD
+=======
+                <chatter/>
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
             </form>
         </field>
     </record>

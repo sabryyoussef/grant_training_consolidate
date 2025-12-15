@@ -88,6 +88,7 @@ class MotakamelProgram(models.Model):
     ], string='Provider Type', required=True, default='external', tracking=True)
     
     description_en = fields.Html(
+<<<<<<< HEAD
         string='Description (English)',
         translate=True,
         help="Detailed program description in English"
@@ -97,6 +98,22 @@ class MotakamelProgram(models.Model):
         string='Description (Arabic)',
         translate=True,
         help="Detailed program description in Arabic"
+=======
+
+
+
+
+
+
+
+
+
+
+
+        string='Description',
+        translate=True,
+        help="Detailed program description (use Odoo translations for multiple languages)"
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
     )
     
     program_objective = fields.Text(
@@ -220,6 +237,25 @@ class MotakamelProgram(models.Model):
         ('corporate', 'Corporate Clients Only'),
         ('internal', 'Internal Only'),
     ], string='Visibility Scope', default='public', required=True)
+<<<<<<< HEAD
+=======
+
+    # ========================================================
+    # RELATED OPENEDUCAT COURSES
+    # ========================================================
+
+    course_ids = fields.Many2many(
+        'op.course',
+        string='Related Courses',
+        compute='_compute_related_courses',
+        help="OpenEduCat courses whose name or code match this program"
+    )
+
+    course_count = fields.Integer(
+        string='Courses',
+        compute='_compute_related_courses'
+    )
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
     
     # ========================================================
     # COMPUTED FIELDS
@@ -244,13 +280,55 @@ class MotakamelProgram(models.Model):
         string='Pricing Plans',
         compute='_compute_counts'
     )
+<<<<<<< HEAD
     
     @api.depends('accreditation_ids', 'delivery_ids', 'pricing_ids')
+=======
+
+    marketing_count = fields.Integer(
+        string='Marketing',
+        compute='_compute_counts',
+        help="Number of marketing/media records for this program"
+    )
+    
+    @api.depends('accreditation_ids', 'delivery_ids', 'pricing_ids', 'marketing_ids')
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
     def _compute_counts(self):
         for record in self:
             record.accreditation_count = len(record.accreditation_ids)
             record.delivery_count = len(record.delivery_ids)
             record.pricing_count = len(record.pricing_ids)
+<<<<<<< HEAD
+=======
+            record.marketing_count = len(record.marketing_ids)
+
+    @api.depends('program_name', 'program_code')
+    def _compute_related_courses(self):
+        """Link OpenEduCat courses based on matching name/code."""
+        Course = self.env['op.course']
+        for record in self:
+            if not record.program_name and not record.program_code:
+                record.course_ids = False
+                record.course_count = 0
+                continue
+
+            domain = []
+            if record.program_name:
+                domain.append(('name', 'ilike', record.program_name))
+            if record.program_code:
+                domain.append(('code', 'ilike', record.program_code))
+
+            if len(domain) == 2:
+                search_domain = ['|'] + domain
+            elif len(domain) == 1:
+                search_domain = domain
+            else:
+                search_domain = []
+
+            courses = Course.search(search_domain) if search_domain else Course.browse()
+            record.course_ids = courses
+            record.course_count = len(courses)
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
     
     # ========================================================
     # CONSTRAINTS
@@ -328,6 +406,36 @@ class MotakamelProgram(models.Model):
             'domain': [('program_id', '=', self.id)],
             'context': {'default_program_id': self.id},
         }
+<<<<<<< HEAD
+=======
+
+    def action_view_marketing(self):
+        """Open marketing/media records for this program."""
+        self.ensure_one()
+        return {
+            'name': _('Marketing & Media - %s') % self.program_name,
+            'type': 'ir.actions.act_window',
+            'res_model': 'motakamel.marketing',
+            'view_mode': 'list,form',
+            'domain': [('program_id', '=', self.id)],
+            'context': {'default_program_id': self.id},
+        }
+
+    def action_view_courses(self):
+        """View OpenEduCat courses linked to this program."""
+        self.ensure_one()
+        return {
+            'name': _('Courses - %s') % self.program_name,
+            'type': 'ir.actions.act_window',
+            'res_model': 'op.course',
+            'view_mode': 'list,form',
+            'domain': [('id', 'in', self.course_ids.ids)],
+            'context': {
+                'default_name': self.program_name,
+                'default_code': self.program_code,
+            },
+        }
+>>>>>>> 959f060 (Motakamel integration: academic operations menus, program smart buttons, courses link, chatter, and marketing media)
     
     # ========================================================
     # WEBSITE METHODS
