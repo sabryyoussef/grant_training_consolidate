@@ -11,6 +11,78 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
+/* Program description preview - limit height */
+.program-description-preview {
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.program-description-preview p {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+}
+
+/* Program placeholder with gradient background */
+.program-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Reset any inherited styles */
+.program-placeholder * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.program-placeholder i,
+.program-placeholder .fa,
+.program-placeholder .fas,
+.program-placeholder .far {
+    color: white !important;
+    font-size: 3rem !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    line-height: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    text-indent: 0 !important;
+    font-style: normal !important;
+    font-weight: 900 !important;
+    font-family: "FontAwesome", "Font Awesome 5 Free", "Font Awesome 5 Pro" !important;
+}
+
+/* Force graduation cap icon to display */
+.program-placeholder .fa-graduation-cap:before,
+.program-placeholder .fas.fa-graduation-cap:before {
+    content: "\f19d" !important;
+    font-family: "FontAwesome", "Font Awesome 5 Free", "Font Awesome 5 Pro" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide any text content that might appear in placeholder */
+.program-placeholder > *:not(i):not(.fa):not(.fas):not(.far) {
+    display: none !important;
+}
+
 .motakamel_program_header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;

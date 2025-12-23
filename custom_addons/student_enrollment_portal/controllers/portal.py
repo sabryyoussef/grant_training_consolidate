@@ -13,14 +13,46 @@ _logger = logging.getLogger(__name__)
 class StudentEnrollmentPortal(CustomerPortal):
     """Portal controller for student enrollment/registration"""
     
+    @http.route(['/programs'], type='http', auth='public', website=True, sitemap=True)
+    def public_programs_catalog(self, **kw):
+        """Display public programs catalog for visitors"""
+        
+        # Get all active programs
+        programs = request.env['op.program'].sudo().search([
+            ('active', '=', True)
+        ], order='name')
+        
+        values = {
+            'programs': programs,
+            'page_name': 'programs',
+        }
+        
+        return request.render('student_enrollment_portal.public_programs_catalog', values)
+    
+    @http.route(['/programs/<int:program_id>'], type='http', auth='public', website=True, sitemap=False)
+    def public_program_detail(self, program_id, **kw):
+        """Display detailed information about a specific program"""
+        
+        # Get program
+        program = request.env['op.program'].sudo().browse(program_id)
+        if not program.exists():
+            return request.redirect('/programs')
+        
+        values = {
+            'program': program,
+            'page_name': 'program_detail',
+        }
+        
+        return request.render('student_enrollment_portal.public_program_detail', values)
+    
     @http.route(['/courses'], type='http', auth='public', website=True, sitemap=True)
     def public_courses_catalog(self, **kw):
         """Display public course catalog for visitors"""
         
-        # Get all active courses
+        # Get all active courses, ordered by sequence if available, otherwise by name
         courses = request.env['op.course'].sudo().search([
             ('active', '=', True)
-        ], order='name')
+        ], order='sequence, name')
         
         values = {
             'courses': courses,
@@ -334,10 +366,10 @@ class StudentEnrollmentPortal(CustomerPortal):
             ('partner_id.user_ids', 'in', [user.id])
         ], limit=1)
         
-        # Get all available courses
+        # Get all available courses, ordered by sequence if available, otherwise by name
         courses = request.env['op.course'].sudo().search([
             ('active', '=', True)
-        ])
+        ], order='sequence, name')
         
         # Get student's existing enrollments
         enrolled_course_ids = []

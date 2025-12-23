@@ -43,6 +43,11 @@
         'views/course_enrollment_request_views.xml',
         'views/portal_templates.xml',
     ],
+    'assets': {
+        'website.assets_frontend': [
+            'student_enrollment_portal/static/src/css/course_cards.css',
+        ],
+    },
     'demo': [],
     'installable': True,
     'auto_install': False,

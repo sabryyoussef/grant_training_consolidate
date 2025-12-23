@@ -90,7 +90,7 @@
         'web.assets_backend': [
             'motakamel/static/src/css/motakamel_backend.css',
         ],
-        'web.assets_frontend': [
+        'website.assets_frontend': [
             'motakamel/static/src/css/motakamel_frontend.css',
         ],
     },

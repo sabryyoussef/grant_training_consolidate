@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-lg-12 text-center text-white">
                                 <h1 class="display-4 mb-3">
-                                    <i class="fa fa-graduation-cap"/> Training Programs
+                                    <i class="fas fa-graduation-cap"/> Training Programs
                                 </h1>
                                 <p class="lead mb-4">Professional Certification &amp; Courses</p>
                             </div>
@@ -25,19 +25,70 @@
                                 <t t-foreach="programs" t-as="program">
                                     <div class="col-md-6 col-lg-4 mb-4">
                                         <div class="card h-100 shadow-sm motakamel_program_card">
-                                            <div class="card-body">
-                                                <h5 class="card-title" t-esc="program.program_name"/>
-                                                <p class="card-text text-muted" t-esc="program.program_code"/>
-                                                <div class="mb-2">
-                                                    <span class="badge bg-primary" t-esc="program.program_category"/>
-                                                    <span class="badge bg-info" t-esc="program.program_level"/>
-                                                </div>
-                                                <t t-if="program.program_name_ar">
-                                                    <p class="card-text" dir="rtl" style="color: #666; font-size: 0.9em;" t-esc="program.program_name_ar"/>
-                                                </t>
+                                            <!-- Program Placeholder -->
+                                            <div class="program-placeholder">
+                                                <i class="fas fa-graduation-cap"/>
                                             </div>
-                                            <div class="card-footer bg-transparent border-top-0">
-                                                <a t-attf-href="/programs/#{program.id}" class="btn btn-primary btn-sm">View Details</a>
+                                            
+                                            <div class="card-body d-flex flex-column">
+                                                <!-- Program Status Badge -->
+                                                <div class="mb-2" t-if="program.status">
+                                                    <span t-attf-class="badge bg-#{program.status == 'published' and 'success' or (program.status == 'approved' and 'info' or 'warning')} me-1">
+                                                        <i t-attf-class="fa fa-#{program.status == 'published' and 'check-circle' or (program.status == 'approved' and 'check' or 'clock-o')}"/> 
+                                                        <t t-esc="program.status == 'published' and 'Published' or (program.status == 'approved' and 'Approved' or (program.status == 'draft' and 'Draft' or program.status))"/>
+                                                    </span>
+                                                </div>
+                                                
+                                                <h5 class="card-title text-primary">
+                                                    <i class="fa fa-certificate"/> <t t-esc="program.program_name"/>
+                                                </h5>
+                                                <p class="card-text text-muted mb-2" t-if="program.program_code">
+                                                    <strong>Code:</strong> <t t-esc="program.program_code"/>
+                                                </p>
+                                                
+                                                <!-- Program Description -->
+                                                <div class="card-text text-muted mb-2 small program-description-preview" t-if="program.description_en">
+                                                    <t t-raw="program.description_en"/>
+                                                </div>
+                                                
+                                                <!-- Provider Info -->
+                                                <div class="mb-2" t-if="program.provider_name">
+                                                    <small class="text-muted">
+                                                        <i class="fa fa-building"/> <t t-esc="program.provider_name"/>
+                                                        <t t-if="program.provider_type"> (<t t-esc="program.provider_type"/>)</t>
+                                                    </small>
+                                                </div>
+                                                
+                                                <!-- Delivery Options Info -->
+                                                <div class="mb-2" t-if="program.delivery_count">
+                                                    <small class="text-muted">
+                                                        <i class="fa fa-calendar"/> 
+                                                        <t t-esc="program.delivery_count"/> delivery option(s) available
+                                                    </small>
+                                                </div>
+                                                
+                                                <!-- Pricing Info -->
+                                                <div class="mb-2" t-if="program.pricing_ids">
+                                                    <small class="text-muted">
+                                                        <i class="fa fa-dollar-sign"/> 
+                                                        Starting from <t t-esc="program.pricing_ids[0].currency_id.symbol"/><t t-esc="program.pricing_ids[0].final_price"/>
+                                                    </small>
+                                                </div>
+                                                
+                                                <div class="mb-2">
+                                                    <span class="badge bg-primary me-1 mb-1" t-esc="program.program_category"/>
+                                                    <span class="badge bg-info me-1 mb-1" t-esc="program.program_level"/>
+                                                </div>
+                                                
+                                                <t t-if="program.program_name_ar">
+                                                    <p class="card-text mb-3" dir="rtl" style="color: #666; font-size: 0.9em;" t-esc="program.program_name_ar"/>
+                                                </t>
+                                                
+                                                <div class="mt-auto pt-3">
+                                                    <a t-attf-href="/programs/#{program.id}" class="btn btn-primary btn-sm w-100">
+                                                        <i class="fa fa-info-circle"/> View Details
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -76,7 +127,6 @@
                                 <div class="mt-4">
                                     <h4>Description</h4>
                                     <div class="description_en" t-field="program.description_en"/>
-                                    <div class="description_ar" dir="rtl" t-if="program.description_ar" t-field="program.description_ar"/>
                                 </div>
                                 
                                 <div class="mt-4" t-if="program.accreditation_ids">
@@ -86,6 +136,29 @@
                                             <li><span t-esc="acc.accreditation_code"/> - <span t-esc="acc.international_accreditation_body or acc.local_accreditation_body"/></li>
                                         </t>
                                     </ul>
+                                </div>
+                                
+                                <div class="mt-4" t-if="program.course_ids">
+                                    <h4>Related Courses</h4>
+                                    <div class="row">
+                                        <t t-foreach="program.course_ids" t-as="course">
+                                            <div class="col-md-6 mb-3">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">
+                                                            <i class="fa fa-book"/> <t t-esc="course.name"/>
+                                                        </h6>
+                                                        <p class="card-text text-muted mb-2" t-if="course.code">
+                                                            <strong>Code:</strong> <t t-esc="course.code"/>
+                                                        </p>
+                                                        <a t-attf-href="/courses/#{course.id}" class="btn btn-sm btn-outline-primary">
+                                                            <i class="fa fa-info-circle"/> View Course
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
                                 </div>
                             </div>
                             

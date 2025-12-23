@@ -1,19 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
+    <!-- Public Programs Catalog -->
+    <template id="public_programs_catalog" name="Public Programs Catalog">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="s_cover pt48 pb48" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-center text-white">
+                                <h1 class="display-4 mb-3">
+                                    <i class="fa fa-graduation-cap"/> Training Programs
+                                </h1>
+                                <p class="lead mb-4">Professional Certification &amp; Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="pt48 pb48" style="background-color: #f8f9fa;">
+                    <div class="container">
+                        <t t-if="programs">
+                            <div class="row">
+                                <t t-foreach="programs" t-as="program">
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card h-100 shadow-sm hover-shadow">
+                                            <!-- Program Placeholder -->
+                                            <div class="program-placeholder">
+                                                <i class="fa fa-graduation-cap"/>
+                                            </div>
+                                            
+                                            <div class="card-body d-flex flex-column">
+                                                <h4 class="card-title text-primary">
+                                                    <i class="fa fa-certificate"/> <t t-esc="program.name"/>
+                                                </h4>
+                                                <p class="card-text text-muted mb-3" t-if="program.code">
+                                                    <strong>Code:</strong> <t t-esc="program.code"/>
+                                                </p>
+                                                
+                                                <!-- Program Info Pills -->
+                                                <div class="mb-3">
+                                                    <t t-if="program.department_id">
+                                                        <span class="badge bg-info me-1 mb-1">
+                                                            <i class="fa fa-building"/> <t t-esc="program.department_id.name"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="program.max_unit_load">
+                                                        <span class="badge bg-success me-1 mb-1">
+                                                            <i class="fa fa-clock-o"/> Max Load: <t t-esc="program.max_unit_load"/>
+                                                        </span>
+                                                    </t>
+                                                </div>
+                                                
+                                                <div class="mt-auto">
+                                                    <a t-attf-href="/programs/#{program.id}" class="btn btn-outline-primary btn-sm me-2">
+                                                        <i class="fa fa-info-circle"/> View Details
+                                                    </a>
+                                                    <a t-attf-href="/student/register?program_id=#{program.id}" class="btn btn-primary btn-sm">
+                                                        <i class="fa fa-user-plus"/> Register Now
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-if="not programs">
+                            <div class="alert alert-info text-center" role="alert">
+                                <h4><i class="fa fa-info-circle"/> No Programs Available</h4>
+                                <p class="mb-0">There are currently no published programs available. Please check back later.</p>
+                            </div>
+                        </t>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+    
+    <!-- Public Program Detail Page -->
+    <template id="public_program_detail" name="Public Program Detail">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <style>
+                    .sticky-card {
+                        position: -webkit-sticky;
+                        position: sticky;
+                        top: 20px;
+                    }
+                </style>
+                <section class="s_cover pt48 pb48" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-white">
+                                <h1 class="display-4 mb-2">
+                                    <t t-esc="program.name"/>
+                                </h1>
+                                <p class="lead" t-if="program.code">
+                                    Program Code: <strong><t t-esc="program.code"/></strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="pt48 pb48">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card shadow-sm mb-4">
+                                    <div class="card-body">
+                                        <h3 class="text-primary mb-3">
+                                            <i class="fa fa-info-circle"/> Program Information
+                                        </h3>
+                                        <div class="row mb-3" t-if="program.department_id">
+                                            <div class="col-md-4">
+                                                <strong>Department:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <t t-esc="program.department_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" t-if="program.max_unit_load">
+                                            <div class="col-md-4">
+                                                <strong>Maximum Unit Load:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <t t-esc="program.max_unit_load"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="card shadow-sm bg-light sticky-card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-primary mb-4">
+                                            <i class="fa fa-rocket"/> Ready to Start?
+                                        </h4>
+                                        <p class="text-muted mb-4">
+                                            Register now to begin your learning journey with this program.
+                                        </p>
+                                        <a t-attf-href="/student/register?program_id=#{program.id}" class="btn btn-primary btn-lg w-100 mb-3">
+                                            <i class="fa fa-user-plus"/> Register for this Program
+                                        </a>
+                                        <a href="/programs" class="btn btn-outline-secondary w-100">
+                                            <i class="fa fa-arrow-left"/> Back to All Programs
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+    
     <!-- Public Course Catalog -->
     <template id="public_courses_catalog" name="Public Course Catalog">
         <t t-call="website.layout">
             <div id="wrap" class="oe_structure">
-                <style>
-                    .hover-shadow {
-                        transition: all 0.3s ease;
-                    }
-                    .hover-shadow:hover {
-                        transform: translateY(-5px);
-                        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
-                    }
-                </style>
                 <section class="s_cover pt48 pb48" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                     <div class="container">
                         <div class="row">
@@ -34,13 +182,66 @@
                                 <t t-foreach="courses" t-as="course">
                                     <div class="col-lg-4 col-md-6 mb-4">
                                         <div class="card h-100 shadow-sm hover-shadow">
+                                            <!-- Course Placeholder -->
+                                            <div class="course-placeholder">
+                                                <i class="fa fa-graduation-cap"/>
+                                            </div>
+                                            
                                             <div class="card-body d-flex flex-column">
+                                                <!-- Course Status Badges Row -->
+                                                <div class="mb-2">
+                                                    <!-- Course State Badge (Published/Draft) - Using active field -->
+                                                    <span t-attf-class="badge bg-#{course.active and 'success' or 'secondary'} me-1 mb-1">
+                                                        <i t-attf-class="fa fa-#{course.active and 'check-circle' or 'clock-o'}"/> 
+                                                        <t t-esc="course.active and 'Published' or 'Inactive'"/>
+                                                    </span>
+                                                    
+                                                    <!-- Enrollment Status Badge - Always show Available for now -->
+                                                    <span class="badge bg-success me-1 mb-1">
+                                                        <i class="fa fa-users"/> Available
+                                                    </span>
+                                                </div>
+                                                
                                                 <h4 class="card-title text-primary">
                                                     <i class="fa fa-book"/> <t t-esc="course.name"/>
                                                 </h4>
-                                                <p class="card-text text-muted mb-3" t-if="course.code">
+                                                <p class="card-text text-muted mb-2" t-if="course.code">
                                                     <strong>Code:</strong> <t t-esc="course.code"/>
                                                 </p>
+                                                
+                                                <!-- Comprehensive Badge System -->
+                                                <div class="mb-3">
+                                                    <!-- Course Level Badge (using evaluation_type as proxy, or subject complexity) -->
+                                                    <t t-if="course.evaluation_type and course.evaluation_type != 'normal'">
+                                                        <span class="badge bg-primary me-1 mb-1">
+                                                            <i class="fa fa-signal"/> <t t-esc="course.evaluation_type"/>
+                                                        </span>
+                                                    </t>
+                                                    
+                                                    <!-- Department Badge -->
+                                                    <t t-if="course.department_id">
+                                                        <span class="badge bg-info me-1 mb-1">
+                                                            <i class="fa fa-building"/> <t t-esc="course.department_id.name"/>
+                                                        </span>
+                                                    </t>
+                                                    
+                                                    <!-- Subject Tags -->
+                                                    <t t-if="course.subject_ids">
+                                                        <t t-foreach="course.subject_ids" t-as="subject">
+                                                            <span class="badge bg-secondary me-1 mb-1">
+                                                                <i class="fa fa-tag"/> <t t-esc="subject.name"/>
+                                                            </span>
+                                                        </t>
+                                                    </t>
+                                                    
+                                                    <!-- Evaluation Type Badge -->
+                                                    <t t-if="course.evaluation_type">
+                                                        <span class="badge bg-success me-1 mb-1">
+                                                            <i class="fa fa-check-circle"/> Evaluation: <t t-esc="course.evaluation_type"/>
+                                                        </span>
+                                                    </t>
+                                                </div>
+                                                
                                                 <div class="mt-auto">
                                                     <a t-attf-href="/courses/#{course.id}" class="btn btn-outline-primary btn-sm me-2">
                                                         <i class="fa fa-info-circle"/> View Details
@@ -102,39 +303,52 @@
                                         <h3 class="text-primary mb-3">
                                             <i class="fa fa-info-circle"/> Course Information
                                         </h3>
-                                        <div class="row mb-3" t-if="course.subject_id">
+                                        <div class="row mb-3" t-if="course.subject_ids">
                                             <div class="col-md-4">
-                                                <strong>Subject:</strong>
+                                                <strong>Subject(s):</strong>
                                             </div>
                                             <div class="col-md-8">
-                                                <t t-esc="course.subject_id.name"/>
+                                                <t t-foreach="course.subject_ids" t-as="subject">
+                                                    <span class="badge bg-secondary me-1">
+                                                        <t t-esc="subject.name"/>
+                                                    </span>
+                                                </t>
                                             </div>
                                         </div>
-                                        <div class="row mb-3" t-if="course.course_level">
+                                        <div class="row mb-3" t-if="course.department_id">
                                             <div class="col-md-4">
-                                                <strong>Level:</strong>
+                                                <strong>Department:</strong>
                                             </div>
                                             <div class="col-md-8">
-                                                <t t-esc="course.course_level"/>
+                                                <t t-esc="course.department_id.name"/>
                                             </div>
                                         </div>
-                                        <div class="row mb-3" t-if="course.duration">
+                                        <div class="row mb-3" t-if="course.evaluation_type">
                                             <div class="col-md-4">
-                                                <strong>Duration:</strong>
+                                                <strong>Evaluation Type:</strong>
                                             </div>
                                             <div class="col-md-8">
-                                                <t t-esc="course.duration"/> <t t-esc="course.duration_type"/>
+                                                <span class="badge bg-success">
+                                                    <t t-esc="course.evaluation_type"/>
+                                                </span>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="card shadow-sm" t-if="course.description">
-                                    <div class="card-body">
-                                        <h3 class="text-primary mb-3">
-                                            <i class="fa fa-file-text"/> Description
-                                        </h3>
-                                        <div t-field="course.description" class="text-muted"/>
+                                        <div class="row mb-3" t-if="course.max_unit_load">
+                                            <div class="col-md-4">
+                                                <strong>Maximum Unit Load:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <t t-esc="course.max_unit_load"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3" t-if="course.min_unit_load">
+                                            <div class="col-md-4">
+                                                <strong>Minimum Unit Load:</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <t t-esc="course.min_unit_load"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -577,7 +791,7 @@
                 <div class="container mt-4">
                     <div class="row">
                         <div class="col-12">
-                            <div class="card shadow">
+                            <div class="card shadow-sm mb-4">
                                 <div class="card-header bg-primary text-white">
                                     <h3 class="mb-0">
                                         <i class="fa fa-book"/> Available Courses
@@ -587,21 +801,87 @@
                                     <t t-if="courses">
                                         <div class="row">
                                             <t t-foreach="courses" t-as="course">
-                                                <div class="col-md-4 mb-4">
-                                                    <div class="card h-100">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title"><t t-esc="course.name"/></h5>
-                                                            <p class="card-text" t-if="course.description">
-                                                                <t t-esc="course.description[:100]"/>...
+                                                <div class="col-lg-4 col-md-6 mb-4">
+                                                    <div class="card h-100 shadow-sm course-card-hover">
+                                                        <!-- Course Placeholder -->
+                                                        <div class="course-card-placeholder">
+                                                            <i class="fa fa-graduation-cap"/>
+                                                        </div>
+                                                        
+                                                        <div class="card-body d-flex flex-column">
+                                                            <!-- Course Status Badges Row -->
+                                                            <div class="mb-2">
+                                                                <!-- Course State Badge (Published/Draft) - Using active field -->
+                                                                <span t-attf-class="badge bg-#{course.active and 'success' or 'secondary'} me-1 mb-1">
+                                                                    <i t-attf-class="fa fa-#{course.active and 'check-circle' or 'clock-o'}"/> 
+                                                                    <t t-esc="course.active and 'Published' or 'Inactive'"/>
+                                                                </span>
+                                                                
+                                                                <!-- Enrollment Status Badge -->
+                                                                <t t-if="course.id not in enrolled_course_ids">
+                                                                    <span class="badge bg-success me-1 mb-1">
+                                                                        <i class="fa fa-users"/> Available
+                                                                    </span>
+                                                                </t>
+                                                                <t t-if="course.id in enrolled_course_ids">
+                                                                    <span class="badge bg-info me-1 mb-1">
+                                                                        <i class="fa fa-check"/> Enrolled
+                                                                    </span>
+                                                                </t>
+                                                            </div>
+                                                            
+                                                            <h4 class="card-title text-primary mb-2">
+                                                                <i class="fa fa-book"/> <t t-esc="course.name"/>
+                                                            </h4>
+                                                            <p class="card-text text-muted mb-2" t-if="course.code">
+                                                                <strong>Code:</strong> <t t-esc="course.code"/>
                                                             </p>
-                                                            <t t-if="course.id not in enrolled_course_ids">
-                                                                <a t-attf-href="/my/courses/request/#{course.id}" class="btn btn-primary">
-                                                                    <i class="fa fa-plus"/> Request Enrollment
-                                                                </a>
-                                                            </t>
-                                                            <t t-if="course.id in enrolled_course_ids">
-                                                                <span class="badge bg-success">Already Enrolled</span>
-                                                            </t>
+                                                            
+                                                            <!-- Comprehensive Badge System -->
+                                                            <div class="mb-3">
+                                                                <!-- Course Level Badge (using evaluation_type as proxy) -->
+                                                                <t t-if="course.evaluation_type and course.evaluation_type != 'normal'">
+                                                                    <span class="badge bg-primary me-1 mb-1">
+                                                                        <i class="fa fa-signal"/> <t t-esc="course.evaluation_type"/>
+                                                                    </span>
+                                                                </t>
+                                                                
+                                                                <!-- Department Badge -->
+                                                                <t t-if="course.department_id">
+                                                                    <span class="badge bg-info me-1 mb-1">
+                                                                        <i class="fa fa-building"/> <t t-esc="course.department_id.name"/>
+                                                                    </span>
+                                                                </t>
+                                                                
+                                                                <!-- Subject Tags -->
+                                                                <t t-if="course.subject_ids">
+                                                                    <t t-foreach="course.subject_ids" t-as="subject">
+                                                                        <span class="badge bg-secondary me-1 mb-1">
+                                                                            <i class="fa fa-tag"/> <t t-esc="subject.name"/>
+                                                                        </span>
+                                                                    </t>
+                                                                </t>
+                                                                
+                                                                <!-- Evaluation Type Badge -->
+                                                                <t t-if="course.evaluation_type">
+                                                                    <span class="badge bg-success me-1 mb-1">
+                                                                        <i class="fa fa-check-circle"/> Evaluation: <t t-esc="course.evaluation_type"/>
+                                                                    </span>
+                                                                </t>
+                                                            </div>
+                                                            
+                                                            <div class="mt-auto pt-3">
+                                                                <t t-if="course.id not in enrolled_course_ids">
+                                                                    <a t-attf-href="/my/courses/request/#{course.id}" class="btn btn-primary btn-sm w-100">
+                                                                        <i class="fa fa-plus"/> Request Enrollment
+                                                                    </a>
+                                                                </t>
+                                                                <t t-if="course.id in enrolled_course_ids">
+                                                                    <span class="badge bg-success w-100 text-center py-2">
+                                                                        <i class="fa fa-check"/> Already Enrolled
+                                                                    </span>
+                                                                </t>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -609,7 +889,10 @@
                                         </div>
                                     </t>
                                     <t t-if="not courses">
-                                        <p class="text-muted">No courses available at this time.</p>
+                                        <div class="alert alert-info text-center" role="alert">
+                                            <h4><i class="fa fa-info-circle"/> No Courses Available</h4>
+                                            <p class="mb-0">Please check back later for available courses.</p>
+                                        </div>
                                     </t>
                                 </div>
                             </div>
@@ -795,6 +1078,14 @@
         </t>
     </template>
     
+    <!-- Website Menu: Programs -->
+    <record id="menu_programs" model="website.menu">
+        <field name="name">Programs</field>
+        <field name="url">/programs</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">49</field>
+    </record>
+    
     <!-- Website Menu: Courses -->
     <record id="menu_courses" model="website.menu">
         <field name="name">Courses</field>
@@ -812,3 +1103,4 @@
     </record>
     
 </odoo>
+
