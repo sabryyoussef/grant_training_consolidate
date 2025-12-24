@@ -70,8 +70,16 @@ class StudentEnrollmentPortal(CustomerPortal):
         if not course.exists():
             return request.redirect('/courses')
         
+        # Get other courses (excluding current course, limit to 6)
+        other_courses = request.env['op.course'].sudo().search([
+            ('active', '=', True),
+            ('id', '!=', course.id)
+        ], order='sequence, name', limit=6)
+        
         values = {
             'course': course,
+            'other_courses': other_courses,
+            'has_other_courses': bool(other_courses),
             'page_name': 'course_detail',
         }
         

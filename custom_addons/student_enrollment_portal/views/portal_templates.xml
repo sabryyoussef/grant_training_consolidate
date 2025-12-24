@@ -351,6 +351,129 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <!-- Why Take This Course Section -->
+                                <div class="card shadow-sm mb-4">
+                                    <div class="card-body">
+                                        <h3 class="text-primary mb-4">
+                                            <i class="fa fa-lightbulb-o"/> Why Take This Course?
+                                        </h3>
+                                        
+                                        <!-- Value Delivered -->
+                                        <div class="mb-4">
+                                            <h4 class="text-dark mb-3">
+                                                <i class="fa fa-check-circle text-success me-2"/> Value Delivered
+                                            </h4>
+                                            <p class="text-muted lead" style="line-height: 1.8;">
+                                                The <strong><t t-esc="course.name"/></strong> offers an in-depth exploration of core foundations through a structured academic program that blends theory with collaborative practical training. This comprehensive course is designed to provide you with the knowledge, skills, and practical experience needed to excel in your field.
+                                            </p>
+                                        </div>
+                                        
+                                        <!-- Who Should Attend -->
+                                        <div class="mb-3">
+                                            <h4 class="text-dark mb-3">
+                                                <i class="fa fa-users text-info me-2"/> Who Should Attend?
+                                            </h4>
+                                            <p class="text-muted lead" style="line-height: 1.8;">
+                                                Ideal for professionals, specialists, entrepreneurs, business owners, and team leaders looking to formalize or expand their expertise in <strong><t t-esc="course.name"/></strong>. Whether you're seeking to enhance your career prospects, gain professional certification, or deepen your understanding of the subject matter, this course provides the comprehensive training you need.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Frequently Asked Questions Section -->
+                                <div class="card shadow-sm mb-4">
+                                    <div class="card-body">
+                                        <h3 class="text-primary mb-4">
+                                            <i class="fa fa-question-circle"/> Frequently Asked Questions
+                                        </h3>
+                                        <div class="accordion" id="courseFAQ">
+                                            <!-- FAQ Item 1 -->
+                                            <div class="accordion-item mb-2">
+                                                <h2 class="accordion-header" id="faqHeading1">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                                                        <i class="fa fa-question-circle text-primary me-2"/> What are the prerequisites for this course?
+                                                    </button>
+                                                </h2>
+                                                <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#courseFAQ">
+                                                    <div class="accordion-body">
+                                                        This course is designed for participants with basic knowledge in the field. While there are no strict prerequisites, having a foundational understanding will help you get the most out of the course. We recommend reviewing the course objectives and topics before enrolling to ensure it matches your current level.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- FAQ Item 2 -->
+                                            <div class="accordion-item mb-2">
+                                                <h2 class="accordion-header" id="faqHeading2">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                                                        <i class="fa fa-question-circle text-primary me-2"/> How long does the course take to complete?
+                                                    </button>
+                                                </h2>
+                                                <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#courseFAQ">
+                                                    <div class="accordion-body">
+                                                        The course duration varies depending on the course structure and your learning pace. Most courses can be completed within the specified timeframe. You'll have access to all course materials and can learn at your own pace. Check the course details for specific duration information.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- FAQ Item 3 -->
+                                            <div class="accordion-item mb-2">
+                                                <h2 class="accordion-header" id="faqHeading3">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                                                        <i class="fa fa-question-circle text-primary me-2"/> Will I receive a certificate upon completion?
+                                                    </button>
+                                                </h2>
+                                                <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#courseFAQ">
+                                                    <div class="accordion-body">
+                                                        Yes! Upon successful completion of the course and meeting all requirements, you will receive a certificate of completion. The certificate demonstrates your understanding of the course material and can be used for professional development, continuing education credits, or added to your portfolio.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- FAQ Item 4 -->
+                                            <div class="accordion-item mb-2">
+                                                <h2 class="accordion-header" id="faqHeading4">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                                                        <i class="fa fa-question-circle text-primary me-2"/> What materials or resources do I need?
+                                                    </button>
+                                                </h2>
+                                                <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#courseFAQ">
+                                                    <div class="accordion-body">
+                                                        All necessary course materials will be provided through our online learning platform. You'll need a computer or mobile device with internet access. Some courses may recommend additional reading materials or software, which will be clearly listed in the course description before you enroll.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- FAQ Item 5 -->
+                                            <div class="accordion-item mb-2">
+                                                <h2 class="accordion-header" id="faqHeading5">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
+                                                        <i class="fa fa-question-circle text-primary me-2"/> Can I get a refund if I'm not satisfied?
+                                                    </button>
+                                                </h2>
+                                                <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faqHeading5" data-bs-parent="#courseFAQ">
+                                                    <div class="accordion-body">
+                                                        We want you to be completely satisfied with your learning experience. If you're not happy with the course within the first few days of enrollment, please contact our support team to discuss refund options. Our refund policy details will be provided during the registration process.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- FAQ Item 6 -->
+                                            <div class="accordion-item mb-2">
+                                                <h2 class="accordion-header" id="faqHeading6">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse6" aria-expanded="false" aria-controls="faqCollapse6">
+                                                        <i class="fa fa-question-circle text-primary me-2"/> How do I access the course after registration?
+                                                    </button>
+                                                </h2>
+                                                <div id="faqCollapse6" class="accordion-collapse collapse" aria-labelledby="faqHeading6" data-bs-parent="#courseFAQ">
+                                                    <div class="accordion-body">
+                                                        After successful registration and payment (if applicable), you will receive an email confirmation with instructions on how to access the course. You'll be able to log in to your student portal using your credentials and access all course materials, assignments, and resources from there.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             
                             <div class="col-lg-4">
@@ -368,6 +491,79 @@
                                         <a href="/courses" class="btn btn-outline-secondary w-100">
                                             <i class="fa fa-arrow-left"/> Back to All Courses
                                         </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Other Courses Section -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card shadow-sm mb-4">
+                                    <div class="card-header bg-primary text-white">
+                                        <h3 class="mb-0">
+                                            <i class="fa fa-book"/> Other Courses You Might Like
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <t t-if="has_other_courses">
+                                            <div class="row">
+                                                <t t-foreach="other_courses" t-as="other_course">
+                                                    <div class="col-lg-4 col-md-6 mb-4">
+                                                        <div class="card h-100 shadow-sm hover-shadow">
+                                                            <!-- Course Placeholder -->
+                                                            <div class="course-placeholder" style="height: 150px; font-size: 2rem;">
+                                                                <i class="fa fa-graduation-cap"/>
+                                                            </div>
+                                                            
+                                                            <div class="card-body d-flex flex-column">
+                                                                <!-- Course Status Badge -->
+                                                                <div class="mb-2">
+                                                                    <span t-attf-class="badge bg-#{other_course.active and 'success' or 'secondary'} me-1 mb-1">
+                                                                        <i t-attf-class="fa fa-#{other_course.active and 'check-circle' or 'clock-o'}"/> 
+                                                                        <t t-esc="other_course.active and 'Published' or 'Inactive'"/>
+                                                                    </span>
+                                                                </div>
+                                                                
+                                                                <h5 class="card-title text-primary">
+                                                                    <i class="fa fa-book"/> <t t-esc="other_course.name"/>
+                                                                </h5>
+                                                                <p class="card-text text-muted mb-2" t-if="other_course.code">
+                                                                    <strong>Code:</strong> <t t-esc="other_course.code"/>
+                                                                </p>
+                                                                
+                                                                <!-- Course Badges -->
+                                                                <div class="mb-3">
+                                                                    <t t-if="other_course.department_id">
+                                                                        <span class="badge bg-info me-1 mb-1">
+                                                                            <i class="fa fa-building"/> <t t-esc="other_course.department_id.name"/>
+                                                                        </span>
+                                                                    </t>
+                                                                    <t t-if="other_course.evaluation_type">
+                                                                        <span class="badge bg-success me-1 mb-1">
+                                                                            <i class="fa fa-check-circle"/> <t t-esc="other_course.evaluation_type"/>
+                                                                        </span>
+                                                                    </t>
+                                                                </div>
+                                                                
+                                                                <div class="mt-auto">
+                                                                    <a t-attf-href="/courses/#{other_course.id}" class="btn btn-primary btn-sm w-100">
+                                                                        <i class="fa fa-info-circle"/> View Details
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </t>
+                                        <t t-if="not has_other_courses">
+                                            <div class="alert alert-info text-center mb-0">
+                                                <p class="mb-0">
+                                                    <i class="fa fa-info-circle"/> No other courses available at this time.
+                                                </p>
+                                            </div>
+                                        </t>
                                     </div>
                                 </div>
                             </div>
